@@ -7,9 +7,9 @@ namespace Application.Interfaces
     public interface IOfferService
     {
         Task<OfferResponse> Create(OfferRequest request);
-        Task DeleteById(int id);
+        Task DeleteById(Guid id);
         Task<Paged<OfferResponse>> GetAll(int pageNumber, int pageSize);
-        Task<OfferResponse> GetById(int id);
+        Task<OfferResponse> GetById(Guid id);
       //  Task<OfferResponse> Update(int id, OfferRequest request);
     }
 }

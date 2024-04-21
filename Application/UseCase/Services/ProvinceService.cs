@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Application.DTO.Pagination;
 using Application.DTO.Request;
 using Application.DTO.Response;
+using Domain.Entities;
 
 namespace Application.UseCase.Services
 {
@@ -27,7 +28,7 @@ namespace Application.UseCase.Services
         {
             try
             {
-                T entity = _mapper.Map<T>(request);
+                Provinces entity = _mapper.Map<Provinces>(request);
                 entity = await _repository.Insert(entity);
                 return _mapper.Map<ProvincesResponse>(entity);
             }
@@ -53,7 +54,7 @@ namespace Application.UseCase.Services
                 {
                     throw new BadRequestException("The ID must be greater than zero.");
                 }
-                var entity = await _query.RecoveryById(id);
+                var entity = await _query.GetProvinceById(id);
                 if (entity != null)
                 {
                     await _repository.Remove(entity);
@@ -87,11 +88,12 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-                Paged<T> list = await _query.RecoveryAll(parameters);
+                List<Provinces> list = await _query.GetAllProvince();
                 List<ProvincesResponse> listAux = new();
-                list.Data.ForEach(e => listAux.Add(_mapper.Map<ProvincesResponse>(e)));
+                //list.Data.ForEach(e => listAux.Add(_mapper.Map<ProvincesResponse>(e)));
 
-                return new Paged<ProvincesResponse>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
+                //return new Paged<ProvincesResponse>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
+                return new Paged<ProvincesResponse> (listAux, list.Count, parameters.PageNumber,parameters.PageSize);
             }
             catch (Exception e)
             {
@@ -112,7 +114,7 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("The ID must be greater than zero.");
                 }
 
-                var entity = await _query.RecoveryById(id);
+                var entity = await _query.GetProvinceById(id);
                 if (entity == null)
                 {
                     throw new NotFoundException("The record with ID " + id + " was not found.");

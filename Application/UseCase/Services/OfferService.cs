@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Application.DTO.Pagination;
 using Application.DTO.Response;
 using Application.DTO.Request;
+using Domain.Entities;
 
 namespace Application.UseCase.Services
 {
@@ -26,7 +27,7 @@ namespace Application.UseCase.Services
         {
             try
             {
-                T entity = _mapper.Map<T>(request);
+                Offers entity = _mapper.Map<Offers>(request);
                 entity = await _repository.Insert(entity);
                 return _mapper.Map<OfferResponse>(entity);
             }
@@ -44,14 +45,14 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task DeleteById(int id)
+        public async Task DeleteById(Guid id)
         {
             try
             {
-                if (id <= 0)
+               /* if (id <= 0)
                 {
                     throw new BadRequestException("The ID must be greater than zero.");
-                }
+                }*/
                 var entity = await _query.RecoveryById(id);
                 if (entity != null)
                 {
@@ -86,7 +87,7 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-                Paged<T> list = await _repository.RecoveryAll(parameters);
+                Paged<Offers> list = await _query.RecoveryAll(parameters);
                 List<OfferResponse> listAux = new();
                 list.Data.ForEach(e => listAux.Add(_mapper.Map<OfferResponse>(e)));
 
@@ -102,14 +103,14 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<OfferResponse> GetById(int id)
+        public async Task<OfferResponse> GetById(Guid id)
         {
             try
             {
-                if (id <= 0)
+                /*if (id <= 0)
                 {
                     throw new BadRequestException("The ID must be greater than zero.");
-                }
+                }*/
 
                 var entity = await _query.RecoveryById(id);
                 if (entity == null)

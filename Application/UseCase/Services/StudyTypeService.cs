@@ -3,28 +3,33 @@ using AutoMapper;
 using Application.DTO.Error;
 using Microsoft.EntityFrameworkCore;
 using Application.DTO.Pagination;
+using Application.DTO.Response;
+using Application.DTO.Request;
+using Domain.Entities;
 
 namespace Application.UseCase.Services
 {
-    public class StudyTypeService<Request, Response, T> : IService<Request, Response> where Request : class where Response : class where T : class
+    public class StudyTypeService
     {
-        protected readonly IRepository<T> _repository;
+        protected readonly IGenericRepository _repository;
         protected readonly IMapper _mapper;
+        protected readonly IStudyTypeQuery _query;
         public Parameters parameters;
 
-        public StudyTypeService(IRepository<T> repository, IMapper mapper)
+        public StudyTypeService(IGenericRepository repository, IStudyTypeQuery query, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
+            _query = query;
             parameters = new();
         }
-        public async Task<Response> Create(Request request)
+        public async Task<StudyTypeResponse> Create(StudyTypeRequest request)
         {
             try
             {
-                T entity = _mapper.Map<T>(request);
+                StudyTypes entity = _mapper.Map<StudyTypes>(request);
                 entity = await _repository.Insert(entity);
-                return _mapper.Map<Response>(entity);
+                return _mapper.Map<StudyTypeResponse>(entity);
             }
             catch (Exception e)
             {
@@ -48,7 +53,7 @@ namespace Application.UseCase.Services
                 {
                     throw new BadRequestException("The ID must be greater than zero.");
                 }
-                var entity = await _repository.RecoveryById(id);
+                var entity = await _query.RecoveryById(id);
                 if (entity != null)
                 {
                     await _repository.Remove(entity);
@@ -69,7 +74,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<Paged<Response>> GetAll(int pagedNumber, int pagedSize)
+        public async Task<Paged<StudyTypeResponse>> GetAll(int pagedNumber, int pagedSize)
         {
             try
             {
@@ -82,11 +87,11 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-                Paged<T> list = await _repository.RecoveryAll(parameters);
-                List<Response> listAux = new();
-                list.Data.ForEach(e => listAux.Add(_mapper.Map<Response>(e)));
+                Paged<StudyTypes> list = await _query.RecoveryAll(parameters);
+                List<StudyTypeResponse> listAux = new();
+                list.Data.ForEach(e => listAux.Add(_mapper.Map<StudyTypeResponse>(e)));
 
-                return new Paged<Response>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
+                return new Paged<StudyTypeResponse>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
             }
             catch (Exception e)
             {
@@ -98,7 +103,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<Response> GetById(int id)
+        public async Task<StudyTypeResponse> GetById(int id)
         {
             try
             {
@@ -107,12 +112,12 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("The ID must be greater than zero.");
                 }
 
-                var entity = await _repository.RecoveryById(id);
+                var entity = await _query.RecoveryById(id);
                 if (entity == null)
                 {
                     throw new NotFoundException("The record with ID " + id + " was not found.");
                 }
-                return _mapper.Map<Response>(entity);
+                return _mapper.Map<StudyTypeResponse>(entity);
             }
             catch (Exception e)
             {
@@ -124,7 +129,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public virtual Task<Response> Update(int id, Request request)
+        public virtual Task<StudyTypeResponse> Update(int id, Request request)
         {
             throw new NotImplementedException();
         }
