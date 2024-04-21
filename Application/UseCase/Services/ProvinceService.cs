@@ -9,7 +9,7 @@ using Domain.Entities;
 
 namespace Application.UseCase.Services
 {
-    public class ProvinceService
+    public class ProvinceService : IProvinceService
     {
         protected readonly IProvinceRepository _repository;
         protected readonly IMapper _mapper;

@@ -3,28 +3,34 @@ using AutoMapper;
 using Application.DTO.Error;
 using Microsoft.EntityFrameworkCore;
 using Application.DTO.Pagination;
+using Application.DTO.Response;
+using Application.DTO.Request;
+using Domain.Entities;
 
 namespace Application.UseCase.Services
 {
-    public class JobOfferService<Request, Response, T> : IService<Request, Response> where Request : class where Response : class where T : class
-    {
-        protected readonly IRepository<T> _repository;
+    public class JobOfferModeService : IJobOfferModeService
+    { 
+
+        protected readonly IGenericRepository _repository;
         protected readonly IMapper _mapper;
+        protected readonly IJobOfferModeQuery _query;
         public Parameters parameters;
 
-        public JobOfferService(IRepository<T> repository, IMapper mapper)
+        public JobOfferModeService(IGenericRepository repository, IJobOfferModeQuery query, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
+            _query = query;
             parameters = new();
         }
-        public async Task<Response> Create(Request request)
+        public async Task<JobOfferModeResponse> Create(JobOfferModeRequest request)
         {
             try
             {
-                T entity = _mapper.Map<T>(request);
+                JobOfferModes entity = _mapper.Map<JobOfferModes>(request);
                 entity = await _repository.Insert(entity);
-                return _mapper.Map<Response>(entity);
+                return _mapper.Map<JobOfferModeResponse>(entity);
             }
             catch (Exception e)
             {
@@ -40,15 +46,15 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task DeleteById(int id)
+        public async Task DeleteById(Guid id)
         {
             try
             {
-                if (id <= 0)
+               /* if (id <= 0)
                 {
                     throw new BadRequestException("The ID must be greater than zero.");
-                }
-                var entity = await _repository.RecoveryById(id);
+                }*/
+                var entity = await _query.RecoveryById(id);
                 if (entity != null)
                 {
                     await _repository.Remove(entity);
@@ -69,7 +75,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<Paged<Response>> GetAll(int pagedNumber, int pagedSize)
+        public async Task<Paged<JobOfferModeResponse>> GetAll(int pagedNumber, int pagedSize)
         {
             try
             {
@@ -82,11 +88,11 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-                Paged<T> list = await _repository.RecoveryAll(parameters);
-                List<Response> listAux = new();
-                list.Data.ForEach(e => listAux.Add(_mapper.Map<Response>(e)));
+                Paged<JobOfferModes> list = await _query.RecoveryAll(parameters);
+                List<JobOfferModeResponse> listAux = new();
+                list.Data.ForEach(e => listAux.Add(_mapper.Map<JobOfferModeResponse>(e)));
 
-                return new Paged<Response>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
+                return new Paged<JobOfferModeResponse>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
             }
             catch (Exception e)
             {
@@ -98,21 +104,21 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<Response> GetById(int id)
+        public async Task<JobOfferModeResponse> GetById(Guid id)
         {
             try
             {
-                if (id <= 0)
+               /* if (id <= 0)
                 {
                     throw new BadRequestException("The ID must be greater than zero.");
-                }
+                }*/
 
-                var entity = await _repository.RecoveryById(id);
+                var entity = await _query.RecoveryById(id);
                 if (entity == null)
                 {
                     throw new NotFoundException("The record with ID " + id + " was not found.");
                 }
-                return _mapper.Map<Response>(entity);
+                return _mapper.Map<JobOfferModeResponse>(entity);
             }
             catch (Exception e)
             {
@@ -124,7 +130,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public virtual Task<Response> Update(int id, Request request)
+        public virtual Task<JobOfferModeResponse> Update(int id, Request request)
         {
             throw new NotImplementedException();
         }

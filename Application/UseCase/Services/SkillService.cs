@@ -9,7 +9,7 @@ using Domain.Entities;
 
 namespace Application.UseCase.Services
 {
-    public class SkillService
+    public class SkillService : ISkillService
     {
         protected readonly IGenericRepository _repository;
         protected readonly ISkillQuery _query;

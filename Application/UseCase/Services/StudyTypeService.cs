@@ -9,7 +9,7 @@ using Domain.Entities;
 
 namespace Application.UseCase.Services
 {
-    public class StudyTypeService
+    public class StudyTypeService : IStudyTypeService
     {
         protected readonly IGenericRepository _repository;
         protected readonly IMapper _mapper;

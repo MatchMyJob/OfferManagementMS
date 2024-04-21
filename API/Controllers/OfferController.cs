@@ -129,7 +129,7 @@ namespace API.Controllers
         {
             try
             {
-                _response.Result = await _service.Update(id, request);
+               // _response.Result = await _service.Update(id, request);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };
@@ -168,7 +168,7 @@ namespace API.Controllers
                     throw new BadRequestException("Enter the application correctly.");
                 }
 
-                _response.Result = await _service.Update(id, offerRequest);
+               // _response.Result = await _service.Update(id, offerRequest);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };

@@ -9,41 +9,41 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Infraestructure.Query
 {
-    public class StudyTypeQuery : IStudyTypeQuery
+    public class JobOfferModeQuery : IJobOfferModeQuery
     {
 
         private readonly AppDbContext _context;
 
-        public StudyTypeQuery(AppDbContext context)
+        public JobOfferModeQuery(AppDbContext context)
         {
             _context = context;
         }
         
-        public async Task<Paged<StudyTypes>> RecoveryAll(Parameters parameters)
+        public async Task<Paged<JobOfferModes>> RecoveryAll(Parameters parameters)
         {
             // HARDCODE - VERIFICAR ESTO
-            IQueryable<StudyTypes> studyTypes = _context.StudyType;
+            IQueryable<JobOfferModes> JobOfferModes = _context.JobOfferMode;
             /*  .Include(c => c.CityObject)
               .ThenInclude(p => p.ProvinceObject)
           .ThenInclude(c => c.CountryObject);*/
 
             //HARDCODE - VERFICIAR ESTO (EL ASYNC - AWAIT)
-            return /*await*/ Paged<StudyTypes>.ToPaged(studyTypes, parameters.PageNumber, parameters.PageSize);
+            return /*await*/ Paged<JobOfferModes>.ToPaged(JobOfferModes, parameters.PageNumber, parameters.PageSize);
         }
 
-        public async Task<StudyTypes> RecoveryById(int id)
+        public async Task<JobOfferModes> RecoveryById(Guid id)
         {
             //HARDCODE - VERIFICAR ESTO
-            var studyType = await _context.StudyType
+            var JobOfferMode = await _context.JobOfferMode.FirstOrDefaultAsync();
                 /*.Include(c => c.CityObject)
                 .ThenInclude(p => p.ProvinceObject)*/
-                .FirstOrDefaultAsync(s => (s.StudyTypeId == id));
+            //    .FirstOrDefaultAsync(s => (s.JobOfferModeId == id));
 
-            if (studyType == null)
+            if (JobOfferMode == null)
             {
-                throw new NotFoundException("El Tipo de Estudio con el ID " + id + " no fue encontrado.");
+                throw new NotFoundException("El JobOfferMode con el ID " + id + " no fue encontrado.");
             }
-            return studyType;
+            return JobOfferMode;
         }
 
 

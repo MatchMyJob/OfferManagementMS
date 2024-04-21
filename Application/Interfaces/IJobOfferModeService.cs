@@ -7,9 +7,9 @@ namespace Application.Interfaces
     public interface IJobOfferModeService
     {
         Task<JobOfferModeResponse> Create(JobOfferModeRequest request);
-        Task DeleteById(int id);
+        Task DeleteById(Guid id);
         Task<Paged<JobOfferModeResponse>> GetAll(int pageNumber, int pageSize);
-        Task<JobOfferModeResponse> GetById(int id);
-        Task<JobOfferModeResponse> Update(int id, JobOfferModeRequest request);
+        Task<JobOfferModeResponse> GetById(Guid id);
+       // Task<JobOfferModeResponse> Update(int id, JobOfferModeRequest request);
     }
 }

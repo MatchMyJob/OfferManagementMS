@@ -10,6 +10,6 @@ namespace Application.Interfaces
         Task DeleteById(int id);
         Task<Paged<SkillResponse>> GetAll(int pageNumber, int pageSize);
         Task<SkillResponse> GetById(int id);
-        Task<SkillResponse> Update(int id, SkillRequest request);
+      //  Task<SkillResponse> Update(int id, SkillRequest request);
     }
 }
