@@ -6,12 +6,12 @@ using Azure;
 
 namespace Application.Interfaces
 {
-    public interface IApplicationService : IService<ApplicationRequest, ApplicationResponse>
+    public interface IApplicationService
     {
-        Task<Response> Create(ApplicationRequest request);
+        Task<ApplicationResponse> Create(ApplicationRequest request);
         Task DeleteById(int id);
-        Task<Paged<Response>> GetAll(int pageNumber, int pageSize);
-        Task<Response> GetById(int id);
-        Task<Response> Update(int id, ApplicationRequest request);
+        Task<Paged<ApplicationResponse>> GetAll(int pageNumber, int pageSize);
+        Task<ApplicationResponse> GetById(int id);
+        Task<ApplicationResponse> Update(int id, ApplicationRequest request);
     }
 }

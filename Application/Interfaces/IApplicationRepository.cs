@@ -2,13 +2,13 @@
 
 namespace Application.Interfaces
 {
-    public interface IApplicationRepository<T> where T : class
+    public interface IApplicationRepository
     {
-        Task<T> Insert(T entity);
-        Task Remove(T entity);
+        Task<T> Insert<T>(T entity) where T : class;
+        Task Remove<T>(T entity) where T : class;
         Task SaveChanges();
-        Task <Paged<T>> RecoveryAll(Parameters parameters);
-        Task<T> RecoveryById(int id);
+        Task <Paged<T>> RecoveryAll<T>(Parameters parameters);
+        Task<T> RecoveryById<T>(int id);
 
     }
 }

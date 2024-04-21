@@ -5,13 +5,13 @@ using System;
 
 namespace Application.Interfaces
 {
-    public interface IGenericRepository<T> where T : class
+    public interface IGenericRepository
     {
-        Task<T> Insert(T entity);
+        Task<T> Insert<T>(T entity) where T : class;
 
-        Task<T> RecoveryById(int id);
+        Task Remove<T>(T entity) where T : class;
 
-        Task Remove(T entity);
+        Task<T> Update<T>(T entity) where T : class;
 
         Task SaveChanges();
 

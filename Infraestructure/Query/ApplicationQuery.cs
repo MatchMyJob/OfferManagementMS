@@ -9,23 +9,23 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Infraestructure.Query
 {
-    public class ApplicationQuery : GenericRepository<Applications>
-    { 
+    public class ApplicationQuery : IApplicationQuery
+    {
 
         private readonly AppDbContext _context;
 
-        public ApplicationQuery(AppDbContext context) 
+        public ApplicationQuery(AppDbContext context)
         {
             _context = context;
         }
-
+        
         public async Task<Paged<Applications>> RecoveryAll(Parameters parameters)
         {
             // HARDCODE - VERIFICAR ESTO
             IQueryable<Applications> applications = _context.Application.Where(a => a.Status);
-              /*  .Include(c => c.CityObject)
-                .ThenInclude(p => p.ProvinceObject)
-            .ThenInclude(c => c.CountryObject);*/
+            /*  .Include(c => c.CityObject)
+              .ThenInclude(p => p.ProvinceObject)
+          .ThenInclude(c => c.CountryObject);*/
 
             //HARDCODE - VERFICIAR ESTO (EL ASYNC - AWAIT)
             return /*await*/ Paged<Applications>.ToPaged(applications, parameters.PageNumber, parameters.PageSize);
@@ -41,7 +41,7 @@ namespace Infraestructure.Query
 
             if (application == null)
             {
-                throw new NotFoundException("La Company con el ID " + id + " no fue encontrada.");
+                throw new NotFoundException("La Application con el ID " + id + " no fue encontrada.");
             }
             return application;
         }

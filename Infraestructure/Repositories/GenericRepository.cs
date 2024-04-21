@@ -5,31 +5,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository : IGenericRepository
     {
         private readonly AppDbContext _context;
-        internal DbSet<T> dbSet;
-
+      
         public GenericRepository(AppDbContext context)
         {
             _context = context;
-            this.dbSet = _context.Set<T>();
         }
-        public async Task<T> Insert(T entity)
+
+        public async Task<T> Insert<T>(T entity) where T : class
         {
-            await dbSet.AddAsync(entity);
+            await _context.AddAsync(entity);
             await SaveChanges();
             return entity;
         }
 
-        public async Task<T> RecoveryById(int id)
+        public async Task<T> Update<T>(T entity) where T : class
         {
-            return await dbSet.FindAsync(id);
+            _context.Update(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public async Task Remove(T entity)
+        public async Task Remove<T>(T entity) where T : class
         {
-            dbSet.Remove(entity);
+            _context.Remove(entity);
             await SaveChanges();
         }
 

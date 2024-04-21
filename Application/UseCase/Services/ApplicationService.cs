@@ -3,28 +3,34 @@ using AutoMapper;
 using Application.DTO.Error;
 using Microsoft.EntityFrameworkCore;
 using Application.DTO.Pagination;
+using Domain.Entities;
+using Application.DTO.Request;
+using Application.DTO.Response;
+using Microsoft.Data.SqlClient;
 
 namespace Application.UseCase.Services
 {
-    public abstract class ApplicationService<Request, Response, T> : IService<Request, Response> where Request : class where Response : class where T : class
+    public abstract class ApplicationService : IApplicationService
     {
-        protected readonly IRepository<T> _repository;
+        protected readonly IGenericRepository _repository;
+        protected readonly IApplicationQuery _applicationQuery;
         protected readonly IMapper _mapper;
         public Parameters parameters;
 
-        public ApplicationService(IRepository<T> repository, IMapper mapper)
+        public ApplicationService(IGenericRepository repository, IMapper mapper, IApplicationQuery applicationQuery)
         {
             _repository = repository;
             _mapper = mapper;
             parameters = new();
+            _applicationQuery = applicationQuery;
         }
-        public async Task<Response> Create(Request request)
+        public async Task<ApplicationResponse> Create(ApplicationRequest request)
         {
             try
             {
-                T entity = _mapper.Map<T>(request);
+                Applications entity = _mapper.Map<Applications>(request);
                 entity = await _repository.Insert(entity);
-                return _mapper.Map<Response>(entity);
+                return _mapper.Map<ApplicationResponse>(entity);
             }
             catch (Exception e)
             {
@@ -48,7 +54,8 @@ namespace Application.UseCase.Services
                 {
                     throw new BadRequestException("The ID must be greater than zero.");
                 }
-                var entity = await _repository.RecoveryById(id);
+
+                var entity = await _applicationQuery.RecoveryById(id);
                 if (entity != null)
                 {
                     await _repository.Remove(entity);
@@ -69,7 +76,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<Paged<Response>> GetAll(int pagedNumber, int pagedSize)
+        public async Task<Paged<ApplicationResponse>> GetAll(int pagedNumber, int pagedSize)
         {
             try
             {
@@ -82,11 +89,11 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-                Paged<T> list = await _repository.RecoveryAll(parameters);
-                List<Response> listAux = new();
-                list.Data.ForEach(e => listAux.Add(_mapper.Map<Response>(e)));
+                Paged<Applications> list = await _applicationQuery.RecoveryAll(parameters);
+                List<ApplicationResponse> listAux = new();
+                list.Data.ForEach(e => listAux.Add(_mapper.Map<ApplicationResponse>(e)));
 
-                return new Paged<Response>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
+                return new Paged<ApplicationResponse>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
             }
             catch (Exception e)
             {
@@ -98,7 +105,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<Response> GetById(int id)
+        public async Task<ApplicationResponse> GetById(int id)
         {
             try
             {
@@ -107,12 +114,12 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("The ID must be greater than zero.");
                 }
 
-                var entity = await _repository.RecoveryById(id);
+                var entity = await _applicationQuery.RecoveryById(id);
                 if (entity == null)
                 {
                     throw new NotFoundException("The record with ID " + id + " was not found.");
                 }
-                return _mapper.Map<Response>(entity);
+                return _mapper.Map<ApplicationResponse>(entity);
             }
             catch (Exception e)
             {
@@ -124,9 +131,58 @@ namespace Application.UseCase.Services
             }
         }
 
-        public virtual Task<Response> Update(int id, Request request)
+        public async Task<ApplicationResponse> Update(int id, ApplicationRequest request)
         {
-            throw new NotImplementedException();
+            try
+            {
+                /*
+                if (!DateTime.TryParse(request.BirthDate, out _))
+                {
+                    throw new BadRequestException("Ingrese correctamente la fecha de nacimiento.");
+                }
+                if (!IsValidPhone(request.Phone.ToString()))
+                {
+                    throw new BadRequestException("Ingrese un formato valido: '54-1141462757' ");
+
+                }
+                if (!IsValidDNI(request.Dni.ToString()))
+                {
+                    throw new BadRequestException("Ingrese un número de DNI valido: '41539440'");
+                }
+                */
+
+                var application = _mapper.Map<Applications>(request);
+                application = await _repository.Update(application);
+
+                //HARDCORE - ACA LE TENES QUE UPDATEAR LOS DATOS O EN EL GENERIC ? PORQUE NO ES GENERIC EL UPDATE....
+
+                var response = _mapper.Map<ApplicationResponse>(application);
+                /*response.Ubication = new UbicationResponse
+                {
+                    City = applicant.CityObject.Name,
+                    Province = applicant.CityObject.ProvinceObject.Name
+                };*/
+                return response;
+            }
+            catch (Exception e)
+            {
+                if (e is HTTPError)
+                {
+                    throw;
+                }
+                if (e.InnerException is SqlException sqlException)
+                {
+                    if (sqlException.Number == 547) // / Se comprueba si hay una violación de clave externa
+                    {
+                        throw new ConflictException("Verifique la información a actualizar, la city no existe.");
+                    }
+                    if (sqlException.Number == 2601) // / Se comprueba si hay un duplicado
+                    {
+                        throw new ConflictException("Ya se encuentra el DNI.");
+                    }
+                }
+                throw new InternalServerErrorException(e.Message);
+            }
         }
     }
 }

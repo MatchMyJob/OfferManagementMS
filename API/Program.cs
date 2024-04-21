@@ -2,7 +2,9 @@ using Application.DTO.Config;
 using Application.Interfaces;
 using Application.UseCase.Services;
 using Domain.Entities;
+using Infraestructure.Command;
 using Infraestructure.Persistence;
+using Infraestructure.Query;
 using Infraestructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -55,19 +57,23 @@ builder.Services.AddCors(options =>
         app.AllowAnyOrigin()
            .AllowAnyMethod()
            .AllowAnyHeader();
-    });
+    }); 
 });
 
 
-builder.Services.AddScoped<IApplicationService, ApplicationService>();
-builder.Services.AddScoped<IApplicationQuery, ApplicationQuery>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IApplicationService, ApplicationService>();
+builder.Services.AddTransient<IApplicationQuery, ApplicationQuery>();
+builder.Services.AddTransient<IApplicationCommand, ApplicationsCommand>();
+builder.Services.AddTransient<IApplicationRepository, ApplicationsRepository>();
+
+
+/*builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IJobOfferService, JobOfferService>();
 builder.Services.AddScoped<IOfferService, OfferService>();
 builder.Services.AddScoped<IProvinceService, ProvinceService>();
 builder.Services.AddScoped<ISkillService, SkillService>();
 builder.Services.AddScoped<IStudyTypeService, StudyTypeService>();
-
+*/
 
 var config = new AutoMapper.MapperConfiguration(
     options =>

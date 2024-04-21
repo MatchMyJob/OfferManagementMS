@@ -108,7 +108,8 @@ namespace API.Controllers
         {
             try
             {
-                _response.Result = await _queryService.GetAllPaged(pagedNumber, pagedSize);
+                // HARDCODE - VERIFICAR POR QUE NO ANDA ESTE METODO
+               // _response.Result = await _queryService.GetAllPaged(pagedNumber, pagedSize);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };

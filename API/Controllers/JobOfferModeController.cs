@@ -53,29 +53,5 @@ namespace API.Controllers
                 return new JsonResult(_mapper.Map<HTTPResponse<string>>(new InternalServerErrorException("A server error has occurred."))) { StatusCode = 500 };
             }
         }
-
-        [HttpGet]
-        [ProducesResponseType(typeof(HTTPResponse<Paged<JobOfferModeResponse>>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetAll(int pagedNumber = 1, int pagedSize = 10)
-        {
-            try
-            {
-                _response.Result = await _queryService.GetAllPaged(pagedNumber, pagedSize);
-                _response.StatusCode = (HttpStatusCode)200;
-                _response.Status = "OK";
-                return new JsonResult(_response) { StatusCode = 200 };
-            }
-            catch (Exception e)
-            {
-                if (e is HTTPError)
-                {
-                    return new JsonResult(_mapper.Map<HTTPResponse<string>>(e)) { StatusCode = (int)((HTTPError)e).StatusCode };
-                }
-                return new JsonResult(_mapper.Map<HTTPResponse<string>>(new InternalServerErrorException("Ha ocurrido un error en el servicodor."))) { StatusCode = 500 };
-            }
-        }
-
     }
 }
