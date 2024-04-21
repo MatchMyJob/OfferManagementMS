@@ -12,6 +12,21 @@ namespace Infraestructure.EntityConfig
             builder.HasKey(i => i.JobOfferModeId);
             builder.Property(i => i.JobOfferModeId).ValueGeneratedOnAdd();
             builder.Property(n => n.Name).IsRequired();
+            builder.HasData(new JobOfferModes
+            {
+                JobOfferModeId = 1,
+                Name = "Presencial"
+            },
+            new JobOfferModes
+            {
+                JobOfferModeId = 2,
+                Name = "Remoto"
+            },
+            new JobOfferModes
+            {
+                JobOfferModeId = 3,
+                Name = "Hibrido"
+            });
         }
     }
 }

@@ -142,6 +142,23 @@ namespace Infraestructure.Migrations
                     b.HasKey("JobOfferModeId");
 
                     b.ToTable("JobOfferMode", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            JobOfferModeId = 1,
+                            Name = "Presencial"
+                        },
+                        new
+                        {
+                            JobOfferModeId = 2,
+                            Name = "Remoto"
+                        },
+                        new
+                        {
+                            JobOfferModeId = 3,
+                            Name = "Hibrido"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.OfferCategories", b =>
