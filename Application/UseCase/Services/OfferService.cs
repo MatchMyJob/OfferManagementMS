@@ -11,12 +11,12 @@ namespace Application.UseCase.Services
 {
     public class OfferService : IOfferService
     {
-        protected readonly IOfferRepository _repository;
+        protected readonly IGenericRepository _repository;
         protected readonly IMapper _mapper;
         protected readonly IOfferQuery _query;
         public Parameters parameters;
 
-        public OfferService(IOfferRepository repository, IOfferQuery query, IMapper mapper)
+        public OfferService(IGenericRepository repository, IOfferQuery query, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

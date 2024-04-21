@@ -69,12 +69,14 @@ builder.Services.AddScoped<IApplicationCommand, ApplicationsCommand>();
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICategoryQuery, CategoryQuery>();
+builder.Services.AddScoped<ICategoryCommand, CategoryCommand>();
 
 builder.Services.AddScoped<IOfferService, OfferService>();
 builder.Services.AddScoped<IOfferQuery, OfferQuery>();
 
 builder.Services.AddScoped<IStudyTypeService, StudyTypeService>();
 builder.Services.AddScoped<IStudyTypeQuery, StudyTypeQuery>();
+
 
 builder.Services.AddScoped<ISkillService, SkillService>();
 builder.Services.AddScoped<ISkillQuery, SkillQuery>();

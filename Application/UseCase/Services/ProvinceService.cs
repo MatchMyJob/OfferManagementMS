@@ -11,13 +11,13 @@ namespace Application.UseCase.Services
 {
     public class ProvinceService : IProvinceService
     {
-        protected readonly IProvinceRepository _repository;
+        protected readonly IGenericRepository _repository;
         protected readonly IMapper _mapper;
         protected readonly IProvinceQuery _query;
         public Parameters parameters;
 
 
-        public ProvinceService(IProvinceRepository repository, IProvinceQuery query, IMapper mapper)
+        public ProvinceService(IGenericRepository repository, IProvinceQuery query, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
