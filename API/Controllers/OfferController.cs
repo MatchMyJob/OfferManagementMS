@@ -12,13 +12,13 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class OfferController : ControllerBase
     {
-        private readonly IUserService _service;
+        private readonly IOfferService _service;
         private readonly IMapper _mapper;
         private HTTPResponse<Object> _response;
 
-        public UserController(IUserService service, IMapper mapper)
+        public OfferController(IOfferService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
@@ -28,10 +28,10 @@ namespace API.Controllers
         /// <summary>
         /// Returns a User given their ID
         /// </summary>
-        /// <response code="200">Return a User as Result</response>
+        /// <response code="200">Return a Offer as Result</response>
 
         [HttpGet("{id:int}")]
-        [ProducesResponseType(typeof(HTTPResponse<UserResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<OfferResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
@@ -58,10 +58,10 @@ namespace API.Controllers
         /// <summary>
         /// Returns a page of records
         /// </summary>
-        /// <response code="200">Returns a page of Users as Result</response>
+        /// <response code="200">Returns a page of Offers as Result</response>
 
         [HttpGet]
-        [ProducesResponseType(typeof(HTTPResponse<Paged<UserResponse>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<Paged<OfferResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetAll(int pagedNumber = 0, int pagedSize = 10)
@@ -85,16 +85,16 @@ namespace API.Controllers
 
 
         /// <summary>
-        /// Register a User with their respective data
+        /// Register a Offer with their respective data
         /// </summary>
-        /// <response code="201">Returns the User created as Result</response>
+        /// <response code="201">Returns the Offer created as Result</response>
 
         [HttpPost]
-        [ProducesResponseType(typeof(HTTPResponse<UserResponse>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(HTTPResponse<OfferResponse>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status409Conflict)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> CreateEntity(UserRequest request)
+        public async Task<ActionResult> CreateEntity(OfferRequest request)
         {
             try
             {
@@ -120,12 +120,12 @@ namespace API.Controllers
         /// <response code="200">Returns the updated User as Result</response>
 
         [HttpPut("{id:int}")]
-        [ProducesResponseType(typeof(HTTPResponse<UserResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<OfferResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status409Conflict)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> UpdateEntity(int id, [FromBody] UserRequest request)
+        public async Task<ActionResult> UpdateEntity(int id, [FromBody] OfferRequest request)
         {
             try
             {
@@ -146,9 +146,9 @@ namespace API.Controllers
 
 
         /// <summary>
-        /// Modify a User field, request ID and the attribute to update
+        /// Modify a Offer field, request ID and the attribute to update
         /// </summary>
-        /// <response code="200">Returns the updated User as Result</response>
+        /// <response code="200">Returns the updated Offer as Result</response>
 
         [HttpPatch("{id:int}")]
         [ProducesResponseType(typeof(HTTPResponse<UserResponse>), StatusCodes.Status200OK)]
@@ -156,19 +156,19 @@ namespace API.Controllers
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status409Conflict)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> UpdatePartialEntity(int id, JsonPatchDocument<UserRequest> patchRequest)
+        public async Task<ActionResult> UpdatePartialEntity(int id, JsonPatchDocument<OfferRequest> patchRequest)
         {
             try
             {
                 var user = await _service.GetById(id);
-                UserRequest userRequest = _mapper.Map<UserRequest>(user);
-                patchRequest.ApplyTo(userRequest, ModelState);
+                OfferRequest offerRequest = _mapper.Map<OfferRequest>(user);
+                patchRequest.ApplyTo(offerRequest, ModelState);
                 if(!ModelState.IsValid)
                 {
                     throw new BadRequestException("Enter the application correctly.");
                 }
 
-                _response.Result = await _service.Update(id, userRequest);
+                _response.Result = await _service.Update(id, offerRequest);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };
@@ -187,7 +187,7 @@ namespace API.Controllers
 
 
         /// <summary>
-        /// Delete a User given their ID
+        /// Delete an Offer given their ID
         /// </summary>
         /// <response code="200">Returns null in Result</response>
 

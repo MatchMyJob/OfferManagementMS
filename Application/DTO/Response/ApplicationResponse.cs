@@ -1,6 +1,6 @@
-﻿namespace Application.DTO.Request
+﻿namespace Application.DTO.Response
 {
-    public class UserRequest
+    public class ApplicationResponse
     {
         public string UserName { get; set; }
         public string Name { get; set; }
