@@ -1,13 +1,15 @@
 ﻿using Application.DTO.Pagination;
+using Application.DTO.Request;
+using Application.DTO.Response;
 
 namespace Application.Interfaces
 {
-    public interface ICategoryService<Request, Response> where Request : class where Response : class
+    public interface ICategoryService
     {
-        Task<Response> Create(Request request);
+        Task<CategoryResponse> Create(CategoryRequest request);
         Task DeleteById(int id);
-        Task<Paged<Response>> GetAll(int pageNumber, int pageSize);
-        Task<Response> GetById(int id);
-        Task<Response> Update(int id, Request request);
+        Task<Paged<CategoryResponse>> GetAll(int pageNumber, int pageSize);
+        Task<CategoryResponse> GetById(int id);
+       // Task<CategoryResponse> Update(int id, CategoryRequest request);
     }
 }

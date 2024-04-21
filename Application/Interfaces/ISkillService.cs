@@ -1,13 +1,15 @@
 ﻿using Application.DTO.Pagination;
+using Application.DTO.Request;
+using Application.DTO.Response;
 
 namespace Application.Interfaces
 {
-    public interface ISkillService<Request, Response> where Request : class where Response : class
+    public interface ISkillService
     {
-        Task<Response> Create(Request request);
+        Task<SkillResponse> Create(SkillRequest request);
         Task DeleteById(int id);
-        Task<Paged<Response>> GetAll(int pageNumber, int pageSize);
-        Task<Response> GetById(int id);
-        Task<Response> Update(int id, Request request);
+        Task<Paged<SkillResponse>> GetAll(int pageNumber, int pageSize);
+        Task<SkillResponse> GetById(int id);
+        Task<SkillResponse> Update(int id, SkillRequest request);
     }
 }

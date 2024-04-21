@@ -6,7 +6,7 @@ using Application.DTO.Pagination;
 
 namespace Application.UseCase.Services
 {
-    public abstract class OfferService<Request, Response, T> : IService<Request, Response> where Request : class where Response : class where T : class
+    public class OfferService<Request, Response, T> : IService<Request, Response> where Request : class where Response : class where T : class
     {
         protected readonly IRepository<T> _repository;
         protected readonly IMapper _mapper;

@@ -14,11 +14,11 @@ namespace API.Controllers
     [ApiController]
     public class StudyTypeController : ControllerBase
     {
-        private readonly IStudyTypeService<StudyTypeRequest,StudyTypeResponse> _service;
+        private readonly IStudyTypeService _service;
         private readonly IMapper _mapper;
         private HTTPResponse<Object> _response;
 
-        public StudyTypeController(IStudyTypeService<StudyTypeRequest, StudyTypeResponse> service, IMapper mapper)
+        public StudyTypeController(IStudyTypeService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;

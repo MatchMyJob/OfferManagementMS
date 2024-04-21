@@ -14,11 +14,11 @@ namespace API.Controllers
     [ApiController]
     public class SkillController : ControllerBase
     {
-        private readonly ISkillService<SkillRequest,SkillResponse> _service;
+        private readonly ISkillService _service;
         private readonly IMapper _mapper;
         private HTTPResponse<Object> _response;
 
-        public SkillController(ISkillService<SkillRequest, SkillResponse> service, IMapper mapper)
+        public SkillController(ISkillService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;

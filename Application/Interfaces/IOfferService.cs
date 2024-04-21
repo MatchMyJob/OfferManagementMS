@@ -1,13 +1,15 @@
 ﻿using Application.DTO.Pagination;
+using Application.DTO.Request;
+using Application.DTO.Response;
 
 namespace Application.Interfaces
 {
-    public interface IOfferService<Request, Response> where Request : class where Response : class
+    public interface IOfferService
     {
-        Task<Response> Create(Request request);
+        Task<OfferResponse> Create(OfferRequest request);
         Task DeleteById(int id);
-        Task<Paged<Response>> GetAll(int pageNumber, int pageSize);
-        Task<Response> GetById(int id);
-        Task<Response> Update(int id, Request request);
+        Task<Paged<OfferResponse>> GetAll(int pageNumber, int pageSize);
+        Task<OfferResponse> GetById(int id);
+        Task<OfferResponse> Update(int id, OfferRequest request);
     }
 }

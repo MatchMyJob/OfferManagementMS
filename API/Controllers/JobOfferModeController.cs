@@ -14,11 +14,11 @@ namespace API.Controllers
     [ApiController]
     public class JobOfferModeController : ControllerBase
     {
-        private readonly IJobOfferModeService<JobOfferModeRequest,JobOfferModeResponse> _service;
+        private readonly IJobOfferModeService _service;
         private readonly IMapper _mapper;
         private HTTPResponse<Object> _response;
 
-        public JobOfferModeController(IJobOfferModeService<JobOfferModeRequest,JobOfferModeResponse> service, IMapper mapper)
+        public JobOfferModeController(IJobOfferModeService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;

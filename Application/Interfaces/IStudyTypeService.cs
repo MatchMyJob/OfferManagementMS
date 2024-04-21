@@ -1,13 +1,15 @@
 ﻿using Application.DTO.Pagination;
+using Application.DTO.Request;
+using Application.DTO.Response;
 
 namespace Application.Interfaces
 {
-    public interface IStudyTypeService<Request, Response> where Request : class where Response : class
+    public interface IStudyTypeService
     {
-        Task<Response> Create(Request request);
+        Task<StudyTypeResponse> Create(StudyTypeRequest request);
         Task DeleteById(int id);
-        Task<Paged<Response>> GetAll(int pageNumber, int pageSize);
-        Task<Response> GetById(int id);
-        Task<Response> Update(int id, Request request);
+        Task<Paged<StudyTypeResponse>> GetAll(int pageNumber, int pageSize);
+        Task<StudyTypeResponse> GetById(int id);
+        Task<StudyTypeResponse> Update(int id, StudyTypeRequest request);
     }
 }

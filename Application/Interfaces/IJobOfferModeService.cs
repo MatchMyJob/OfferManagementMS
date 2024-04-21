@@ -1,13 +1,15 @@
 ﻿using Application.DTO.Pagination;
+using Application.DTO.Request;
+using Application.DTO.Response;
 
 namespace Application.Interfaces
 {
-    public interface IJobOfferModeService<Request, Response> where Request : class where Response : class
+    public interface IJobOfferModeService
     {
-        Task<Response> Create(Request request);
+        Task<JobOfferModeResponse> Create(JobOfferModeRequest request);
         Task DeleteById(int id);
-        Task<Paged<Response>> GetAll(int pageNumber, int pageSize);
-        Task<Response> GetById(int id);
-        Task<Response> Update(int id, Request request);
+        Task<Paged<JobOfferModeResponse>> GetAll(int pageNumber, int pageSize);
+        Task<JobOfferModeResponse> GetById(int id);
+        Task<JobOfferModeResponse> Update(int id, JobOfferModeRequest request);
     }
 }

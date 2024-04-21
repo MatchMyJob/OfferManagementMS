@@ -10,7 +10,7 @@ using Microsoft.Data.SqlClient;
 
 namespace Application.UseCase.Services
 {
-    public abstract class ApplicationService : IApplicationService
+    public class ApplicationService : IApplicationService
     {
         protected readonly IGenericRepository _repository;
         protected readonly IApplicationQuery _applicationQuery;

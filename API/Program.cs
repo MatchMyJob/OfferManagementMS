@@ -61,13 +61,18 @@ builder.Services.AddCors(options =>
 });
 
 
-builder.Services.AddTransient<IApplicationService, ApplicationService>();
-builder.Services.AddTransient<IApplicationQuery, ApplicationQuery>();
-builder.Services.AddTransient<IApplicationCommand, ApplicationsCommand>();
-builder.Services.AddTransient<IApplicationRepository, ApplicationsRepository>();
+builder.Services.AddScoped<IGenericRepository,GenericRepository>();
 
+builder.Services.AddScoped<IApplicationService, ApplicationService>();
+builder.Services.AddScoped<IApplicationQuery, ApplicationQuery>();
+builder.Services.AddScoped<IApplicationCommand, ApplicationsCommand>();
 
-/*builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICategoryQuery, CategoryQuery>();
+//builder.Services.AddScoped<ICategoryCommand, CategoryCommand>();
+
+/*
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IJobOfferService, JobOfferService>();
 builder.Services.AddScoped<IOfferService, OfferService>();
 builder.Services.AddScoped<IProvinceService, ProvinceService>();

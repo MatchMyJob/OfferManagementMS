@@ -9,17 +9,19 @@ using Domain.Entities;
 
 namespace Application.UseCase.Services
 {
-    public class CategoryService
+    public class CategoryService : ICategoryService
     {
         protected readonly IGenericRepository _repository;
+        protected readonly ICategoryQuery _query;
         protected readonly IMapper _mapper;
         public Parameters parameters;
 
-        public CategoryService(IGenericRepository repository, IMapper mapper)
+        public CategoryService(IGenericRepository repository, IMapper mapper, ICategoryQuery query)
         {
             _repository = repository;
             _mapper = mapper;
             parameters = new();
+            _query = query;
         }
         public async Task<CategoryResponse> Create(CategoryRequest request)
         {
@@ -43,7 +45,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        /*
+        
         public async Task DeleteById(int id)
         {
             try
@@ -52,7 +54,7 @@ namespace Application.UseCase.Services
                 {
                     throw new BadRequestException("The ID must be greater than zero.");
                 }
-                var entity = await _repository.RecoveryById(id);
+                var entity = await _query.RecoveryById(id);
                 if (entity != null)
                 {
                     await _repository.Remove(entity);
@@ -73,8 +75,8 @@ namespace Application.UseCase.Services
             }
         }
 
-        /*
-        public async Task<Paged<Response>> GetAll(int pagedNumber, int pagedSize)
+        
+        public async Task<Paged<CategoryResponse>> GetAll(int pagedNumber, int pagedSize)
         {
             try
             {
@@ -87,13 +89,11 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-            // HARDCODE - VERIFICAR ESTO
+                Paged<Categories> list = await _query.RecoveryAll(parameters);
+                List<CategoryResponse> listAux = new();
+                list.Data.ForEach(e => listAux.Add(_mapper.Map<CategoryResponse>(e)));
 
-              //  Paged<T> list = await _repository.RecoveryAll(parameters);
-              //  List<Response> listAux = new();
-              //  list.Data.ForEach(e => listAux.Add(_mapper.Map<Response>(e)));
-
-              //  return new Paged<Response>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
+                return new Paged<CategoryResponse>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
             }
             catch (Exception e)
             {
@@ -104,9 +104,7 @@ namespace Application.UseCase.Services
                 throw new InternalServerErrorException(e.Message);
             }
         }
-        */
-
-        /*
+        
         public async Task<CategoryResponse> GetById(int id)
         {
             try
@@ -116,12 +114,12 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("The ID must be greater than zero.");
                 }
 
-                var entity = await _repository.RecoveryById(id);
+                var entity = await _query.RecoveryById(id);
                 if (entity == null)
                 {
                     throw new NotFoundException("The record with ID " + id + " was not found.");
                 }
-                return _mapper.Map<Response>(entity);
+                return _mapper.Map<CategoryResponse>(entity);
             }
             catch (Exception e)
             {
@@ -132,7 +130,7 @@ namespace Application.UseCase.Services
                 throw new InternalServerErrorException(e.Message);
             }
         }
-        */
+        
 
         public virtual Task<CategoryResponse> Update(int id, Request request)
         {

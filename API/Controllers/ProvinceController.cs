@@ -4,12 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Application.DTO.Pagination;
 using Application.DTO.Request;
-using Application.DTO.Response;
 using Application.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace API.Controllers
 {
@@ -17,11 +14,11 @@ namespace API.Controllers
     [ApiController]
     public class ProvinceController : ControllerBase
     {
-        private readonly IProvinceService<ProvincesRequest,ProvincesResponse> _service;
+        private readonly IProvinceService _service;
         private readonly IMapper _mapper;
         private HTTPResponse<Object> _response;
 
-        public ProvinceController(IProvinceService<ProvincesRequest, ProvincesResponse> service, IMapper mapper)
+        public ProvinceController(IProvinceService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;

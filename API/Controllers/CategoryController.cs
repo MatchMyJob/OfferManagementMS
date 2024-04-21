@@ -14,11 +14,11 @@ namespace API.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly ICategoryService<CategoryRequest,CategoryResponse> _service;
+        private readonly ICategoryService _service;
         private readonly IMapper _mapper;
         private HTTPResponse<Object> _response;
 
-        public CategoryController(ICategoryService<CategoryRequest,CategoryResponse> service, IMapper mapper)
+        public CategoryController(ICategoryService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;

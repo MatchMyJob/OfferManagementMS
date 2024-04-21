@@ -1,13 +1,15 @@
 ﻿using Application.DTO.Pagination;
+using Application.DTO.Request;
+using Application.DTO.Response;
 
 namespace Application.Interfaces
 {
-    public interface IProvinceService<Request, Response> where Request : class where Response : class
+    public interface IProvinceService
     {
-        Task<Response> Create(Request request);
+        Task<ProvincesResponse> Create(ProvincesRequest request);
         Task DeleteById(int id);
-        Task<Paged<Response>> GetAll(int pageNumber, int pageSize);
-        Task<Response> GetById(int id);
-        Task<Response> Update(int id, Request request);
+        Task<Paged<ProvincesResponse>> GetAll(int pageNumber, int pageSize);
+        Task<ProvincesResponse> GetById(int id);
+        Task<ProvincesResponse> Update(int id, ProvincesRequest request);
     }
 }
