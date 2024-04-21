@@ -3,28 +3,33 @@ using AutoMapper;
 using Application.DTO.Error;
 using Microsoft.EntityFrameworkCore;
 using Application.DTO.Pagination;
+using Application.DTO.Request;
+using Application.DTO.Response;
 
 namespace Application.UseCase.Services
 {
-    public class ProvinceService<Request, Response, T> : IService<Request, Response> where Request : class where Response : class where T : class
+    public class ProvinceService
     {
-        protected readonly IRepository<T> _repository;
+        protected readonly IProvinceRepository _repository;
         protected readonly IMapper _mapper;
+        protected readonly IProvinceQuery _query;
         public Parameters parameters;
 
-        public ProvinceService(IRepository<T> repository, IMapper mapper)
+
+        public ProvinceService(IProvinceRepository repository, IProvinceQuery query, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
+            _query = query;
             parameters = new();
         }
-        public async Task<Response> Create(Request request)
+        public async Task<ProvincesResponse> Create(ProvincesRequest request)
         {
             try
             {
                 T entity = _mapper.Map<T>(request);
                 entity = await _repository.Insert(entity);
-                return _mapper.Map<Response>(entity);
+                return _mapper.Map<ProvincesResponse>(entity);
             }
             catch (Exception e)
             {
@@ -48,7 +53,7 @@ namespace Application.UseCase.Services
                 {
                     throw new BadRequestException("The ID must be greater than zero.");
                 }
-                var entity = await _repository.RecoveryById(id);
+                var entity = await _query.RecoveryById(id);
                 if (entity != null)
                 {
                     await _repository.Remove(entity);
@@ -69,7 +74,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<Paged<Response>> GetAll(int pagedNumber, int pagedSize)
+        public async Task<Paged<ProvincesResponse>> GetAll(int pagedNumber, int pagedSize)
         {
             try
             {
@@ -82,11 +87,11 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-                Paged<T> list = await _repository.RecoveryAll(parameters);
-                List<Response> listAux = new();
-                list.Data.ForEach(e => listAux.Add(_mapper.Map<Response>(e)));
+                Paged<T> list = await _query.RecoveryAll(parameters);
+                List<ProvincesResponse> listAux = new();
+                list.Data.ForEach(e => listAux.Add(_mapper.Map<ProvincesResponse>(e)));
 
-                return new Paged<Response>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
+                return new Paged<ProvincesResponse>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
             }
             catch (Exception e)
             {
@@ -98,7 +103,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<Response> GetById(int id)
+        public async Task<ProvincesResponse> GetById(int id)
         {
             try
             {
@@ -107,12 +112,12 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("The ID must be greater than zero.");
                 }
 
-                var entity = await _repository.RecoveryById(id);
+                var entity = await _query.RecoveryById(id);
                 if (entity == null)
                 {
                     throw new NotFoundException("The record with ID " + id + " was not found.");
                 }
-                return _mapper.Map<Response>(entity);
+                return _mapper.Map<ProvincesResponse>(entity);
             }
             catch (Exception e)
             {
@@ -124,7 +129,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public virtual Task<Response> Update(int id, Request request)
+        public virtual Task<ProvincesResponse> Update(int id, Request request)
         {
             throw new NotImplementedException();
         }

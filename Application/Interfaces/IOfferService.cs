@@ -10,6 +10,6 @@ namespace Application.Interfaces
         Task DeleteById(int id);
         Task<Paged<OfferResponse>> GetAll(int pageNumber, int pageSize);
         Task<OfferResponse> GetById(int id);
-        Task<OfferResponse> Update(int id, OfferRequest request);
+      //  Task<OfferResponse> Update(int id, OfferRequest request);
     }
 }

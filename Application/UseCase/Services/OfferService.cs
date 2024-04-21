@@ -3,28 +3,32 @@ using AutoMapper;
 using Application.DTO.Error;
 using Microsoft.EntityFrameworkCore;
 using Application.DTO.Pagination;
+using Application.DTO.Response;
+using Application.DTO.Request;
 
 namespace Application.UseCase.Services
 {
-    public class OfferService<Request, Response, T> : IService<Request, Response> where Request : class where Response : class where T : class
+    public class OfferService : IOfferService
     {
-        protected readonly IRepository<T> _repository;
+        protected readonly IOfferRepository _repository;
         protected readonly IMapper _mapper;
+        protected readonly IOfferQuery _query;
         public Parameters parameters;
 
-        public OfferService(IRepository<T> repository, IMapper mapper)
+        public OfferService(IOfferRepository repository, IOfferQuery query, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
+            _query = query;
             parameters = new();
         }
-        public async Task<Response> Create(Request request)
+        public async Task<OfferResponse> Create(OfferRequest request)
         {
             try
             {
                 T entity = _mapper.Map<T>(request);
                 entity = await _repository.Insert(entity);
-                return _mapper.Map<Response>(entity);
+                return _mapper.Map<OfferResponse>(entity);
             }
             catch (Exception e)
             {
@@ -48,7 +52,7 @@ namespace Application.UseCase.Services
                 {
                     throw new BadRequestException("The ID must be greater than zero.");
                 }
-                var entity = await _repository.RecoveryById(id);
+                var entity = await _query.RecoveryById(id);
                 if (entity != null)
                 {
                     await _repository.Remove(entity);
@@ -69,7 +73,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<Paged<Response>> GetAll(int pagedNumber, int pagedSize)
+        public async Task<Paged<OfferResponse>> GetAll(int pagedNumber, int pagedSize)
         {
             try
             {
@@ -83,10 +87,10 @@ namespace Application.UseCase.Services
                 }
 
                 Paged<T> list = await _repository.RecoveryAll(parameters);
-                List<Response> listAux = new();
-                list.Data.ForEach(e => listAux.Add(_mapper.Map<Response>(e)));
+                List<OfferResponse> listAux = new();
+                list.Data.ForEach(e => listAux.Add(_mapper.Map<OfferResponse>(e)));
 
-                return new Paged<Response>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
+                return new Paged<OfferResponse>(listAux, list.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
             }
             catch (Exception e)
             {
@@ -98,7 +102,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<Response> GetById(int id)
+        public async Task<OfferResponse> GetById(int id)
         {
             try
             {
@@ -107,12 +111,12 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("The ID must be greater than zero.");
                 }
 
-                var entity = await _repository.RecoveryById(id);
+                var entity = await _query.RecoveryById(id);
                 if (entity == null)
                 {
                     throw new NotFoundException("The record with ID " + id + " was not found.");
                 }
-                return _mapper.Map<Response>(entity);
+                return _mapper.Map<OfferResponse>(entity);
             }
             catch (Exception e)
             {
@@ -124,7 +128,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public virtual Task<Response> Update(int id, Request request)
+        public virtual Task<OfferResponse> Update(int id, Request request)
         {
             throw new NotImplementedException();
         }

@@ -69,16 +69,24 @@ builder.Services.AddScoped<IApplicationCommand, ApplicationsCommand>();
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICategoryQuery, CategoryQuery>();
+
+builder.Services.AddScoped<IOfferService, OfferService>();
+builder.Services.AddScoped<IOfferQuery, OfferQuery>();
+
+builder.Services.AddScoped<IStudyTypeService, StudyTypeService>();
+builder.Services.AddScoped<IStudyTypeQuery, StudyTypeQuery>();
+
+builder.Services.AddScoped<ISkillService, SkillService>();
+builder.Services.AddScoped<ISkillQuery, SkillQuery>();
+
+builder.Services.AddScoped<IJobOfferModeService, JobOfferModeService>();
+builder.Services.AddScoped<IJobOfferModeQuery, JobOfferModeQuery>();
+
 //builder.Services.AddScoped<ICategoryCommand, CategoryCommand>();
 
-/*
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IJobOfferService, JobOfferService>();
-builder.Services.AddScoped<IOfferService, OfferService>();
 builder.Services.AddScoped<IProvinceService, ProvinceService>();
-builder.Services.AddScoped<ISkillService, SkillService>();
-builder.Services.AddScoped<IStudyTypeService, StudyTypeService>();
-*/
+builder.Services.AddScoped<IProvinceQuery, ProvinceQuery>();
+
 
 var config = new AutoMapper.MapperConfiguration(
     options =>

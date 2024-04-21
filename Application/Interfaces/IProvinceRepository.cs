@@ -2,13 +2,13 @@
 
 namespace Application.Interfaces
 {
-    public interface IProvinceRepository<T> where T : class
+    public interface IProvinceRepository
     {
-        Task<T> Insert(T entity);
-        Task Remove(T entity);
+        Task<T> Insert<T>(T entity);
+        Task Remove<T>(T entity);
         Task SaveChanges();
-        Task <Paged<T>> RecoveryAll(Parameters parameters);
-        Task<T> RecoveryById(int id);
+        Task <Paged<T>> RecoveryAll<T>(Parameters parameters);
+        Task<T> RecoveryById<T>(int id);
 
     }
 }
