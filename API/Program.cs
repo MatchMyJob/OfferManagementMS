@@ -59,22 +59,14 @@ builder.Services.AddCors(options =>
 });
 
 
-builder.Services.AddScoped<IApplicationRepository<Applications>, ApplicationRepository>();
 builder.Services.AddScoped<IApplicationService, ApplicationService>();
 builder.Services.AddScoped<IApplicationQuery, ApplicationQuery>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IJobOfferRepository, JobOfferRepository>();
 builder.Services.AddScoped<IJobOfferService, JobOfferService>();
-builder.Services.AddScoped<OfferRepository, OfferRepository>();
 builder.Services.AddScoped<IOfferService, OfferService>();
-builder.Services.AddScoped<IProvinceRepository, ProvinceRepository>();
 builder.Services.AddScoped<IProvinceService, ProvinceService>();
-builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 builder.Services.AddScoped<ISkillService, SkillService>();
-builder.Services.AddScoped<IStudyTypeRepository, StudyTypeRepository>();
 builder.Services.AddScoped<IStudyTypeService, StudyTypeService>();
-builder.Services.AddScoped<IGenericRepository, GenericRepository>();
 
 
 var config = new AutoMapper.MapperConfiguration(
