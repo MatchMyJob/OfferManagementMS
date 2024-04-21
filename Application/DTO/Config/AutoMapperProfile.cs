@@ -8,12 +8,12 @@ namespace Application.DTO.Config
 {
     public class AutoMapperProfile : Profile
     {
-        public AutoMapperProfile()
-        {
-            CreateMap<UserRequest, User>().ReverseMap();
-            CreateMap<UserRequest, UserResponse>().ReverseMap();
-            CreateMap<User, UserResponse>().ReverseMap();
-            CreateMap<HTTPError, HTTPResponse<string>>().ReverseMap();
-        }
+        //public AutoMapperProfile()
+        //{
+        //    CreateMap<UserRequest, User>().ReverseMap();
+        //    CreateMap<UserRequest, UserResponse>().ReverseMap();
+        //    CreateMap<User, UserResponse>().ReverseMap();
+        //    CreateMap<HTTPError, HTTPResponse<string>>().ReverseMap();
+        //}
     }
 }

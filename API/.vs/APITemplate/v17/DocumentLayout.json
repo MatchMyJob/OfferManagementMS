@@ -1,21 +1,109 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Ingenier\u00EDa Informatica\\1 - Proyecto de Software\\Proyecto integrador\\APITemplate\\API\\",
+  "WorkspaceRootPath": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B0B5CE73-BFBF-4AA6-A800-B5A051694BB3}|API.csproj|d:\\ingenier\u00EDa informatica\\1 - proyecto de software\\proyecto integrador\\apitemplate\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Migrations\\20240421012127_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Migrations\\20240421012049_init31.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\entities\\offerskills.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\entityconfig\\studytypeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\entityconfig\\offerskillconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0B5CE73-BFBF-4AA6-A800-B5A051694BB3}|API.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0B5CE73-BFBF-4AA6-A800-B5A051694BB3}|API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{866AD143-6BBA-407C-9AE2-C9648AFAB9D8}|..\\Application\\Application.csproj|d:\\ingenier\u00EDa informatica\\1 - proyecto de software\\proyecto integrador\\apitemplate\\application\\usecase\\services\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{866AD143-6BBA-407C-9AE2-C9648AFAB9D8}|..\\Application\\Application.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\application\\dto\\config\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0B5CE73-BFBF-4AA6-A800-B5A051694BB3}|API.csproj|d:\\ingenier\u00EDa informatica\\1 - proyecto de software\\proyecto integrador\\apitemplate\\api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0B5CE73-BFBF-4AA6-A800-B5A051694BB3}|API.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{866AD143-6BBA-407C-9AE2-C9648AFAB9D8}|..\\Application\\Application.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\application\\usecase\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0B5CE73-BFBF-4AA6-A800-B5A051694BB3}|API.csproj|d:\\ingenier\u00EDa informatica\\1 - proyecto de software\\proyecto integrador\\apitemplate\\api\\api.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{B0B5CE73-BFBF-4AA6-A800-B5A051694BB3}|API.csproj|solutionrelative:api.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{866AD143-6BBA-407C-9AE2-C9648AFAB9D8}|..\\Application\\Application.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\application\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\entities\\categories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\entities\\countries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\entities\\applications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{866AD143-6BBA-407C-9AE2-C9648AFAB9D8}|..\\Application\\Application.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\application\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\entities\\cities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\entityconfig\\applicationstatustypeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\entityconfig\\applicationconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\entityconfig\\cityconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\entityconfig\\joboffermodeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\entityconfig\\offerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\entityconfig\\countryconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\entityconfig\\provinceconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\entityconfig\\offercategoryconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\entityconfig\\skillconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3EA04B-CC36-4361-812D-E99619C6278F}|..\\Infraestructure\\Infraestructure.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\infraestructure\\entityconfig\\categoryconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\entities\\applicationstatustypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\entities\\offers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\entities\\joboffermodes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\entities\\studytypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\entities\\provinces.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\entities\\skills.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D6EBE63-DA8C-4D14-B6C9-55B4F621513E}|..\\Domain\\Domain.csproj|c:\\users\\tamar\\source\\repos\\offermanagementms\\domain\\entities\\offercategories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,9 +112,43 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "DockedWidth": 43,
+          "SelectedChildIndex": 8,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "OfferConfig.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\OfferConfig.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\EntityConfig\\OfferConfig.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\OfferConfig.cs",
+              "RelativeToolTip": "..\\Infraestructure\\EntityConfig\\OfferConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T19:08:58.503Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
@@ -37,53 +159,430 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Service.cs",
-              "DocumentMoniker": "D:\\Ingenier\u00EDa Informatica\\1 - Proyecto de Software\\Proyecto integrador\\APITemplate\\Application\\UseCase\\Services\\Service.cs",
-              "RelativeDocumentMoniker": "..\\Application\\UseCase\\Services\\Service.cs",
-              "ToolTip": "D:\\Ingenier\u00EDa Informatica\\1 - Proyecto de Software\\Proyecto integrador\\APITemplate\\Application\\UseCase\\Services\\Service.cs",
-              "RelativeToolTip": "..\\Application\\UseCase\\Services\\Service.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAQwAAAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "20240421012127_Init.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Migrations\\20240421012127_Init.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\Migrations\\20240421012127_Init.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Migrations\\20240421012127_Init.cs",
+              "RelativeToolTip": "..\\Infraestructure\\Migrations\\20240421012127_Init.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAgAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T02:14:19.02Z",
+              "WhenOpened": "2024-04-21T01:21:27.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20240421012049_init31.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Migrations\\20240421012049_init31.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\Migrations\\20240421012049_init31.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Migrations\\20240421012049_init31.cs",
+              "RelativeToolTip": "..\\Infraestructure\\Migrations\\20240421012049_init31.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T01:20:49.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\API\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\API\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAADwvz0AAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T01:16:47.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CountryConfig.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\CountryConfig.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\EntityConfig\\CountryConfig.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\CountryConfig.cs",
+              "RelativeToolTip": "..\\Infraestructure\\EntityConfig\\CountryConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:41:00.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "JobOfferModeConfig.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\JobOfferModeConfig.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\EntityConfig\\JobOfferModeConfig.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\JobOfferModeConfig.cs",
+              "RelativeToolTip": "..\\Infraestructure\\EntityConfig\\JobOfferModeConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:51:13.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CityConfig.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\CityConfig.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\EntityConfig\\CityConfig.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\CityConfig.cs",
+              "RelativeToolTip": "..\\Infraestructure\\EntityConfig\\CityConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:30:48.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Applications.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Applications.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\Applications.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Applications.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\Applications.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T19:54:51.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Categories.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Categories.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\Categories.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Categories.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\Categories.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T20:32:09.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OfferSkillConfig.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\OfferSkillConfig.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\EntityConfig\\OfferSkillConfig.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\OfferSkillConfig.cs",
+              "RelativeToolTip": "..\\Infraestructure\\EntityConfig\\OfferSkillConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T19:20:23.71Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "API",
-              "DocumentMoniker": "D:\\Ingenier\u00EDa Informatica\\1 - Proyecto de Software\\Proyecto integrador\\APITemplate\\API\\API.csproj",
-              "RelativeDocumentMoniker": "API.csproj",
-              "ToolTip": "D:\\Ingenier\u00EDa Informatica\\1 - Proyecto de Software\\Proyecto integrador\\APITemplate\\API\\API.csproj",
-              "RelativeToolTip": "API.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-22T01:56:25.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Ingenier\u00EDa Informatica\\1 - Proyecto de Software\\Proyecto integrador\\APITemplate\\API\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\Ingenier\u00EDa Informatica\\1 - Proyecto de Software\\Proyecto integrador\\APITemplate\\API\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAADYAAAAcAAAA",
+              "Title": "StudyTypeConfig.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\StudyTypeConfig.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\EntityConfig\\StudyTypeConfig.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\StudyTypeConfig.cs",
+              "RelativeToolTip": "..\\Infraestructure\\EntityConfig\\StudyTypeConfig.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T01:55:43.877Z",
+              "WhenOpened": "2024-04-20T19:39:53.873Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\Ingenier\u00EDa Informatica\\1 - Proyecto de Software\\Proyecto integrador\\APITemplate\\API\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "D:\\Ingenier\u00EDa Informatica\\1 - Proyecto de Software\\Proyecto integrador\\APITemplate\\API\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAQwCQAAABmAAAA",
+              "Title": "OfferSkills.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\OfferSkills.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\OfferSkills.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\OfferSkills.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\OfferSkills.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T01:55:24.561Z",
+              "WhenOpened": "2024-04-20T20:35:03.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Domain",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Domain.csproj",
+              "RelativeDocumentMoniker": "..\\Domain\\Domain.csproj",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Domain.csproj",
+              "RelativeToolTip": "..\\Domain\\Domain.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-21T01:13:25.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "..\\Infraestructure\\Repositories\\UserRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T01:16:09.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\UseCase\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "..\\Application\\UseCase\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\UseCase\\Services\\UserService.cs",
+              "RelativeToolTip": "..\\Application\\UseCase\\Services\\UserService.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAowDwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T01:16:18.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AutoMapperProfile.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\DTO\\Config\\AutoMapperProfile.cs",
+              "RelativeDocumentMoniker": "..\\Application\\DTO\\Config\\AutoMapperProfile.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\DTO\\Config\\AutoMapperProfile.cs",
+              "RelativeToolTip": "..\\Application\\DTO\\Config\\AutoMapperProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T01:10:49.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ProvinceConfig.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\ProvinceConfig.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\EntityConfig\\ProvinceConfig.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\ProvinceConfig.cs",
+              "RelativeToolTip": "..\\Infraestructure\\EntityConfig\\ProvinceConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T19:35:05.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Countries.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Countries.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\Countries.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Countries.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\Countries.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T20:40:37.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "..\\Application\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "..\\Application\\Interfaces\\IUserRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T01:10:45.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\Interfaces\\IRepository.cs",
+              "RelativeDocumentMoniker": "..\\Application\\Interfaces\\IRepository.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\Interfaces\\IRepository.cs",
+              "RelativeToolTip": "..\\Application\\Interfaces\\IRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T01:11:20.28Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Cities.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Cities.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\Cities.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Cities.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\Cities.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T20:43:00.984Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ApplicationConfig.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\ApplicationConfig.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\EntityConfig\\ApplicationConfig.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\ApplicationConfig.cs",
+              "RelativeToolTip": "..\\Infraestructure\\EntityConfig\\ApplicationConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:16:58.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ApplicationStatusTypeConfig.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\ApplicationStatusTypeConfig.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\EntityConfig\\ApplicationStatusTypeConfig.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\ApplicationStatusTypeConfig.cs",
+              "RelativeToolTip": "..\\Infraestructure\\EntityConfig\\ApplicationStatusTypeConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:21:10.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "OfferCategoryConfig.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\OfferCategoryConfig.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\EntityConfig\\OfferCategoryConfig.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\OfferCategoryConfig.cs",
+              "RelativeToolTip": "..\\Infraestructure\\EntityConfig\\OfferCategoryConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:59:10.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "SkillConfig.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\SkillConfig.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\EntityConfig\\SkillConfig.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\SkillConfig.cs",
+              "RelativeToolTip": "..\\Infraestructure\\EntityConfig\\SkillConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T19:37:42.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Persistence\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\Persistence\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Persistence\\AppDbContext.cs",
+              "RelativeToolTip": "..\\Infraestructure\\Persistence\\AppDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T17:01:58.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CategoryConfig.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\CategoryConfig.cs",
+              "RelativeDocumentMoniker": "..\\Infraestructure\\EntityConfig\\CategoryConfig.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\EntityConfig\\CategoryConfig.cs",
+              "RelativeToolTip": "..\\Infraestructure\\EntityConfig\\CategoryConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:25:13.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ApplicationStatusTypes.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\ApplicationStatusTypes.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\ApplicationStatusTypes.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\ApplicationStatusTypes.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\ApplicationStatusTypes.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T20:32:58.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Offers.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Offers.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\Offers.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Offers.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\Offers.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAA3wCEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T20:01:49.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "JobOfferModes.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\JobOfferModes.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\JobOfferModes.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\JobOfferModes.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\JobOfferModes.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T19:59:11.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "StudyTypes.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\StudyTypes.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\StudyTypes.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\StudyTypes.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\StudyTypes.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T20:39:03.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Provinces.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Provinces.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\Provinces.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Provinces.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\Provinces.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T20:41:36.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Skills.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Skills.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\Skills.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\Skills.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\Skills.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T20:36:45.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "OfferCategories.cs",
+              "DocumentMoniker": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\OfferCategories.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\OfferCategories.cs",
+              "ToolTip": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Entities\\OfferCategories.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\OfferCategories.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T20:29:36.463Z",
               "EditorCaption": ""
             }
           ]

@@ -58,8 +58,8 @@ builder.Services.AddCors(options =>
 });
 
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
+//builder.Services.AddScoped<IUserRepository, UserRepository>();
+//builder.Services.AddScoped<IUserService, UserService>();
 
 var config = new AutoMapper.MapperConfiguration(
     options =>

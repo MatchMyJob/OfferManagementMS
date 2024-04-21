@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\API\\API.csproj": {}
+    "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\API\\API.csproj": {
+    "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\corre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\API\\obj\\",
+        "projectPath": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\tamar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\corre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tamar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Infraestructure\\Infraestructure.csproj": {
-                "projectPath": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Infraestructure\\Infraestructure.csproj"
+              "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Infraestructure.csproj": {
+                "projectPath": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Infraestructure.csproj"
               }
             }
           }
@@ -38,6 +43,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -86,21 +96,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Application\\Application.csproj": {
+    "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\corre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Application\\obj\\",
+        "projectPath": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\tamar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\corre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tamar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -108,14 +122,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Domain\\Domain.csproj"
+              "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Domain.csproj"
               }
             }
           }
@@ -124,6 +139,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -175,21 +195,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Domain\\Domain.csproj": {
+    "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\corre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\tamar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\corre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tamar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -197,6 +221,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -209,6 +234,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -230,21 +260,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Infraestructure\\Infraestructure.csproj": {
+    "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Infraestructure\\Infraestructure.csproj",
+        "projectUniqueName": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Infraestructure.csproj",
         "projectName": "Infraestructure",
-        "projectPath": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Infraestructure\\Infraestructure.csproj",
-        "packagesPath": "C:\\Users\\corre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Infraestructure\\obj\\",
+        "projectPath": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\Infraestructure.csproj",
+        "packagesPath": "C:\\Users\\tamar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Infraestructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\corre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tamar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -252,14 +286,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\corre\\Desktop\\Proyecto Software\\OfferManagement\\OfferManagementMS\\Application\\Application.csproj"
+              "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\tamar\\source\\repos\\OfferManagementMS\\Application\\Application.csproj"
               }
             }
           }
@@ -268,6 +303,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -315,7 +355,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
