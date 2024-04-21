@@ -14,11 +14,11 @@ namespace API.Controllers
     [ApiController]
     public class OfferController : ControllerBase
     {
-        private readonly IOfferService _service;
+        private readonly IOfferService<OfferRequest,OfferResponse> _service;
         private readonly IMapper _mapper;
         private HTTPResponse<Object> _response;
 
-        public OfferController(IOfferService service, IMapper mapper)
+        public OfferController(IOfferService<OfferRequest, OfferResponse> service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;

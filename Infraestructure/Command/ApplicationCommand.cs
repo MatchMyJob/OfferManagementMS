@@ -7,7 +7,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Infraestructure.Command
 {
-    public class ApplicationsCommand : IApplicationsCommand
+    public class ApplicationsCommand : IApplicationCommand
     {
         private readonly AppDbContext _context;
 
@@ -21,34 +21,37 @@ namespace Infraestructure.Command
             await _context.AddAsync(entity);
             await _context.SaveChangesAsync();
 
-            var company = await _context.Companies
+            var Application = new Applications(); // HARDCORE - CAMBIAR ESTO POR EL INSERT POSTA
+            /*
+            var Application = await _context.Application
                 .Include(c => c.CityObject)
                 .ThenInclude(p => p.ProvinceObject)
-                .FirstOrDefaultAsync(u => (u.UserId == entity.UserId) && (u.Status));
+                .FirstOrDefaultAsync(u => (u.UserId == entity.UserId) && (u.Status));*/
 
-            return company;
+            return Application;
         }
 
         public async Task Remove(int id)
         {
-            var company = await _context.Companies
-                .FirstOrDefaultAsync(u => (u.CompanyId == id) && (u.Status));
-            if (company == null)
+            var Application = await _context.Application
+                .FirstOrDefaultAsync(u => (u.ApplicationId == id) && (u.Status));
+            if (Application == null)
             {
-                throw new NotFoundException("La Company con el ID " + id + " no fue encontrada.");
+                throw new NotFoundException("El Application con el ID " + id + " no fue encontrada.");
             }
-            company.Status = false;
+            Application.Status = false;
             await _context.SaveChangesAsync();
         }
 
         public async Task<Applications> Update(int id, Applications entity)
         {
-            var company = await _context.Companies
-                .FirstOrDefaultAsync(u => (u.CompanyId == id) && (u.Status));
-            if (company == null)
+            var Application = await _context.Application
+                .FirstOrDefaultAsync(u => (u.ApplicationId == id) && (u.Status));
+            if (Application == null)
             {
-                throw new NotFoundException("La Company con el ID " + id + " no fue encontrada.");
+                throw new NotFoundException("La Application con el ID " + id + " no fue encontrada.");
             }
+            /*
             company.CityId = entity.CityId;
             company.CUIT = entity.CUIT;
             company.Phone = entity.Phone;
@@ -57,11 +60,11 @@ namespace Infraestructure.Command
             company.Address = entity.Address;
             company.Website = entity.Website;
             company.Description = entity.Description;
-            company.Logo = entity.Logo;
+            company.Logo = entity.Logo;*/
 
             await _context.SaveChangesAsync();
 
-            return company;
+            return Application;
         }
     }
 }

@@ -21,8 +21,9 @@ namespace Infraestructure.Query
         }
         public async Task<Provinces> GetProvinceById(int provinceid)
         {
+            // HARDCODE - VERIFICAR ESTO
             var province = await _context.Provinces
-                .Include(c => c.CityObjects)
+               // .Include(c => c.CityObjects)
                 .FirstOrDefaultAsync(p => p.ProvinceId == provinceid);
 
             if (province == null)
@@ -32,5 +33,7 @@ namespace Infraestructure.Query
 
             return province;
         }
+
+
     }
 }

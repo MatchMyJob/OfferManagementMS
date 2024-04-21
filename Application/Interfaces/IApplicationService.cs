@@ -8,7 +8,7 @@ namespace Application.Interfaces
 {
     public interface IApplicationService : IService<ApplicationRequest, ApplicationResponse>
     {
-        Task<Response> Create(Request request);
+        Task<Response> Create(ApplicationRequest request);
         Task DeleteById(int id);
         Task<Paged<Response>> GetAll(int pageNumber, int pageSize);
         Task<Response> GetById(int id);

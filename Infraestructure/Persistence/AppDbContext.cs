@@ -15,7 +15,7 @@ namespace Infraestructure.Persistence
         public DbSet<OfferCategories> OfferCategory { get; set; }
         public DbSet<Offers> Offer { get; set; }
         public DbSet<OfferSkills> OfferSkill { get; set; }
-        public DbSet<Provinces> Province { get; set; }
+        public DbSet<Provinces> Provinces { get; set; }
         public DbSet<Skills> Skill { get; set; }
         public DbSet<StudyTypes> StudyType { get; set; }
 

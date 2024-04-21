@@ -1,6 +1,7 @@
 using Application.DTO.Config;
 using Application.Interfaces;
 using Application.UseCase.Services;
+using Domain.Entities;
 using Infraestructure.Persistence;
 using Infraestructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -58,7 +59,7 @@ builder.Services.AddCors(options =>
 });
 
 
-builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
+builder.Services.AddScoped<IApplicationRepository<Applications>, ApplicationRepository>();
 builder.Services.AddScoped<IApplicationService, ApplicationService>();
 builder.Services.AddScoped<IApplicationQuery, ApplicationQuery>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -73,6 +74,7 @@ builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 builder.Services.AddScoped<ISkillService, SkillService>();
 builder.Services.AddScoped<IStudyTypeRepository, StudyTypeRepository>();
 builder.Services.AddScoped<IStudyTypeService, StudyTypeService>();
+builder.Services.AddScoped<IGenericRepository, GenericRepository>();
 
 
 var config = new AutoMapper.MapperConfiguration(

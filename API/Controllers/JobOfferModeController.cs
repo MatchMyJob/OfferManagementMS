@@ -14,11 +14,11 @@ namespace API.Controllers
     [ApiController]
     public class JobOfferModeController : ControllerBase
     {
-        private readonly IJobOfferService _service;
+        private readonly IJobOfferModeService<JobOfferModeRequest,JobOfferModeResponse> _service;
         private readonly IMapper _mapper;
         private HTTPResponse<Object> _response;
 
-        public JobOfferModeController(IJobOfferService service, IMapper mapper)
+        public JobOfferModeController(IJobOfferModeService<JobOfferModeRequest,JobOfferModeResponse> service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
@@ -31,7 +31,7 @@ namespace API.Controllers
         /// <response code="200">Return a User as Result</response>
 
         [HttpGet("{id:int}")]
-        [ProducesResponseType(typeof(HTTPResponse<JobOfferResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<JobOfferModeResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
@@ -55,7 +55,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(HTTPResponse<Paged<JobOfferResponse>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<Paged<JobOfferModeResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetAll(int pagedNumber = 1, int pagedSize = 10)

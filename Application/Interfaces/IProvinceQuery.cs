@@ -2,8 +2,10 @@
 
 namespace Application.Interfaces
 {
-    public interface IProvinceQuery : IQuery<Provinces, int>
-    {
+        public interface IProvinceQuery
+        {
+            public Task<List<Provinces>> GetAllProvince();
+            public Task<Provinces> GetProvinceById(int provinceId);
 
-    }
+        }
 }

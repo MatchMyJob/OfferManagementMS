@@ -17,11 +17,11 @@ namespace API.Controllers
     [ApiController]
     public class ProvinceController : ControllerBase
     {
-        private readonly IProvinceService _service;
+        private readonly IProvinceService<ProvincesRequest,ProvincesResponse> _service;
         private readonly IMapper _mapper;
         private HTTPResponse<Object> _response;
 
-        public ProvincieController(IProvinceService service, IMapper mapper)
+        public ProvinceController(IProvinceService<ProvincesRequest, ProvincesResponse> service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
@@ -34,7 +34,7 @@ namespace API.Controllers
         /// <response code="200">Return a Province as Result</response>
 
         [HttpGet("{id:int}")]
-        [ProducesResponseType(typeof(HTTPResponse<ProvinceResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<ProvincesResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]

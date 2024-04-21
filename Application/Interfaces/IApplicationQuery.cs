@@ -2,8 +2,9 @@
 
 namespace Application.Interfaces
 {
-    public interface IApplicationQuery : IQuery<Applications, Guid>
+    public interface IApplicationQuery : IQuery<Applications, int>
     {
 
     }
+    
 }
