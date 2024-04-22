@@ -17,7 +17,7 @@ namespace Application.DTO.Config
             CreateMap<OfferResponse, Offers>().ReverseMap();
             CreateMap<ProvincesResponse, Provinces>().ReverseMap();
             CreateMap<SkillResponse, Skills>().ReverseMap();
-            CreateMap<StudyTypeResponse, StudyTypeResponse>().ReverseMap();
+            CreateMap<StudyTypeResponse, StudyTypes>().ReverseMap();
 
             //CreateMap<UserRequest, UserResponse>().ReverseMap();
             //CreateMap<User, UserResponse>().ReverseMap();

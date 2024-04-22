@@ -9,3 +9,4 @@
         public DateTime ApplicationDate { get; set; }
         public bool Status { get; set; }
     }
+}

@@ -117,6 +117,7 @@ namespace Application.UseCase.Services
                 {
                     throw new NotFoundException("The record with ID " + id + " was not found.");
                 }
+                
                 return _mapper.Map<StudyTypeResponse>(entity);
             }
             catch (Exception e)
