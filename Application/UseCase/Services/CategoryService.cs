@@ -119,7 +119,13 @@ namespace Application.UseCase.Services
                 {
                     throw new NotFoundException("The record with ID " + id + " was not found.");
                 }
-                return _mapper.Map<CategoryResponse>(entity);
+
+                CategoryResponse  mapperResult = _mapper.Map<CategoryResponse>(entity);
+                
+                return mapperResult;
+                //return _mapper.Map<CategoryResponse>(entity);
+
+
             }
             catch (Exception e)
             {
