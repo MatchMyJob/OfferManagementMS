@@ -12,16 +12,17 @@ namespace Infraestructure.EntityConfig
             builder.HasKey(i => i.CategoryId);
             builder.Property(i => i.CategoryId).ValueGeneratedOnAdd();
             builder.Property(n => n.Name).IsRequired();
-            builder.HasData(
-            new Categories
+            builder.HasData(new Categories
             {
                 CategoryId = 1,
                 Name = "Administración, Contabilidad y Finanzas"
+
             },
             new Categories
             {
                 CategoryId = 2,
                 Name = "Comercial, Ventas y Negocios"
+
             },
             new Categories
             {

@@ -15,6 +15,32 @@ namespace Infraestructure.EntityConfig
             builder.HasMany<Applications>(j => j.Applications)
                    .WithOne(c => c.ApplicationStatusType)
                    .HasForeignKey(c => c.ApplicationStatusTypeId);
+            builder.HasData(
+            new ApplicationStatusTypes
+            {
+                ApplicationStatusTypeId = 1,
+                Name = "CV Enviado"
+            },
+            new ApplicationStatusTypes
+            {
+                ApplicationStatusTypeId = 2,
+                Name = "CV Leido"
+            },
+            new ApplicationStatusTypes
+            {
+                ApplicationStatusTypeId = 3,
+                Name = "Contactado"
+            },
+            new ApplicationStatusTypes
+            {
+                ApplicationStatusTypeId = 4,
+                Name = "Avisos Activos"
+            },
+            new ApplicationStatusTypes
+            {
+                ApplicationStatusTypeId = 5,
+                Name = "Avisos Finalizados"
+            });
         }
     }
 }

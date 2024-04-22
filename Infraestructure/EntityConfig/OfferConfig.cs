@@ -33,6 +33,33 @@ namespace Infraestructure.EntityConfig
             builder.HasMany<Applications>(j => j.Applications)
                    .WithOne(c => c.Offer)
                    .HasForeignKey(c => c.OfferId);
+            //builder.HasOne(
+            //        new Offers
+            //        {
+            //            CompanyId = 1,
+            //            Title = "Analistas y Analistas Sr. Financieros/Contables - Control de Gestión",
+            //            Description = "Los profesionales de Client Financial Management (CFM) dan soporte al control de gestión financiera de proyectos para clientes globales. Brinda servicios de control de gestión desde el inicio hasta la finalización del contrato realizando análisis de presupuestos y seguimiento de proyección financiera, conciliación de servicios vs facturación y cobros, incluyendo el monitoreo de variaciones y el seguimiento de discrepancias. Además de brindar asesoramiento para nuestros directivos corporativos y los equipos relacionados con los clientes.\r\n\r\nEntre las tareas diarias se encuentran:\r\n\r\nAnálisis de datos históricos para precisión en el armado de presupuesto\r\nAsistir/Asesorar en actividades de presupuesto.\r\nCreación y manejo de reportes y análisis de control de gestión para la identificación de “red flags” ante posibles desvíos.\r\nFacturación de servicios al cliente. Seguimiento de facturación y cobro.\r\nCumplimiento de procesos con cierres en fechas establecidas mensualmente.\r\nConciliación de servicios vs facturación y cobros, incluyendo el monitoreo de variaciones.\r\nAsistir al líder de proyecto en la creación de valor para la gestión financiera.\r\nJob Qualifications\r\n\r\nRequisitos excluyentes:\r\n\r\nEstudiante o graduado de carreras de Ciencias Económicas o afines\r\nPoseer + 1 año de experiencia laboral en tareas administrativas, contables, financieras o en posiciones similares\r\nDisponibilidad para trabajar full-time\r\nConocimiento de inglés avanzado\r\nConocimiento de excel intermedio/avanzado\r\nBuena comunicación (oral y escrita) y aptitudes interpersonales.\r\nAtención al detalle\r\n",
+            //            JobOfferModeId = 1,
+            //            PublicationDate = "20241211",
+            //            CityId = 1,
+            //            AvailabilityToTravel = false,
+            //            AvailabilityChangeOfResidence = false,
+            //            StudyTypeId = 1,
+            //            Status = true
+            //        },
+            //        new Offers
+            //        {
+            //            CompanyId = 1,
+            //            Title = "Analistas y Analistas Sr. Financieros/Contables - Control de Gestión",
+            //            Description = "Los profesionales de Client Financial Management (CFM) dan soporte al control de gestión financiera de proyectos para clientes globales. Brinda servicios de control de gestión desde el inicio hasta la finalización del contrato realizando análisis de presupuestos y seguimiento de proyección financiera, conciliación de servicios vs facturación y cobros, incluyendo el monitoreo de variaciones y el seguimiento de discrepancias. Además de brindar asesoramiento para nuestros directivos corporativos y los equipos relacionados con los clientes.\r\n\r\nEntre las tareas diarias se encuentran:\r\n\r\nAnálisis de datos históricos para precisión en el armado de presupuesto\r\nAsistir/Asesorar en actividades de presupuesto.\r\nCreación y manejo de reportes y análisis de control de gestión para la identificación de “red flags” ante posibles desvíos.\r\nFacturación de servicios al cliente. Seguimiento de facturación y cobro.\r\nCumplimiento de procesos con cierres en fechas establecidas mensualmente.\r\nConciliación de servicios vs facturación y cobros, incluyendo el monitoreo de variaciones.\r\nAsistir al líder de proyecto en la creación de valor para la gestión financiera.\r\nJob Qualifications\r\n\r\nRequisitos excluyentes:\r\n\r\nEstudiante o graduado de carreras de Ciencias Económicas o afines\r\nPoseer + 1 año de experiencia laboral en tareas administrativas, contables, financieras o en posiciones similares\r\nDisponibilidad para trabajar full-time\r\nConocimiento de inglés avanzado\r\nConocimiento de excel intermedio/avanzado\r\nBuena comunicación (oral y escrita) y aptitudes interpersonales.\r\nAtención al detalle\r\n",
+            //            JobOfferModeId = 1,
+            //            PublicationDate = '20241211',
+            //            CityId = 1,
+            //            AvailabilityToTravel = false,
+            //            AvailabilityChangeOfResidence = false,
+            //            StudyTypeId = 1,
+            //            Status = true
+            //        } );
 
         }
     }
