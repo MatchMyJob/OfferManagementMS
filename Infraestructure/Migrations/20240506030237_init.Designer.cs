@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240422152321_init")]
+    [Migration("20240506030237_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -12906,7 +12906,9 @@ namespace Infraestructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("PublicationDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2024, 5, 6, 0, 2, 36, 304, DateTimeKind.Local).AddTicks(8440));
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
@@ -12930,6 +12932,42 @@ namespace Infraestructure.Migrations
                     b.HasIndex("StudyTypeId");
 
                     b.ToTable("Offer", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            OfferId = new Guid("a2fb50cf-cdd2-4dcc-985d-c7897f80a7a3"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 60343,
+                            CompanyId = 1,
+                            Description = "Los profesionales de Client Financial Management (CFM) dan soporte al control de gestión financiera de proyectos para clientes globales. Brinda servicios de control de gestión desde el inicio hasta la finalización del contrato realizando análisis de presupuestos y seguimiento de proyección financiera, conciliación de servicios vs facturación y cobros, incluyendo el monitoreo de variaciones y el seguimiento de discrepancias. Además de brindar asesoramiento para nuestros directivos corporativos y los equipos relacionados con los clientes.\r\n\r\nEntre las tareas diarias se encuentran:\r\n\r\nAnálisis de datos históricos para precisión en el armado de presupuesto\r\nAsistir/Asesorar en actividades de presupuesto.\r\nCreación y manejo de reportes y análisis de control de gestión para la identificación de “red flags” ante posibles desvíos.\r\nFacturación de servicios al cliente. Seguimiento de facturación y cobro.\r\nCumplimiento de procesos con cierres en fechas establecidas mensualmente.\r\nConciliación de servicios vs facturación y cobros, incluyendo el monitoreo de variaciones.\r\nAsistir al líder de proyecto en la creación de valor para la gestión financiera.\r\nJob Qualifications\r\n\r\nRequisitos excluyentes:\r\n\r\nEstudiante o graduado de carreras de Ciencias Económicas o afines\r\nPoseer + 1 año de experiencia laboral en tareas administrativas, contables, financieras o en posiciones similares\r\nDisponibilidad para trabajar full-time\r\nConocimiento de inglés avanzado\r\nConocimiento de excel intermedio/avanzado\r\nBuena comunicación (oral y escrita) y aptitudes interpersonales.\r\nAtención al detalle\r\n",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 1,
+                            Title = "Analistas y Analistas Sr. Financieros/Contables - Control de Gestión",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("f2ad33b5-4ba2-4a08-9e66-8a9463b0931f"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 60343,
+                            CompanyId = 1,
+                            Description = "Los profesionales de Client Financial Management (CFM) dan soporte al control de gestión financiera de proyectos para clientes globales. Brinda servicios de control de gestión desde el inicio hasta la finalización del contrato realizando análisis de presupuestos y seguimiento de proyección financiera, conciliación de servicios vs facturación y cobros, incluyendo el monitoreo de variaciones y el seguimiento de discrepancias. Además de brindar asesoramiento para nuestros directivos corporativos y los equipos relacionados con los clientes.\r\n\r\nEntre las tareas diarias se encuentran:\r\n\r\nAnálisis de datos históricos para precisión en el armado de presupuesto\r\nAsistir/Asesorar en actividades de presupuesto.\r\nCreación y manejo de reportes y análisis de control de gestión para la identificación de “red flags” ante posibles desvíos.\r\nFacturación de servicios al cliente. Seguimiento de facturación y cobro.\r\nCumplimiento de procesos con cierres en fechas establecidas mensualmente.\r\nConciliación de servicios vs facturación y cobros, incluyendo el monitoreo de variaciones.\r\nAsistir al líder de proyecto en la creación de valor para la gestión financiera.\r\nJob Qualifications\r\n\r\nRequisitos excluyentes:\r\n\r\nEstudiante o graduado de carreras de Ciencias Económicas o afines\r\nPoseer + 1 año de experiencia laboral en tareas administrativas, contables, financieras o en posiciones similares\r\nDisponibilidad para trabajar full-time\r\nConocimiento de inglés avanzado\r\nConocimiento de excel intermedio/avanzado\r\nBuena comunicación (oral y escrita) y aptitudes interpersonales.\r\nAtención al detalle\r\n",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 2, 36, 305, DateTimeKind.Local).AddTicks(4502),
+                            Status = true,
+                            StudyTypeId = 1,
+                            Title = "Analistas y Analistas Sr. Financieros/Contables - Control de Gestión",
+                            Vacancies = 0
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Provinces", b =>
