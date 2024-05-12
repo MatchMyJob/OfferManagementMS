@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using Infraestructure.Data;
 
 namespace Infraestructure.EntityConfig
 {
@@ -27,6 +28,7 @@ namespace Infraestructure.EntityConfig
             builder.HasOne<Province>(c => c.ProvinceObject)
                    .WithMany(c => c.CityObjects)
                    .HasForeignKey(c => c.ProvinceId);
+            CityData.SeedData(builder);
         }
     }
 }

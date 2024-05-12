@@ -16,7 +16,7 @@ namespace Infraestructure.EntityConfig
         public void Configure(EntityTypeBuilder<Offer> builder)
         {
             builder.ToTable("Offer");
-            builder.HasKey(s => s.StudyTypeId);
+            builder.HasKey(s => s.OfferId);
             builder.Property(o => o.CompanyId)
                    .IsRequired();
             builder.Property(t => t.Title)

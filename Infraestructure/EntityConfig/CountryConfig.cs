@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Infraestructure.Data;
 
 namespace Infraestructure.EntityConfig
 {
@@ -22,6 +23,7 @@ namespace Infraestructure.EntityConfig
             builder.HasMany<Province>(p => p.ProvinceObjects)
                    .WithOne(c => c.CountryObject)
                    .HasForeignKey(fk => fk.CountryId);
+            CountryData.SeedData(builder);
         }
     }
 }
