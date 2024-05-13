@@ -11,11 +11,19 @@ namespace Application.DTO.Config
         {
             //CreateMap<OBJETO_QUE_SALE, OBJETO_QUE_ENTRA>().ReverseMap();
             CreateMap<ApplicationResponse, Aplication>().ReverseMap();
-            CreateMap<CategoryResponse, Category>().ReverseMap();
-            CreateMap<JobOfferModeResponse, JobOfferMode>().ReverseMap();
+            CreateMap<CategoryResponse, Category>()
+                .ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.CategoryId));
+            CreateMap<JobOfferModeResponse, JobOfferMode>()
+                .ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.JobOfferModeId));
             CreateMap<OfferResponse, Offer>().ReverseMap();
-            CreateMap<SkillResponse, Skill>().ReverseMap();
-            CreateMap<StudyTypeResponse, StudyType>().ReverseMap();
+            CreateMap<SkillResponse, Skill>()
+                .ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.SkillId));
+            CreateMap<StudyTypeResponse, StudyType>()
+                .ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.StudyTypeId));
 
             CreateMap<Province, ProvincesResponse>().ReverseMap();
             CreateMap<City, CityResponse>().ReverseMap();
