@@ -3,9 +3,7 @@ using Application.DTO.Pagination;
 using Application.Interfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
-using Infraestructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Infraestructure.Query
 {
@@ -19,25 +17,22 @@ namespace Infraestructure.Query
             _context = context;
         }
         
-        public async Task<Paged<Skills>> RecoveryAll(Parameters parameters)
+        public async Task<List<Skills>> RecoveryAll()
         {
-            // HARDCODE - VERIFICAR ESTO
-            IQueryable<Skills> skills = _context.Skill;
-            /*  .Include(c => c.CityObject)
-              .ThenInclude(p => p.ProvinceObject)
-          .ThenInclude(c => c.CountryObject);*/
+            List<Skills> skills = await _context.Skill
+                .ToListAsync();
+            return skills;
+        }
 
-            //HARDCODE - VERFICIAR ESTO (EL ASYNC - AWAIT)
-            return /*await*/ Paged<Skills>.ToPaged(skills, parameters.PageNumber, parameters.PageSize);
+        public Task<Paged<Skills>> RecoveryAll(Parameters parameters)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Skills> RecoveryById(int id)
         {
-            //HARDCODE - VERIFICAR ESTO
             var skill = await _context.Skill
-                /*.Include(c => c.CityObject)
-                .ThenInclude(p => p.ProvinceObject)*/
-                .FirstOrDefaultAsync(s => (s.SkillId == id));
+                .FirstOrDefaultAsync(p => p.SkillId == id);
 
             if (skill == null)
             {

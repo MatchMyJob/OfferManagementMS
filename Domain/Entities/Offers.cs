@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-
-namespace Domain.Entities
+﻿namespace Domain.Entities
 {
     public class Offers
     {
@@ -27,9 +19,9 @@ namespace Domain.Entities
         public int StudyTypeId { get; set; }
         public bool Status { get; set; }
         public JobOfferModes JobOfferMode { get; set; }
-        public ICollection<OfferCategories> OfferCategories { get; set; }
-        public ICollection<Applications> Applications { get; set; }
-        public ICollection<OfferSkills> OfferSkills { get; set; }
+        public List<OfferCategories> OfferCategories { get; set; }
+        public List<Applications> Applications { get; set; }
+        public List<OfferSkills> OfferSkills { get; set; }
         public Cities City { get; set; }
         public StudyTypes StudyType { get; set; }
     }

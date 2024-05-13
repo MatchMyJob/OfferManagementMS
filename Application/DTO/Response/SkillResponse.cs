@@ -1,6 +1,6 @@
 ﻿namespace Application.DTO.Response
 {
-    public class OfferResponse
+    public class SkillResponse
     {
         public int SkillId { get; set; }
         public string Name { get; set; }

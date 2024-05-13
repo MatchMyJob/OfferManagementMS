@@ -15,12 +15,11 @@ namespace Application.DTO.Config
             CreateMap<CategoryResponse, Categories>().ReverseMap();
             CreateMap<JobOfferModeResponse, JobOfferModes>().ReverseMap();
             CreateMap<OfferResponse, Offers>().ReverseMap();
-            CreateMap<ProvincesResponse, Provinces>().ReverseMap();
             CreateMap<SkillResponse, Skills>().ReverseMap();
             CreateMap<StudyTypeResponse, StudyTypes>().ReverseMap();
 
-            //CreateMap<UserRequest, UserResponse>().ReverseMap();
-            //CreateMap<User, UserResponse>().ReverseMap();
+            CreateMap<Provinces, ProvincesResponse>().ReverseMap();
+            CreateMap<Cities, CityResponse>().ReverseMap();
 
             CreateMap<HTTPError, HTTPResponse<string>>().ReverseMap();
         }

@@ -3,9 +3,7 @@ using Application.DTO.Pagination;
 using Application.Interfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
-using Infraestructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Infraestructure.Query
 {
@@ -19,29 +17,26 @@ namespace Infraestructure.Query
             _context = context;
         }
         
-        public async Task<Paged<StudyTypes>> RecoveryAll(Parameters parameters)
+        public async Task<List<StudyTypes>> RecoveryAll()
         {
-            // HARDCODE - VERIFICAR ESTO
-            IQueryable<StudyTypes> studyTypes = _context.StudyType;
-            /*  .Include(c => c.CityObject)
-              .ThenInclude(p => p.ProvinceObject)
-          .ThenInclude(c => c.CountryObject);*/
+            List<StudyTypes> studyType = await _context.StudyType
+                .ToListAsync();
+            return studyType;
+        }
 
-            //HARDCODE - VERFICIAR ESTO (EL ASYNC - AWAIT)
-            return /*await*/ Paged<StudyTypes>.ToPaged(studyTypes, parameters.PageNumber, parameters.PageSize);
+        public Task<Paged<StudyTypes>> RecoveryAll(Parameters parameters)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<StudyTypes> RecoveryById(int id)
         {
-            //HARDCODE - VERIFICAR ESTO
             var studyType = await _context.StudyType
-                /*.Include(c => c.CityObject)
-                .ThenInclude(p => p.ProvinceObject)*/
-                .FirstOrDefaultAsync(s => (s.StudyTypeId == id));
+                .FirstOrDefaultAsync(p => p.StudyTypeId == id);
 
             if (studyType == null)
             {
-                throw new NotFoundException("El Tipo de Estudio con el ID " + id + " no fue encontrado.");
+                throw new NotFoundException("La Tipo de estudio con el ID " + id + " no fue encontrado.");
             }
             return studyType;
         }

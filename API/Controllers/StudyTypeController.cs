@@ -1,10 +1,7 @@
 ﻿using Application.DTO.Error;
-using Application.DTO.Pagination;
-using Application.DTO.Request;
 using Application.DTO.Response;
 using Application.Interfaces;
 using AutoMapper;
-using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -14,11 +11,11 @@ namespace API.Controllers
     [ApiController]
     public class StudyTypeController : ControllerBase
     {
-        private readonly IStudyTypeService _service;
+        private readonly IStudyTypeQueryService _service;
         private readonly IMapper _mapper;
         private HTTPResponse<Object> _response;
 
-        public StudyTypeController(IStudyTypeService service, IMapper mapper)
+        public StudyTypeController(IStudyTypeQueryService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
@@ -31,7 +28,7 @@ namespace API.Controllers
         /// <response code="200">Return a StudyType as Result</response>
 
         [HttpGet("{id:int}")]
-        [ProducesResponseType(typeof(HTTPResponse<UserResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<StudyTypeResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
@@ -61,14 +58,14 @@ namespace API.Controllers
         /// <response code="200">Returns a page of StudyType as Result</response>
 
         [HttpGet]
-        [ProducesResponseType(typeof(HTTPResponse<Paged<StudyTypeResponse>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<List<StudyTypeResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetAll(int pagedNumber = 0, int pagedSize = 10)
+        public async Task<ActionResult> GetAll()
         {
             try
             {
-                _response.Result = await _service.GetAll(pagedNumber, pagedSize);
+                _response.Result = await _service.GetAll();
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };

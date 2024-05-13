@@ -3,9 +3,7 @@ using Application.DTO.Pagination;
 using Application.Interfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
-using Infraestructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Infraestructure.Query
 {
@@ -19,31 +17,29 @@ namespace Infraestructure.Query
             _context = context;
         }
         
-        public async Task<Paged<JobOfferModes>> RecoveryAll(Parameters parameters)
+        public async Task<List<JobOfferModes>> RecoveryAll()
         {
-            // HARDCODE - VERIFICAR ESTO
-            IQueryable<JobOfferModes> JobOfferModes = _context.JobOfferMode;
-            /*  .Include(c => c.CityObject)
-              .ThenInclude(p => p.ProvinceObject)
-          .ThenInclude(c => c.CountryObject);*/
-
-            //HARDCODE - VERFICIAR ESTO (EL ASYNC - AWAIT)
-            return /*await*/ Paged<JobOfferModes>.ToPaged(JobOfferModes, parameters.PageNumber, parameters.PageSize);
+            List<JobOfferModes> jobOfferMode = await _context.JobOfferMode
+                .ToListAsync();
+            return jobOfferMode;
         }
 
-        public async Task<JobOfferModes> RecoveryById(Guid id)
+        public Task<Paged<JobOfferModes>> RecoveryAll(Parameters parameters)
         {
-            //HARDCODE - VERIFICAR ESTO
-            var JobOfferMode = await _context.JobOfferMode.FirstOrDefaultAsync();
-                /*.Include(c => c.CityObject)
-                .ThenInclude(p => p.ProvinceObject)*/
-            //    .FirstOrDefaultAsync(s => (s.JobOfferModeId == id));
+            throw new NotImplementedException();
+        }
 
-            if (JobOfferMode == null)
+        public async Task<JobOfferModes> RecoveryById(int id)
+        {
+            var jobOfferMode = await _context.JobOfferMode
+                .FirstOrDefaultAsync(p => p.JobOfferModeId == id);
+
+            if (jobOfferMode == null)
             {
-                throw new NotFoundException("El JobOfferMode con el ID " + id + " no fue encontrado.");
+                throw new NotFoundException("La JobOfferMode con el ID " + id + " no fue encontrada.");
             }
-            return JobOfferMode;
+
+            return jobOfferMode;
         }
 
 

@@ -3,11 +3,9 @@ using Domain.Entities;
 
 namespace Application.Interfaces
 {
-    public interface IJobOfferModeQuery
+    public interface IJobOfferModeQuery : IQuery<JobOfferModes, int>
     {
-        Task<JobOfferModes> RecoveryById(Guid id);
-
-        Task<Paged<JobOfferModes>> RecoveryAll(Parameters parameters);
+        Task<List<JobOfferModes>> RecoveryAll();
 
     }
     

@@ -14,11 +14,11 @@ namespace API.Controllers
     [ApiController]
     public class SkillController : ControllerBase
     {
-        private readonly ISkillService _service;
+        private readonly ISkillQueryService _service;
         private readonly IMapper _mapper;
         private HTTPResponse<Object> _response;
 
-        public SkillController(ISkillService service, IMapper mapper)
+        public SkillController(ISkillQueryService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
@@ -31,7 +31,7 @@ namespace API.Controllers
         /// <response code="200">Return a Skill as Result</response>
 
         [HttpGet("{id:int}")]
-        [ProducesResponseType(typeof(HTTPResponse<UserResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<SkillResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
@@ -61,14 +61,14 @@ namespace API.Controllers
         /// <response code="200">Returns a page of Skills as Result</response>
 
         [HttpGet]
-        [ProducesResponseType(typeof(HTTPResponse<Paged<SkillResponse>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<List<SkillResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetAll(int pagedNumber = 0, int pagedSize = 10)
         {
             try
             {
-                _response.Result = await _service.GetAll(pagedNumber, pagedSize);
+                _response.Result = await _service.GetAll();
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };

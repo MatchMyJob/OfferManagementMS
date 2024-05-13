@@ -1,12 +1,11 @@
 using Application.DTO.Config;
 using Application.Interfaces;
 using Application.UseCase.Services;
-using Domain.Entities;
 using Infraestructure.Command;
 using Infraestructure.Persistence;
 using Infraestructure.Query;
-using Infraestructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebSockets;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -45,6 +44,29 @@ var connectionString = builder.Configuration["ConnectionString"];
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(connectionString));
 
 
+builder.Services.AddScoped<IOfferCommand, OfferCommand>();
+builder.Services.AddScoped<IOfferQuery, OfferQuery>();
+builder.Services.AddScoped<IOfferCommandService, OfferCommandService>();
+
+builder.Services.AddScoped<ICategoryQuery, CategoryQuery>();
+builder.Services.AddScoped<ICategoryQueryService, CategoryQueryService>();
+
+builder.Services.AddScoped<ISkillQuery, SkillQuery>();
+builder.Services.AddScoped<ISkillQueryService, SkillQueryService>();
+
+builder.Services.AddScoped<IJobOfferModeQuery, JobOfferModeQuery>();
+builder.Services.AddScoped<IJobOfferModeQueryService, JobOfferModeQueryService>();
+
+builder.Services.AddScoped<IProvinceQuery, ProvinceQuery>();
+builder.Services.AddScoped<IProvinceQueryService, ProvinceQueryService>();
+
+builder.Services.AddScoped<ISkillQuery, SkillQuery>();
+builder.Services.AddScoped<ISkillQueryService, SkillQueryService>();
+
+builder.Services.AddScoped<IStudyTypeQuery, StudyTypeQuery>();
+builder.Services.AddScoped<IStudyTypeQueryService, StudyTypeQueryService>();
+
+
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
@@ -59,35 +81,6 @@ builder.Services.AddCors(options =>
            .AllowAnyHeader();
     }); 
 });
-
-
-builder.Services.AddScoped<IGenericRepository,GenericRepository>();
-
-builder.Services.AddScoped<IApplicationService, ApplicationService>();
-builder.Services.AddScoped<IApplicationQuery, ApplicationQuery>();
-builder.Services.AddScoped<IApplicationCommand, ApplicationsCommand>();
-
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<ICategoryQuery, CategoryQuery>();
-builder.Services.AddScoped<ICategoryCommand, CategoryCommand>();
-
-builder.Services.AddScoped<IOfferService, OfferService>();
-builder.Services.AddScoped<IOfferQuery, OfferQuery>();
-
-builder.Services.AddScoped<IStudyTypeService, StudyTypeService>();
-builder.Services.AddScoped<IStudyTypeQuery, StudyTypeQuery>();
-
-
-builder.Services.AddScoped<ISkillService, SkillService>();
-builder.Services.AddScoped<ISkillQuery, SkillQuery>();
-
-builder.Services.AddScoped<IJobOfferModeService, JobOfferModeService>();
-builder.Services.AddScoped<IJobOfferModeQuery, JobOfferModeQuery>();
-
-//builder.Services.AddScoped<ICategoryCommand, CategoryCommand>();
-
-builder.Services.AddScoped<IProvinceService, ProvinceService>();
-builder.Services.AddScoped<IProvinceQuery, ProvinceQuery>();
 
 
 var config = new AutoMapper.MapperConfiguration(

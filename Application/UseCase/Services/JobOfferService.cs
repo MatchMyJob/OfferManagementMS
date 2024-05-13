@@ -9,7 +9,7 @@ using Domain.Entities;
 
 namespace Application.UseCase.Services
 {
-    public class JobOfferModeService : IJobOfferModeService
+    public class JobOfferModeService
     { 
 
         protected readonly IGenericRepository _repository;
@@ -46,7 +46,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task DeleteById(Guid id)
+        public async Task DeleteById(int id)
         {
             try
             {
@@ -104,7 +104,7 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<JobOfferModeResponse> GetById(Guid id)
+        public async Task<JobOfferModeResponse> GetById(int id)
         {
             try
             {

@@ -3,9 +3,7 @@ using Application.DTO.Pagination;
 using Application.Interfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
-using Infraestructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Infraestructure.Query
 {
@@ -20,33 +18,28 @@ namespace Infraestructure.Query
         }
         
         
-        public async Task<Paged<Categories>> RecoveryAll(Parameters parameters)
+        public async Task<List<Categories>> RecoveryAll()
         {
-            // HARDCODE - VERIFICAR ESTO
-            IQueryable<Categories> categories = _context.Category;
-            /*  .Include(c => c.CityObject)
-              .ThenInclude(p => p.ProvinceObject)
-          .ThenInclude(c => c.CountryObject);*/
+            List<Categories> categories = await _context.Category
+                .ToListAsync();
+            return categories;
+        }
 
-            //HARDCODE - VERFICIAR ESTO (EL ASYNC - AWAIT)
-            return /*await*/ Paged<Categories>.ToPaged(categories, parameters.PageNumber, parameters.PageSize);
+        public Task<Paged<Categories>> RecoveryAll(Parameters parameters)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Categories> RecoveryById(int id)
         {
-            //HARDCODE - VERIFICAR ESTO
-            var categories = await _context.Category
-                /*.Include(c => c.CityObject)
-                .ThenInclude(p => p.ProvinceObject)*/
-                .FirstOrDefaultAsync(c => (c.CategoryId == id));
+            var category = await _context.Category
+                .FirstOrDefaultAsync(c => c.CategoryId == id);
 
-            if (categories == null)
+            if (category == null)
             {
-                throw new NotFoundException("La categoria con el ID " + id + " no fue encontrada.");
+                throw new NotFoundException("La Categoria con el ID " + id + " no fue encontrada.");
             }
-            return categories;
+            return category;
         }
-
-
     }
 }

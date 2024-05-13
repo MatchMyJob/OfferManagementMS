@@ -1,9 +1,8 @@
 ﻿namespace Application.DTO.Response
 {
-    public class StudyTypeResponse
+    public class CityResponse
     {
-        public int Id { get; set; }
+        public int CityId { get; set; }
         public string Name { get; set; }
-
     }
 }

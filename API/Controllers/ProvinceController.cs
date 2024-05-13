@@ -14,21 +14,20 @@ namespace API.Controllers
     [ApiController]
     public class ProvinceController : ControllerBase
     {
-        private readonly IProvinceService _service;
+        private readonly IProvinceQueryService _service;
         private readonly IMapper _mapper;
-        private HTTPResponse<Object> _response;
-
-        public ProvinceController(IProvinceService service, IMapper mapper)
+        private readonly HTTPResponse<Object> _response;
+        public ProvinceController(IProvinceQueryService provinceService, IMapper mapper)
         {
-            _service = service;
+            _service = provinceService;
             _mapper = mapper;
             _response = new();
         }
 
         /// <summary>
-        /// Returns a Province given their ID
+        /// Retorna una Province especificando el ID
         /// </summary>
-        /// <response code="200">Return a Province as Result</response>
+        /// <response code="200">Retorna una Province como resultado.</response>
 
         [HttpGet("{id:int}")]
         [ProducesResponseType(typeof(HTTPResponse<ProvincesResponse>), StatusCodes.Status200OK)]
@@ -50,25 +49,23 @@ namespace API.Controllers
                 {
                     return new JsonResult(_mapper.Map<HTTPResponse<string>>(e)) { StatusCode = (int)((HTTPError)e).StatusCode };
                 }
-                return new JsonResult(_mapper.Map<HTTPResponse<string>>(new InternalServerErrorException("A server error has occurred."))) { StatusCode = 500 };
+                return new JsonResult(_mapper.Map<HTTPResponse<string>>(new InternalServerErrorException("Ha ocurrido un error en el servicodor."))) { StatusCode = 500 };
             }
         }
-
-
         /// <summary>
-        /// Returns a page of records
+        /// Retorna una pagina de Province
         /// </summary>
-        /// <response code="200">Returns a page of Provinces as Result</response>
+        /// <response code="200">Retorna todas las Provincias como resultado.</response>
 
         [HttpGet]
-        [ProducesResponseType(typeof(HTTPResponse<Paged<UserResponse>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<List<ProvincesResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetAll(int pagedNumber = 0, int pagedSize = 10)
+        public async Task<ActionResult> GetAll()
         {
             try
             {
-                _response.Result = await _service.GetAll(pagedNumber, pagedSize);
+                _response.Result = await _service.GetAll();
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };
@@ -79,7 +76,7 @@ namespace API.Controllers
                 {
                     return new JsonResult(_mapper.Map<HTTPResponse<string>>(e)) { StatusCode = (int)((HTTPError)e).StatusCode };
                 }
-                return new JsonResult(_mapper.Map<HTTPResponse<string>>(new InternalServerErrorException("A server error has occurred."))) { StatusCode = 500 };
+                return new JsonResult(_mapper.Map<HTTPResponse<string>>(new InternalServerErrorException("Ha ocurrido un error en el servicodor."))) { StatusCode = 500 };
             }
         }
 

@@ -11,7 +11,7 @@ namespace Domain.Entities
         public int CityId { get; set; }
         public int ProvinceId { get; set; }
         public string Name { get; set; }
-        public ICollection<Offers> Offers { get; set; }
+        public List<Offers> Offers { get; set; }
         public Provinces Province { get; set; }
 
     }
