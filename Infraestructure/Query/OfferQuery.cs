@@ -3,9 +3,7 @@ using Application.DTO.Pagination;
 using Application.Interfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
-using Infraestructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Infraestructure.Query
 {
@@ -21,23 +19,35 @@ namespace Infraestructure.Query
         
         public async Task<Paged<Offers>> RecoveryAll(Parameters parameters)
         {
-            // HARDCODE - VERIFICAR ESTO
-            IQueryable<Offers> offers = _context.Offer;
-            /*  .Include(c => c.CityObject)
-              .ThenInclude(p => p.ProvinceObject)
-          .ThenInclude(c => c.CountryObject);*/
+            IQueryable<Offers> offers = _context.Offer.Where(o => o.Status)
+                .Include(c => c.City)
+                .ThenInclude(p => p.Province)
+                .Include(st => st.StudyType)
+                .Include(os => os.OfferSkills)
+                .ThenInclude(s => s.Skill)
+                .Include(jom => jom.JobOfferMode)
+                .Include(oc => oc.OfferCategories)
+                .ThenInclude(c => c.Category)
+                .Include(a => a.Applications)
+                .ThenInclude(ast => ast.ApplicationStatusType);
 
-            //HARDCODE - VERFICIAR ESTO (EL ASYNC - AWAIT)
-            return /*await*/ Paged<Offers>.ToPaged(offers, parameters.PageNumber, parameters.PageSize);
+            return await Paged<Offers>.ToPagedAsync(offers, parameters.PageNumber, parameters.PageSize);
         }
 
         public async Task<Offers> RecoveryById(Guid id)
         {
-            //HARDCODE - VERIFICAR ESTO
-            Offers offer = await _context.Offer
-                /*.Include(c => c.CityObject)
-                .ThenInclude(p => p.ProvinceObject)*/
-                .FirstOrDefaultAsync(o => (o.OfferId == id));
+            var offer = await _context.Offer
+                .Include(c => c.City)
+                .ThenInclude(p => p.Province)
+                .Include(st => st.StudyType)
+                .Include(os => os.OfferSkills)
+                .ThenInclude(s => s.Skill)
+                .Include(jom => jom.JobOfferMode)
+                .Include(oc => oc.OfferCategories)
+                .ThenInclude(c => c.Category)
+                .Include(a => a.Applications)
+                .ThenInclude(ast => ast.ApplicationStatusType)
+                .FirstOrDefaultAsync(u => (u.OfferId == id) && (u.Status));
 
             if (offer == null)
             {

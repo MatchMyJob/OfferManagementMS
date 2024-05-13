@@ -25,7 +25,7 @@ namespace Infraestructure.Repositories
         public async Task<Paged<T>> RecoveryAll(Parameters parameters)
         {
             //return await dbSet.ToListAsync();
-            return Paged<T>.ToPaged(dbSet, parameters.PageNumber, parameters.PageSize);
+            return await Paged<T>.ToPagedAsync(dbSet, parameters.PageNumber, parameters.PageSize);
         }
 
         public async Task<T> RecoveryById(int id)

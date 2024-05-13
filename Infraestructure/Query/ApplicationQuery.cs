@@ -28,7 +28,7 @@ namespace Infraestructure.Query
           .ThenInclude(c => c.CountryObject);*/
 
             //HARDCODE - VERFICIAR ESTO (EL ASYNC - AWAIT)
-            return /*await*/ Paged<Applications>.ToPaged(applications, parameters.PageNumber, parameters.PageSize);
+            return /*await*/ await Paged<Applications>.ToPagedAsync(applications, parameters.PageNumber, parameters.PageSize);
         }
 
         public async Task<Applications> RecoveryById(int id)

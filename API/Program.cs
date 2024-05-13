@@ -47,6 +47,7 @@ builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(connectionSt
 builder.Services.AddScoped<IOfferCommand, OfferCommand>();
 builder.Services.AddScoped<IOfferQuery, OfferQuery>();
 builder.Services.AddScoped<IOfferCommandService, OfferCommandService>();
+builder.Services.AddScoped<IOfferQueryService, OfferQueryService>();
 
 builder.Services.AddScoped<ICategoryQuery, CategoryQuery>();
 builder.Services.AddScoped<ICategoryQueryService, CategoryQueryService>();

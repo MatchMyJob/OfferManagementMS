@@ -60,7 +60,7 @@ namespace Infraestructure.Command
             _context.Entry(offerToUpdate).CurrentValues.SetValues(entity);
             await _context.SaveChangesAsync();
 
-            var updatedProduct = await _context.Offer
+            var updatedOffer = await _context.Offer
                 .Include(c => c.City)
                 .ThenInclude(p => p.Province)
                 .Include(st => st.StudyType)
@@ -73,7 +73,7 @@ namespace Infraestructure.Command
                 .ThenInclude(ast => ast.ApplicationStatusType)
                 .FirstOrDefaultAsync(u => (u.OfferId == entity.OfferId) && (u.Status));
 
-            return updatedProduct;
+            return updatedOffer;
         }
     }
 }
