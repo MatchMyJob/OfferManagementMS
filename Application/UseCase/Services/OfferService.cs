@@ -27,7 +27,7 @@ namespace Application.UseCase.Services
         {
             try
             {
-                Offers entity = _mapper.Map<Offers>(request);
+                Offer entity = _mapper.Map<Offer>(request);
                 entity = await _repository.Insert(entity);
                 return _mapper.Map<OfferResponse>(entity);
             }
@@ -87,7 +87,7 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-                Paged<Offers> list = await _query.RecoveryAll(parameters);
+                Paged<Offer> list = await _query.RecoveryAll(parameters);
                 List<OfferResponse> listAux = new();
                 list.Data.ForEach(e => listAux.Add(_mapper.Map<OfferResponse>(e)));
 

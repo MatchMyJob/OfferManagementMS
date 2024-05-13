@@ -4,8 +4,8 @@ namespace Application.Interfaces
 {
         public interface IProvinceQuery
         {
-            public Task<List<Provinces>> GetAllProvince();
-            public Task<Provinces> GetProvinceById(int provinceId);
+            public Task<List<Province>> GetAllProvince();
+            public Task<Province> GetProvinceById(int provinceId);
 
         }
 }

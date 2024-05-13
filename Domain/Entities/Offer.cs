@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities
 {
-    public class Offers
+    public class Offer
     {
         public Guid OfferId { get; set; }
         public int CompanyId { get; set; }
@@ -18,11 +18,11 @@
         public bool AvailabilityChangeOfResidence { get; set; }
         public int StudyTypeId { get; set; }
         public bool Status { get; set; }
-        public JobOfferModes JobOfferMode { get; set; }
-        public List<OfferCategories> OfferCategories { get; set; }
-        public List<Applications> Applications { get; set; }
-        public List<OfferSkills> OfferSkills { get; set; }
-        public Cities City { get; set; }
-        public StudyTypes StudyType { get; set; }
+        public JobOfferMode JobOfferMode { get; set; }
+        public List<OfferCategory> OfferCategories { get; set; }
+        public List<Aplication> Applications { get; set; }
+        public List<OfferSkill> OfferSkills { get; set; }
+        public City City { get; set; }
+        public StudyType StudyType { get; set; }
     }
 }

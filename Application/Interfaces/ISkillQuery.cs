@@ -2,9 +2,9 @@
 
 namespace Application.Interfaces
 {
-    public interface ISkillQuery : IQuery<Skills, int>
+    public interface ISkillQuery : IQuery<Skill, int>
     {
-        Task<List<Skills>> RecoveryAll();
+        Task<List<Skill>> RecoveryAll();
     }
     
 }

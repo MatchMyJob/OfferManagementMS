@@ -19,22 +19,22 @@ namespace Infraestructure.Query
             _context = context;
         }
         
-        public async Task<Paged<Applications>> RecoveryAll(Parameters parameters)
+        public async Task<Paged<Domain.Entities.Aplication>> RecoveryAll(Parameters parameters)
         {
             // HARDCODE - VERIFICAR ESTO
-            IQueryable<Applications> applications = _context.Application.Where(a => a.Status);
+            IQueryable<Domain.Entities.Aplication> applications = _context.Applications.Where(a => a.Status);
             /*  .Include(c => c.CityObject)
               .ThenInclude(p => p.ProvinceObject)
           .ThenInclude(c => c.CountryObject);*/
 
             //HARDCODE - VERFICIAR ESTO (EL ASYNC - AWAIT)
-            return /*await*/ await Paged<Applications>.ToPagedAsync(applications, parameters.PageNumber, parameters.PageSize);
+            return /*await*/ await Paged<Domain.Entities.Aplication>.ToPagedAsync(applications, parameters.PageNumber, parameters.PageSize);
         }
 
-        public async Task<Applications> RecoveryById(int id)
+        public async Task<Domain.Entities.Aplication> RecoveryById(int id)
         {
             //HARDCODE - VERIFICAR ESTO
-            var application = await _context.Application
+            var application = await _context.Applications
                 /*.Include(c => c.CityObject)
                 .ThenInclude(p => p.ProvinceObject)*/
                 .FirstOrDefaultAsync(c => (c.ApplicationId == id) && (c.Status));

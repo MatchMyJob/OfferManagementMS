@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace Application.Interfaces
 {
-    public interface IApplicationCommand : ICommand<Applications, int>
+    public interface IApplicationCommand : ICommand<Domain.Entities.Aplication, int>
     {
 
 

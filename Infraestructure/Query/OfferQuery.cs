@@ -17,9 +17,9 @@ namespace Infraestructure.Query
             _context = context;
         }
         
-        public async Task<Paged<Offers>> RecoveryAll(Parameters parameters)
+        public async Task<Paged<Offer>> RecoveryAll(Parameters parameters)
         {
-            IQueryable<Offers> offers = _context.Offer.Where(o => o.Status)
+            IQueryable<Offer> offers = _context.Offers.Where(o => o.Status)
                 .Include(c => c.City)
                 .ThenInclude(p => p.Province)
                 .Include(st => st.StudyType)
@@ -31,12 +31,12 @@ namespace Infraestructure.Query
                 .Include(a => a.Applications)
                 .ThenInclude(ast => ast.ApplicationStatusType);
 
-            return await Paged<Offers>.ToPagedAsync(offers, parameters.PageNumber, parameters.PageSize);
+            return await Paged<Offer>.ToPagedAsync(offers, parameters.PageNumber, parameters.PageSize);
         }
 
-        public async Task<Offers> RecoveryById(Guid id)
+        public async Task<Offer> RecoveryById(Guid id)
         {
-            var offer = await _context.Offer
+            var offer = await _context.Offers
                 .Include(c => c.City)
                 .ThenInclude(p => p.Province)
                 .Include(st => st.StudyType)

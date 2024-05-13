@@ -6,18 +6,18 @@ namespace Infraestructure.Persistence
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<Applications> Application { get; set; }
-        public DbSet<ApplicationStatusTypes> ApplicationStatusType { get; set; }
-        public DbSet<Categories> Category { get; set; }
-        public DbSet<Cities> City { get; set; }
-        public DbSet<Countries> Country { get; set; }
-        public DbSet<JobOfferModes> JobOfferMode { get; set; }
-        public DbSet<OfferCategories> OfferCategory { get; set; }
-        public DbSet<Offers> Offer { get; set; }
-        public DbSet<OfferSkills> OfferSkill { get; set; }
-        public DbSet<Provinces> Provinces { get; set; }
-        public DbSet<Skills> Skill { get; set; }
-        public DbSet<StudyTypes> StudyType { get; set; }
+        public DbSet<Domain.Entities.Aplication> Applications { get; set; }
+        public DbSet<ApplicationStatusType> ApplicationStatusTypes { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<JobOfferMode> JobOfferModes { get; set; }
+        public DbSet<OfferCategory> OfferCategories { get; set; }
+        public DbSet<Offer> Offers { get; set; }
+        public DbSet<OfferSkill> OfferSkills { get; set; }
+        public DbSet<Province> Provinces { get; set; }
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<StudyType> StudyTypes { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

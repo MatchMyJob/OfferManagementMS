@@ -23,7 +23,7 @@ namespace Application.UseCase.Services
             try
             {
                 List<ProvincesResponse> responseList = new();
-                List<Provinces> provinces = await _query.GetAllProvince();
+                List<Province> provinces = await _query.GetAllProvince();
                 provinces.ForEach(e =>
                 {
                     var provinceresponse = _mapper.Map<ProvincesResponse>(e);

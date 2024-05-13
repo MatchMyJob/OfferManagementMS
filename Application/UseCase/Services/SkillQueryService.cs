@@ -23,7 +23,7 @@ namespace Application.UseCase.Services
             try
             {
                 List<SkillResponse> responseList = new();
-                List<Skills> skills = await _query.RecoveryAll();
+                List<Skill> skills = await _query.RecoveryAll();
                 skills.ForEach(e =>
                 {
                     var skillResponse = _mapper.Map<SkillResponse>(e);

@@ -28,7 +28,7 @@ namespace Application.UseCase.Services
         {
             try
             {
-                JobOfferModes entity = _mapper.Map<JobOfferModes>(request);
+                JobOfferMode entity = _mapper.Map<JobOfferMode>(request);
                 entity = await _repository.Insert(entity);
                 return _mapper.Map<JobOfferModeResponse>(entity);
             }
@@ -88,7 +88,7 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-                Paged<JobOfferModes> list = await _query.RecoveryAll(parameters);
+                Paged<JobOfferMode> list = await _query.RecoveryAll(parameters);
                 List<JobOfferModeResponse> listAux = new();
                 list.Data.ForEach(e => listAux.Add(_mapper.Map<JobOfferModeResponse>(e)));
 

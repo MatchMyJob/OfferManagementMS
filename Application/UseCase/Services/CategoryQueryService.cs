@@ -23,7 +23,7 @@ namespace Application.UseCase.Services
             try
             {
                 List<CategoryResponse> responseList = new();
-                List<Categories> categories = await _query.RecoveryAll();
+                List<Category> categories = await _query.RecoveryAll();
                 categories.ForEach(e =>
                 {
                     var categoryResponse = _mapper.Map<CategoryResponse>(e);

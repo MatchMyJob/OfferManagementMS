@@ -17,21 +17,21 @@ namespace Infraestructure.Query
             _context = context;
         }
         
-        public async Task<List<JobOfferModes>> RecoveryAll()
+        public async Task<List<JobOfferMode>> RecoveryAll()
         {
-            List<JobOfferModes> jobOfferMode = await _context.JobOfferMode
+            List<JobOfferMode> jobOfferMode = await _context.JobOfferModes
                 .ToListAsync();
             return jobOfferMode;
         }
 
-        public Task<Paged<JobOfferModes>> RecoveryAll(Parameters parameters)
+        public Task<Paged<JobOfferMode>> RecoveryAll(Parameters parameters)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<JobOfferModes> RecoveryById(int id)
+        public async Task<JobOfferMode> RecoveryById(int id)
         {
-            var jobOfferMode = await _context.JobOfferMode
+            var jobOfferMode = await _context.JobOfferModes
                 .FirstOrDefaultAsync(p => p.JobOfferModeId == id);
 
             if (jobOfferMode == null)

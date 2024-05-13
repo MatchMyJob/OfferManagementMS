@@ -2,9 +2,9 @@
 
 namespace Application.Interfaces
 {
-    public interface IStudyTypeQuery : IQuery<StudyTypes, int>
+    public interface IStudyTypeQuery : IQuery<StudyType, int>
     {
-       Task<List<StudyTypes>> RecoveryAll();
+       Task<List<StudyType>> RecoveryAll();
     }
     
 }

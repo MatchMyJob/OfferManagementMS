@@ -17,21 +17,21 @@ namespace Infraestructure.Query
             _context = context;
         }
         
-        public async Task<List<Skills>> RecoveryAll()
+        public async Task<List<Skill>> RecoveryAll()
         {
-            List<Skills> skills = await _context.Skill
+            List<Skill> skills = await _context.Skills
                 .ToListAsync();
             return skills;
         }
 
-        public Task<Paged<Skills>> RecoveryAll(Parameters parameters)
+        public Task<Paged<Skill>> RecoveryAll(Parameters parameters)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Skills> RecoveryById(int id)
+        public async Task<Skill> RecoveryById(int id)
         {
-            var skill = await _context.Skill
+            var skill = await _context.Skills
                 .FirstOrDefaultAsync(p => p.SkillId == id);
 
             if (skill == null)

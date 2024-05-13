@@ -5,16 +5,16 @@ using System.Diagnostics.Metrics;
 
 namespace Infraestructure.EntityConfig
 {
-    public class CountryConfig : IEntityTypeConfiguration<Countries>
+    public class CountryConfig : IEntityTypeConfiguration<Country>
     {
-        public void Configure(EntityTypeBuilder<Countries> builder)
+        public void Configure(EntityTypeBuilder<Country> builder)
         {
             builder.ToTable("Country");
             builder.HasKey(i => i.CountryId);
             builder.Property(i => i.CountryId).ValueGeneratedOnAdd();
             builder.Property(n => n.Name).IsRequired();
             builder.HasData(
-                new Countries { CountryId = 1, Name = "Argentina" }
+                new Country { CountryId = 1, Name = "Argentina" }
                 );
         }
     }

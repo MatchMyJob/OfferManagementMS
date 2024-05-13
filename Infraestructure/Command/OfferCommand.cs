@@ -15,12 +15,12 @@ namespace Infraestructure.Command
             _context = context;
         }
 
-        public async Task<Offers> Insert(Offers entity)
+        public async Task<Offer> Insert(Offer entity)
         {
             await _context.AddAsync(entity);
             await _context.SaveChangesAsync();
 
-            var company = await _context.Offer
+            var company = await _context.Offers
                 .Include(c => c.City)
                 .ThenInclude(p => p.Province)
                 .Include(st => st.StudyType)
@@ -38,7 +38,7 @@ namespace Infraestructure.Command
 
         public async Task Remove(Guid id)
         {
-            var company = await _context.Offer
+            var company = await _context.Offers
                 .FirstOrDefaultAsync(u => (u.OfferId == id) && (u.Status));
             if (company == null)
             {
@@ -48,9 +48,9 @@ namespace Infraestructure.Command
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Offers> Update(Guid id, Offers entity)
+        public async Task<Offer> Update(Guid id, Offer entity)
         {
-            var offerToUpdate = await _context.Offer
+            var offerToUpdate = await _context.Offers
                 .FirstOrDefaultAsync(p => p.OfferId == entity.OfferId);
 
             if (offerToUpdate == null)
@@ -60,7 +60,7 @@ namespace Infraestructure.Command
             _context.Entry(offerToUpdate).CurrentValues.SetValues(entity);
             await _context.SaveChangesAsync();
 
-            var updatedOffer = await _context.Offer
+            var updatedOffer = await _context.Offers
                 .Include(c => c.City)
                 .ThenInclude(p => p.Province)
                 .Include(st => st.StudyType)

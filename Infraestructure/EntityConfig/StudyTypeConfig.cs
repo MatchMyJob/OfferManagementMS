@@ -4,36 +4,36 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infraestructure.EntityConfig
 {
-    public class StudyTypeConfig : IEntityTypeConfiguration<StudyTypes>
+    public class StudyTypeConfig : IEntityTypeConfiguration<StudyType>
     {
-        public void Configure(EntityTypeBuilder<StudyTypes> builder)
+        public void Configure(EntityTypeBuilder<StudyType> builder)
         {
             builder.ToTable("StudyType");
             builder.HasKey(i => i.StudyTypeId);
             builder.Property(i => i.StudyTypeId).ValueGeneratedOnAdd();
             builder.Property(n => n.Name).IsRequired();
             builder.HasData(
-            new StudyTypes
+            new StudyType
             {
                 StudyTypeId = 1,
                 Name = "Secundario"
             },
-            new StudyTypes
+            new StudyType
             {
                 StudyTypeId = 2,
                 Name = "Terciario"
             },
-            new StudyTypes
+            new StudyType
             {
                 StudyTypeId = 3,
                 Name = "Universitario"
             },
-            new StudyTypes
+            new StudyType
             {
                 StudyTypeId = 4,
                 Name = "Postgrado"
             },
-            new StudyTypes
+            new StudyType
             {
                 StudyTypeId = 5,
                 Name = "Maestría"

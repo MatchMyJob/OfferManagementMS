@@ -13,13 +13,13 @@ namespace Infraestructure.Query
         {
             this._context = DBcontext;
         }
-        public async Task<List<Provinces>> GetAllProvince()
+        public async Task<List<Province>> GetAllProvince()
         {
-            List<Provinces> provinces = await _context.Provinces
+            List<Province> provinces = await _context.Provinces
                 .ToListAsync();
             return provinces;
         }
-        public async Task<Provinces> GetProvinceById(int provinceid)
+        public async Task<Province> GetProvinceById(int provinceid)
         {
             var province =  await _context.Provinces
                 .Include(c => c.Cities)

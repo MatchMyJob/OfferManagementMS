@@ -5,7 +5,6 @@ using Infraestructure.Command;
 using Infraestructure.Persistence;
 using Infraestructure.Query;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.WebSockets;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;

@@ -5,9 +5,9 @@ namespace Application.Interfaces
 {
     public interface IOfferQuery
     {
-        Task<Offers> RecoveryById(Guid id);
+        Task<Offer> RecoveryById(Guid id);
 
-        Task<Paged<Offers>> RecoveryAll(Parameters parameters);
+        Task<Paged<Offer>> RecoveryAll(Parameters parameters);
     }
     
 }

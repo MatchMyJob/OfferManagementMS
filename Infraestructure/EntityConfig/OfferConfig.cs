@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infraestructure.EntityConfig
 {
-    public class OfferConfig : IEntityTypeConfiguration<Offers>
+    public class OfferConfig : IEntityTypeConfiguration<Offer>
     {
-        public void Configure(EntityTypeBuilder<Offers> builder)
+        public void Configure(EntityTypeBuilder<Offer> builder)
         {
             builder.ToTable("Offer");
             builder.HasKey(i => i.OfferId);
@@ -21,20 +21,20 @@ namespace Infraestructure.EntityConfig
             builder.Property(d => d.AvailabilityChangeOfResidence).IsRequired();
             builder.Property(d => d.StudyTypeId).IsRequired();
             builder.Property(d => d.Status).IsRequired();
-            builder.HasOne<StudyTypes>(j => j.StudyType)
+            builder.HasOne<StudyType>(j => j.StudyType)
                    .WithMany(o => o.Offers)
                    .HasForeignKey(o => o.StudyTypeId);
-            builder.HasOne<JobOfferModes>(j => j.JobOfferMode)
+            builder.HasOne<JobOfferMode>(j => j.JobOfferMode)
                    .WithMany(o => o.Offers)
                    .HasForeignKey(o => o.JobOfferModeId);
-            builder.HasOne<Cities>(j => j.City)
+            builder.HasOne<City>(j => j.City)
                    .WithMany(o => o.Offers)
                    .HasForeignKey(o => o.CityId);   
-            builder.HasMany<Applications>(j => j.Applications)
+            builder.HasMany<Domain.Entities.Aplication>(j => j.Applications)
                    .WithOne(c => c.Offer)
                    .HasForeignKey(c => c.OfferId);
             builder.HasData(
-                    new Offers
+                    new Offer
                     {
                         OfferId = Guid.NewGuid(),
                         CompanyId = 1,
@@ -48,7 +48,7 @@ namespace Infraestructure.EntityConfig
                         StudyTypeId = 1,
                         Status = true
                     },
-                    new Offers
+                    new Offer
                     {
                         OfferId = Guid.NewGuid(),
                         CompanyId = 1,

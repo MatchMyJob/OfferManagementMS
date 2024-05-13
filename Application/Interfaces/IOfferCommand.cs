@@ -2,7 +2,7 @@
 
 namespace Application.Interfaces
 {
-    public interface IOfferCommand : ICommand<Offers, Guid>
+    public interface IOfferCommand : ICommand<Offer, Guid>
     {
     }
 }

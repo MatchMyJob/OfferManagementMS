@@ -23,13 +23,13 @@ namespace Application.UseCase.Services
         {
             try
             {
-                var offer = _mapper.Map<Offers>(request);
+                var offer = _mapper.Map<Offer>(request);
                 offer.Status = true;
                 offer.OfferId = Guid.NewGuid();
 
                 request.Categories.ForEach(c =>
                 {
-                    offer.OfferCategories.Add(new OfferCategories
+                    offer.OfferCategories.Add(new OfferCategory
                     {
                         OfferId = offer.OfferId,
                         CategoryId = c
@@ -38,7 +38,7 @@ namespace Application.UseCase.Services
 
                 request.Skills.ForEach(sk =>
                 {
-                    offer.OfferSkills.Add(new OfferSkills
+                    offer.OfferSkills.Add(new OfferSkill
                     {
                         OfferId = offer.OfferId,
                         SkillId = sk

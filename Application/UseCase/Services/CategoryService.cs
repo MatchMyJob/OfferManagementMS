@@ -27,7 +27,7 @@ namespace Application.UseCase.Services
         {
             try
             {
-                Categories category = _mapper.Map<Categories>(request);
+                Category category = _mapper.Map<Category>(request);
                 var entity = await _repository.Insert(category);
                 return _mapper.Map<CategoryResponse>(entity);
             }
@@ -89,7 +89,7 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-                Paged<Categories> list = await _query.RecoveryAll(parameters);
+                Paged<Category> list = await _query.RecoveryAll(parameters);
                 List<CategoryResponse> listAux = new();
                 list.Data.ForEach(e => listAux.Add(_mapper.Map<CategoryResponse>(e)));
 

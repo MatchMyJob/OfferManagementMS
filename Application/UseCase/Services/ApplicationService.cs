@@ -28,7 +28,7 @@ namespace Application.UseCase.Services
         {
             try
             {
-                Applications entity = _mapper.Map<Applications>(request);
+                Domain.Entities.Aplication entity = _mapper.Map<Domain.Entities.Aplication>(request);
                 entity = await _repository.Insert(entity);
                 return _mapper.Map<ApplicationResponse>(entity);
             }
@@ -89,7 +89,7 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-                Paged<Applications> list = await _applicationQuery.RecoveryAll(parameters);
+                Paged<Domain.Entities.Aplication> list = await _applicationQuery.RecoveryAll(parameters);
                 List<ApplicationResponse> listAux = new();
                 list.Data.ForEach(e => listAux.Add(_mapper.Map<ApplicationResponse>(e)));
 
@@ -151,7 +151,7 @@ namespace Application.UseCase.Services
                 }
                 */
 
-                var application = _mapper.Map<Applications>(request);
+                var application = _mapper.Map<Domain.Entities.Aplication>(request);
                 application = await _repository.Update(application);
 
                 //HARDCORE - ACA LE TENES QUE UPDATEAR LOS DATOS O EN EL GENERIC ? PORQUE NO ES GENERIC EL UPDATE....

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infraestructure.EntityConfig
 {
-    public class OfferCategoryConfig : IEntityTypeConfiguration<OfferCategories>
+    public class OfferCategoryConfig : IEntityTypeConfiguration<OfferCategory>
     {
-        public void Configure(EntityTypeBuilder<OfferCategories> builder)
+        public void Configure(EntityTypeBuilder<OfferCategory> builder)
         {
             builder.ToTable("OfferCategory");
             builder.HasKey(i => i.OfferCategoryId);
@@ -14,10 +14,10 @@ namespace Infraestructure.EntityConfig
             builder.Property(o => o.OfferId).IsRequired();
             builder.Property(c => c.CategoryId).IsRequired();
             builder.Property(s => s.Status).IsRequired();
-            builder.HasOne<Offers>(j => j.Offer)
+            builder.HasOne<Offer>(j => j.Offer)
                .WithMany(c => c.OfferCategories)
                .HasForeignKey(c => c.OfferId);
-            builder.HasOne<Categories>(j => j.Category)
+            builder.HasOne<Category>(j => j.Category)
                .WithMany(c => c.OfferCategories)
                .HasForeignKey(c => c.CategoryId);
         }

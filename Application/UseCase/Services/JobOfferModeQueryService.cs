@@ -23,7 +23,7 @@ namespace Application.UseCase.Services
             try
             {
                 List<JobOfferModeResponse> responseList = new();
-                List<JobOfferModes> jobOfferModes = await _query.RecoveryAll();
+                List<JobOfferMode> jobOfferModes = await _query.RecoveryAll();
                 jobOfferModes.ForEach(e =>
                 {
                     var categoryResponse = _mapper.Map<JobOfferModeResponse>(e);

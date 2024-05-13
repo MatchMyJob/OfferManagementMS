@@ -2,7 +2,7 @@
 
 namespace Application.Interfaces
 {
-    public interface IApplicationQuery : IQuery<Applications, int>
+    public interface IApplicationQuery : IQuery<Domain.Entities.Aplication, int>
     {
 
 

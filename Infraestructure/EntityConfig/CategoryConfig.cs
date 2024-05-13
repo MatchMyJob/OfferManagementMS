@@ -4,137 +4,137 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infraestructure.EntityConfig
 {
-    public class CategoryConfig : IEntityTypeConfiguration<Categories>
+    public class CategoryConfig : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<Categories> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.ToTable("Category");
             builder.HasKey(i => i.CategoryId);
             builder.Property(i => i.CategoryId).ValueGeneratedOnAdd();
             builder.Property(n => n.Name).IsRequired();
-            builder.HasData(new Categories
+            builder.HasData(new Category
             {
                 CategoryId = 1,
                 Name = "Administración, Contabilidad y Finanzas"
 
             },
-            new Categories
+            new Category
             {
                 CategoryId = 2,
                 Name = "Comercial, Ventas y Negocios"
 
             },
-            new Categories
+            new Category
             {
                 CategoryId = 3,
                 Name = "Oficios y Otros"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 4,
                 Name = "Gastronomía y Turismo"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 5,
                 Name = "Abastecimiento y Logística"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 6,
                 Name = "Atención al Cliente, Call Center y Telemarketing"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 7,
                 Name = "Recursos Humanos y Capacitación"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 8,
                 Name = "Salud, Medicina y Farmacia"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 9,
                 Name = "Tecnología, Sistemas y Telecomunicaciones"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 10,
                 Name = "Marketing y Publicidad"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 11,
                 Name = "Producción y Manufactura"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 12,
                 Name = "Ingenierías"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 13,
                 Name = "Secretarias y Recepción"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 14,
                 Name = "Legales"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 15,
                 Name = "Aduana y Comercio Exterior"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 16,
                 Name = "Ingeniería Civil y Construcción"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 17,
                 Name = "Diseño"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 18,
                 Name = "Seguros"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 19,
                 Name = "Gerencia y Dirección General"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 20,
                 Name = "Comunicación, Relaciones Institucionales y Públicas"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 21,
                 Name = "Educación, Docencia e Investigación"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 22,
                 Name = "Departamento Tecnico"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 23,
                 Name = "Enfermería"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 24,
                 Name = "Minería, Petróleo y Gas"
             },
-            new Categories
+            new Category
             {
                 CategoryId = 25,
                 Name = "Naviero, Maritimo, Portuario"

@@ -1,10 +1,10 @@
 ﻿namespace Domain.Entities
 {
-    public class Countries
+    public class Country
     {
         public int CountryId { get; set; }
         public string Name { get; set; }
-        public List<Provinces> Provinces { get; set; }
+        public List<Province> Provinces { get; set; }
 
     }
 }

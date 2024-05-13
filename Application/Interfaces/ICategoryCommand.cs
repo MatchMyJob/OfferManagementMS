@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace Application.Interfaces
 {
-    public interface ICategoryCommand : ICommand<Categories, int>
+    public interface ICategoryCommand : ICommand<Category, int>
     {
 
 

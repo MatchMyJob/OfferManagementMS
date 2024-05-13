@@ -27,7 +27,7 @@ namespace Application.UseCase.Services
         {
             try
             {
-                Skills entity = _mapper.Map<Skills>(request);
+                Skill entity = _mapper.Map<Skill>(request);
                 entity = await _repository.Insert(entity);
                 return _mapper.Map<SkillResponse>(entity);
             }
@@ -87,7 +87,7 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-                Paged<Skills> list = await _query.RecoveryAll(parameters);
+                Paged<Skill> list = await _query.RecoveryAll(parameters);
                 List<SkillResponse> listAux = new();
                 list.Data.ForEach(e => listAux.Add(_mapper.Map<SkillResponse>(e)));
 

@@ -4,81 +4,81 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infraestructure.EntityConfig
 {
-    public class SkillConfig : IEntityTypeConfiguration<Skills>
+    public class SkillConfig : IEntityTypeConfiguration<Skill>
     {
-        public void Configure(EntityTypeBuilder<Skills> builder)
+        public void Configure(EntityTypeBuilder<Skill> builder)
         {
             builder.ToTable("Skill");
             builder.HasKey(i => i.SkillId);
             builder.Property(i => i.SkillId).ValueGeneratedOnAdd();
             builder.Property(n => n.Name).IsRequired();
             builder.HasData(
-            new Skills
+            new Skill
             {
                 SkillId = 1,
                 Name = "Proactividad"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 2,
                 Name = "Comunicación efectiva"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 3,
                 Name = "Trabajo en equipo"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 4,
                 Name = "Pensamiento crítico"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 5,
                 Name = "Resolución de problemas"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 6,
                 Name = "Creatividad"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 7,
                 Name = "Adaptabilidad"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 8,
                 Name = "Gestión del tiempo"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 9,
                 Name = "Liderazgo"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 10,
                 Name = "Habilidades tecnológicas"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 11,
                 Name = "Empatía"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 12,
                 Name = "Toma de decisiones"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 13,
                 Name = "Tolerancia a la frustración"
             },
-            new Skills
+            new Skill
             {
                 SkillId = 14,
                 Name = "Pensamiento estratégico"

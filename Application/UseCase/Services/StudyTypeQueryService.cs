@@ -23,7 +23,7 @@ namespace Application.UseCase.Services
             try
             {
                 List<StudyTypeResponse> responseList = new();
-                List<StudyTypes> studyTypes = await _query.RecoveryAll();
+                List<StudyType> studyTypes = await _query.RecoveryAll();
                 studyTypes.ForEach(e =>
                 {
                     var studyTypeResponse = _mapper.Map<StudyTypeResponse>(e);

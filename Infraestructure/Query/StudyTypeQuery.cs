@@ -17,21 +17,21 @@ namespace Infraestructure.Query
             _context = context;
         }
         
-        public async Task<List<StudyTypes>> RecoveryAll()
+        public async Task<List<StudyType>> RecoveryAll()
         {
-            List<StudyTypes> studyType = await _context.StudyType
+            List<StudyType> studyType = await _context.StudyTypes
                 .ToListAsync();
             return studyType;
         }
 
-        public Task<Paged<StudyTypes>> RecoveryAll(Parameters parameters)
+        public Task<Paged<StudyType>> RecoveryAll(Parameters parameters)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<StudyTypes> RecoveryById(int id)
+        public async Task<StudyType> RecoveryById(int id)
         {
-            var studyType = await _context.StudyType
+            var studyType = await _context.StudyTypes
                 .FirstOrDefaultAsync(p => p.StudyTypeId == id);
 
             if (studyType == null)

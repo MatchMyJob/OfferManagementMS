@@ -27,7 +27,7 @@ namespace Application.UseCase.Services
         {
             try
             {
-                StudyTypes entity = _mapper.Map<StudyTypes>(request);
+                StudyType entity = _mapper.Map<StudyType>(request);
                 entity = await _repository.Insert(entity);
                 return _mapper.Map<StudyTypeResponse>(entity);
             }
@@ -87,7 +87,7 @@ namespace Application.UseCase.Services
                     throw new BadRequestException("Ingrese valores válidos para pagedNumber y pagedSize.");
                 }
 
-                Paged<StudyTypes> list = await _query.RecoveryAll(parameters);
+                Paged<StudyType> list = await _query.RecoveryAll(parameters);
                 List<StudyTypeResponse> listAux = new();
                 list.Data.ForEach(e => listAux.Add(_mapper.Map<StudyTypeResponse>(e)));
 

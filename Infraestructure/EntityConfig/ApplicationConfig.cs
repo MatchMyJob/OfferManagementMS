@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infraestructure.EntityConfig
 {
-    public class ApplicationConfig : IEntityTypeConfiguration<Applications>
+    public class ApplicationConfig : IEntityTypeConfiguration<Domain.Entities.Aplication>
     {
-        public void Configure(EntityTypeBuilder<Applications> builder)
+        public void Configure(EntityTypeBuilder<Domain.Entities.Aplication> builder)
         {
             builder.ToTable("Application");
             builder.HasKey(i => i.ApplicationId);
@@ -16,10 +16,10 @@ namespace Infraestructure.EntityConfig
             builder.Property(o => o.OfferId).IsRequired();
             builder.Property(o => o.ApplicationDate).IsRequired();
             builder.Property(o => o.Status).IsRequired();
-            builder.HasOne<Offers>(j => j.Offer)
+            builder.HasOne<Offer>(j => j.Offer)
                    .WithMany(c => c.Applications)
                    .HasForeignKey(c => c.OfferId);
-            builder.HasOne<ApplicationStatusTypes>(j => j.ApplicationStatusType)
+            builder.HasOne<ApplicationStatusType>(j => j.ApplicationStatusType)
                    .WithMany(c => c.Applications)
                    .HasForeignKey(c => c.ApplicationStatusTypeId);
         }

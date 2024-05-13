@@ -2,9 +2,9 @@
 
 namespace Application.Interfaces
 {
-    public interface ICategoryQuery : IQuery<Categories, int>
+    public interface ICategoryQuery : IQuery<Category, int>
     {
-        Task<List<Categories>> RecoveryAll();
+        Task<List<Category>> RecoveryAll();
     }
     
 }

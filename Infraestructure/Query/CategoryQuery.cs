@@ -18,21 +18,21 @@ namespace Infraestructure.Query
         }
         
         
-        public async Task<List<Categories>> RecoveryAll()
+        public async Task<List<Category>> RecoveryAll()
         {
-            List<Categories> categories = await _context.Category
+            List<Category> categories = await _context.Categories
                 .ToListAsync();
             return categories;
         }
 
-        public Task<Paged<Categories>> RecoveryAll(Parameters parameters)
+        public Task<Paged<Category>> RecoveryAll(Parameters parameters)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Categories> RecoveryById(int id)
+        public async Task<Category> RecoveryById(int id)
         {
-            var category = await _context.Category
+            var category = await _context.Categories
                 .FirstOrDefaultAsync(c => c.CategoryId == id);
 
             if (category == null)
