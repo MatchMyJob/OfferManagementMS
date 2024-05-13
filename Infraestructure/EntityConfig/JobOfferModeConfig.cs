@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,23 +11,16 @@ namespace Infraestructure.EntityConfig
         {
             builder.ToTable("JobOfferMode");
             builder.HasKey(i => i.JobOfferModeId);
-            builder.Property(i => i.JobOfferModeId).ValueGeneratedOnAdd();
-            builder.Property(n => n.Name).IsRequired();
-            builder.HasData(new JobOfferMode
-            {
-                JobOfferModeId = 1,
-                Name = "Presencial"
-            },
-            new JobOfferMode
-            {
-                JobOfferModeId = 2,
-                Name = "Remoto"
-            },
-            new JobOfferMode
-            {
-                JobOfferModeId = 3,
-                Name = "Hibrido"
-            });
+            builder.Property(i => i.JobOfferModeId);
+            builder.Property(n => n.Name)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder.HasMany<Offer>(o => o.Offers)
+                   .WithOne(o => o.JobOfferMode)
+                   .HasForeignKey(o => o.JobOfferModeId);
+
+            JobOfferModeData.SeedData(builder);
         }
     }
 }

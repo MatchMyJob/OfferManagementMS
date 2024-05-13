@@ -5,7 +5,6 @@
         public int OfferCategoryId { get; set; }
         public Guid OfferId { get; set; }
         public int CategoryId { get; set; }
-        public bool Status { get; set; }
         public Offer Offer { get; set; }
         public Category Category { get; set; }
     }

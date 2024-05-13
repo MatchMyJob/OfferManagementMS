@@ -16,9 +16,11 @@ namespace Infraestructure.EntityConfig
             builder.Property(o => o.OfferId).IsRequired();
             builder.Property(o => o.ApplicationDate).IsRequired();
             builder.Property(o => o.Status).IsRequired();
+
             builder.HasOne<Offer>(j => j.Offer)
                    .WithMany(c => c.Applications)
                    .HasForeignKey(c => c.OfferId);
+
             builder.HasOne<ApplicationStatusType>(j => j.ApplicationStatusType)
                    .WithMany(c => c.Applications)
                    .HasForeignKey(c => c.ApplicationStatusTypeId);

@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
+using Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Diagnostics.Metrics;
 
 namespace Infraestructure.EntityConfig
 {
@@ -11,11 +11,15 @@ namespace Infraestructure.EntityConfig
         {
             builder.ToTable("Country");
             builder.HasKey(i => i.CountryId);
-            builder.Property(i => i.CountryId).ValueGeneratedOnAdd();
-            builder.Property(n => n.Name).IsRequired();
-            builder.HasData(
-                new Country { CountryId = 1, Name = "Argentina" }
-                );
+            builder.Property(n => n.Name)
+                   .IsRequired()
+                   .HasMaxLength(50);
+
+            builder.HasMany<Province>(p => p.Provinces)
+                   .WithOne(c => c.Country)
+                   .HasForeignKey(fk => fk.CountryId);
+
+            CountryData.SeedData(builder);
         }
     }
 }

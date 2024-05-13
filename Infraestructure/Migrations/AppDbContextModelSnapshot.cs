@@ -22,51 +22,7 @@ namespace Infraestructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Domain.Entities.ApplicationStatusTypes", b =>
-                {
-                    b.Property<int>("ApplicationStatusTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ApplicationStatusTypeId"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ApplicationStatusTypeId");
-
-                    b.ToTable("ApplicationStatusType", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            ApplicationStatusTypeId = 1,
-                            Name = "CV Enviado"
-                        },
-                        new
-                        {
-                            ApplicationStatusTypeId = 2,
-                            Name = "CV Leido"
-                        },
-                        new
-                        {
-                            ApplicationStatusTypeId = 3,
-                            Name = "Contactado"
-                        },
-                        new
-                        {
-                            ApplicationStatusTypeId = 4,
-                            Name = "Avisos Activos"
-                        },
-                        new
-                        {
-                            ApplicationStatusTypeId = 5,
-                            Name = "Avisos Finalizados"
-                        });
-                });
-
-            modelBuilder.Entity("Domain.Entities.Applications", b =>
+            modelBuilder.Entity("Domain.Entities.Aplication", b =>
                 {
                     b.Property<int>("ApplicationId")
                         .ValueGeneratedOnAdd()
@@ -98,7 +54,47 @@ namespace Infraestructure.Migrations
                     b.ToTable("Application", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Entities.Categories", b =>
+            modelBuilder.Entity("Domain.Entities.ApplicationStatusType", b =>
+                {
+                    b.Property<int>("ApplicationStatusTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ApplicationStatusTypeId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("ApplicationStatusTypeId");
+
+                    b.ToTable("ApplicationStatusType", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ApplicationStatusTypeId = 1,
+                            Name = "CV Visto"
+                        },
+                        new
+                        {
+                            ApplicationStatusTypeId = 2,
+                            Name = "En Proceso"
+                        },
+                        new
+                        {
+                            ApplicationStatusTypeId = 3,
+                            Name = "En Contacto"
+                        },
+                        new
+                        {
+                            ApplicationStatusTypeId = 4,
+                            Name = "Finalizado"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -108,7 +104,8 @@ namespace Infraestructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("CategoryId");
 
@@ -118,7 +115,7 @@ namespace Infraestructure.Migrations
                         new
                         {
                             CategoryId = 1,
-                            Name = "Administración, Contabilidad y Finanzas"
+                            Name = "Diseño y Desarrollo"
                         },
                         new
                         {
@@ -128,57 +125,57 @@ namespace Infraestructure.Migrations
                         new
                         {
                             CategoryId = 3,
-                            Name = "Oficios y Otros"
+                            Name = "Administración, Contabilidad y Finanzas"
                         },
                         new
                         {
                             CategoryId = 4,
-                            Name = "Gastronomía y Turismo"
-                        },
-                        new
-                        {
-                            CategoryId = 5,
-                            Name = "Abastecimiento y Logística"
-                        },
-                        new
-                        {
-                            CategoryId = 6,
-                            Name = "Atención al Cliente, Call Center y Telemarketing"
-                        },
-                        new
-                        {
-                            CategoryId = 7,
-                            Name = "Recursos Humanos y Capacitación"
-                        },
-                        new
-                        {
-                            CategoryId = 8,
-                            Name = "Salud, Medicina y Farmacia"
-                        },
-                        new
-                        {
-                            CategoryId = 9,
-                            Name = "Tecnología, Sistemas y Telecomunicaciones"
-                        },
-                        new
-                        {
-                            CategoryId = 10,
-                            Name = "Marketing y Publicidad"
-                        },
-                        new
-                        {
-                            CategoryId = 11,
-                            Name = "Producción y Manufactura"
-                        },
-                        new
-                        {
-                            CategoryId = 12,
                             Name = "Ingenierías"
                         },
                         new
                         {
-                            CategoryId = 13,
+                            CategoryId = 5,
+                            Name = "Tecnología, Sistemas y Telecomunicaciones"
+                        },
+                        new
+                        {
+                            CategoryId = 6,
                             Name = "Secretarias y Recepción"
+                        },
+                        new
+                        {
+                            CategoryId = 7,
+                            Name = "Oficios y Otros"
+                        },
+                        new
+                        {
+                            CategoryId = 8,
+                            Name = "Gastronomía y Turismo"
+                        },
+                        new
+                        {
+                            CategoryId = 9,
+                            Name = "Abastecimiento y Logística"
+                        },
+                        new
+                        {
+                            CategoryId = 10,
+                            Name = "Atención al Cliente, Call Center y Telemarketing"
+                        },
+                        new
+                        {
+                            CategoryId = 11,
+                            Name = "Recursos Humanos y Capacitación"
+                        },
+                        new
+                        {
+                            CategoryId = 12,
+                            Name = "Salud, Medicina y Farmacia"
+                        },
+                        new
+                        {
+                            CategoryId = 13,
+                            Name = "Producción y Manufactura"
                         },
                         new
                         {
@@ -198,22 +195,17 @@ namespace Infraestructure.Migrations
                         new
                         {
                             CategoryId = 17,
-                            Name = "Diseño"
-                        },
-                        new
-                        {
-                            CategoryId = 18,
                             Name = "Seguros"
                         },
                         new
                         {
-                            CategoryId = 19,
+                            CategoryId = 18,
                             Name = "Gerencia y Dirección General"
                         },
                         new
                         {
                             CategoryId = 20,
-                            Name = "Comunicación, Relaciones Institucionales y Públicas"
+                            Name = "Comunicación y Relaciones Públicas"
                         },
                         new
                         {
@@ -239,10 +231,20 @@ namespace Infraestructure.Migrations
                         {
                             CategoryId = 25,
                             Name = "Naviero, Maritimo, Portuario"
+                        },
+                        new
+                        {
+                            CategoryId = 26,
+                            Name = "Marketing y Publicidad"
+                        },
+                        new
+                        {
+                            CategoryId = 27,
+                            Name = "Marketing y Publicidad"
                         });
                 });
 
-            modelBuilder.Entity("Domain.Entities.Cities", b =>
+            modelBuilder.Entity("Domain.Entities.City", b =>
                 {
                     b.Property<int>("CityId")
                         .ValueGeneratedOnAdd()
@@ -12758,7 +12760,7 @@ namespace Infraestructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Entities.Countries", b =>
+            modelBuilder.Entity("Domain.Entities.Country", b =>
                 {
                     b.Property<int>("CountryId")
                         .ValueGeneratedOnAdd()
@@ -12768,7 +12770,8 @@ namespace Infraestructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("CountryId");
 
@@ -12782,7 +12785,7 @@ namespace Infraestructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Entities.JobOfferModes", b =>
+            modelBuilder.Entity("Domain.Entities.JobOfferMode", b =>
                 {
                     b.Property<int>("JobOfferModeId")
                         .ValueGeneratedOnAdd()
@@ -12792,7 +12795,8 @@ namespace Infraestructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("JobOfferModeId");
 
@@ -12807,65 +12811,16 @@ namespace Infraestructure.Migrations
                         new
                         {
                             JobOfferModeId = 2,
-                            Name = "Remoto"
+                            Name = "Hibrido"
                         },
                         new
                         {
                             JobOfferModeId = 3,
-                            Name = "Hibrido"
+                            Name = "Remoto"
                         });
                 });
 
-            modelBuilder.Entity("Domain.Entities.OfferCategories", b =>
-                {
-                    b.Property<int>("OfferCategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OfferCategoryId"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("OfferId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("OfferCategoryId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("OfferId");
-
-                    b.ToTable("OfferCategory", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.Entities.OfferSkills", b =>
-                {
-                    b.Property<int>("OfferSkillId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OfferSkillId"));
-
-                    b.Property<Guid>("OfferId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("SkillId")
-                        .HasColumnType("int");
-
-                    b.HasKey("OfferSkillId");
-
-                    b.HasIndex("OfferId");
-
-                    b.HasIndex("SkillId");
-
-                    b.ToTable("OfferSkill", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.Entities.Offers", b =>
+            modelBuilder.Entity("Domain.Entities.Offer", b =>
                 {
                     b.Property<Guid>("OfferId")
                         .ValueGeneratedOnAdd()
@@ -12905,7 +12860,7 @@ namespace Infraestructure.Migrations
                     b.Property<DateTime>("PublicationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 5, 6, 0, 2, 36, 304, DateTimeKind.Local).AddTicks(8440));
+                        .HasDefaultValue(new DateTime(2024, 5, 13, 19, 39, 3, 234, DateTimeKind.Local).AddTicks(8443));
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
@@ -12933,41 +12888,1753 @@ namespace Infraestructure.Migrations
                     b.HasData(
                         new
                         {
-                            OfferId = new Guid("a2fb50cf-cdd2-4dcc-985d-c7897f80a7a3"),
+                            OfferId = new Guid("d4b57950-3920-4a06-a7f6-76bfb5e1d501"),
                             AvailabilityChangeOfResidence = false,
                             AvailabilityToTravel = false,
-                            CityId = 60343,
+                            CityId = 22007,
                             CompanyId = 1,
-                            Description = "Los profesionales de Client Financial Management (CFM) dan soporte al control de gestión financiera de proyectos para clientes globales. Brinda servicios de control de gestión desde el inicio hasta la finalización del contrato realizando análisis de presupuestos y seguimiento de proyección financiera, conciliación de servicios vs facturación y cobros, incluyendo el monitoreo de variaciones y el seguimiento de discrepancias. Además de brindar asesoramiento para nuestros directivos corporativos y los equipos relacionados con los clientes.\r\n\r\nEntre las tareas diarias se encuentran:\r\n\r\nAnálisis de datos históricos para precisión en el armado de presupuesto\r\nAsistir/Asesorar en actividades de presupuesto.\r\nCreación y manejo de reportes y análisis de control de gestión para la identificación de “red flags” ante posibles desvíos.\r\nFacturación de servicios al cliente. Seguimiento de facturación y cobro.\r\nCumplimiento de procesos con cierres en fechas establecidas mensualmente.\r\nConciliación de servicios vs facturación y cobros, incluyendo el monitoreo de variaciones.\r\nAsistir al líder de proyecto en la creación de valor para la gestión financiera.\r\nJob Qualifications\r\n\r\nRequisitos excluyentes:\r\n\r\nEstudiante o graduado de carreras de Ciencias Económicas o afines\r\nPoseer + 1 año de experiencia laboral en tareas administrativas, contables, financieras o en posiciones similares\r\nDisponibilidad para trabajar full-time\r\nConocimiento de inglés avanzado\r\nConocimiento de excel intermedio/avanzado\r\nBuena comunicación (oral y escrita) y aptitudes interpersonales.\r\nAtención al detalle\r\n",
+                            Description = "En IBM, el trabajo es más que un trabajo, es una vocación: Construir. Diseñar. Codificar. Consultar. Pensar con los clientes y vender. Crear mercado. Inventar. Colaborar. No solo para hacer algo mejor, sino para intentar cosas que nunca creyó posibles. Estar al frente en esta nueva era de la tecnología y resolver algunos de los problemas más exigentes del mundo.\r\n\r\nSu función y responsabilidades\r\n\r\nLos estudiantes son empleados que se contratan para que desempeñen una labor preprofesional/profesional mientras estudian en la universidad/institución educativa o justo después de haber obtenido su titulación y que trabajan para IBM como parte necesaria de su programa académico o que trabajan durante las vacaciones o períodos festivos o como curso en prácticas; por ejemplo, las colaboraciones y los graduados en prácticas.",
                             JobOfferModeId = 1,
                             MaxSalary = 0,
                             MinSalary = 0,
-                            PublicationDate = new DateTime(2024, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PublicationDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = true,
-                            StudyTypeId = 1,
-                            Title = "Analistas y Analistas Sr. Financieros/Contables - Control de Gestión",
+                            StudyTypeId = 4,
+                            Title = "Blue Journey Programa de Pasantía 2do Semestre Argentina 2024 ",
                             Vacancies = 0
                         },
                         new
                         {
-                            OfferId = new Guid("f2ad33b5-4ba2-4a08-9e66-8a9463b0931f"),
+                            OfferId = new Guid("e4e8d3ec-9df2-46dc-a465-dc17a7815d56"),
                             AvailabilityChangeOfResidence = false,
                             AvailabilityToTravel = false,
-                            CityId = 60343,
+                            CityId = 22007,
                             CompanyId = 1,
-                            Description = "Los profesionales de Client Financial Management (CFM) dan soporte al control de gestión financiera de proyectos para clientes globales. Brinda servicios de control de gestión desde el inicio hasta la finalización del contrato realizando análisis de presupuestos y seguimiento de proyección financiera, conciliación de servicios vs facturación y cobros, incluyendo el monitoreo de variaciones y el seguimiento de discrepancias. Además de brindar asesoramiento para nuestros directivos corporativos y los equipos relacionados con los clientes.\r\n\r\nEntre las tareas diarias se encuentran:\r\n\r\nAnálisis de datos históricos para precisión en el armado de presupuesto\r\nAsistir/Asesorar en actividades de presupuesto.\r\nCreación y manejo de reportes y análisis de control de gestión para la identificación de “red flags” ante posibles desvíos.\r\nFacturación de servicios al cliente. Seguimiento de facturación y cobro.\r\nCumplimiento de procesos con cierres en fechas establecidas mensualmente.\r\nConciliación de servicios vs facturación y cobros, incluyendo el monitoreo de variaciones.\r\nAsistir al líder de proyecto en la creación de valor para la gestión financiera.\r\nJob Qualifications\r\n\r\nRequisitos excluyentes:\r\n\r\nEstudiante o graduado de carreras de Ciencias Económicas o afines\r\nPoseer + 1 año de experiencia laboral en tareas administrativas, contables, financieras o en posiciones similares\r\nDisponibilidad para trabajar full-time\r\nConocimiento de inglés avanzado\r\nConocimiento de excel intermedio/avanzado\r\nBuena comunicación (oral y escrita) y aptitudes interpersonales.\r\nAtención al detalle\r\n",
+                            Description = "En este rol, trabajarás en uno de nuestros Centros de Innovación para Clientes de Consultoría de IBM (Centros de Entrega), donde ofrecemos una profunda experiencia técnica e industrial a una amplia gama de clientes del sector público y privado en todo el mundo. Nuestros centros de entrega ofrecen a nuestros clientes habilidades y experiencia técnica basadas localmente para impulsar la innovación y la adopción de nuevas tecnologías.\r\n\r\nUna carrera en Consultoría de IBM se fundamenta en relaciones a largo plazo y una estrecha colaboración con clientes en todo el mundo.\r\n\r\nTrabajarás con visionarios de múltiples industrias para mejorar el viaje hacia la nube híbrida y la inteligencia artificial para las empresas más innovadoras y valiosas del mundo. Tu capacidad para acelerar el impacto y lograr cambios significativos para tus clientes está habilitada por nuestro ecosistema de socios estratégicos y nuestras sólidas plataformas tecnológicas en todo el portafolio de IBM; incluyendo Software y Red Hat.\r\n",
                             JobOfferModeId = 1,
                             MaxSalary = 0,
                             MinSalary = 0,
-                            PublicationDate = new DateTime(2024, 5, 6, 0, 2, 36, 305, DateTimeKind.Local).AddTicks(4502),
+                            PublicationDate = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = true,
-                            StudyTypeId = 1,
-                            Title = "Analistas y Analistas Sr. Financieros/Contables - Control de Gestión",
+                            StudyTypeId = 4,
+                            Title = "Developer .Net Core BE",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("c2d4bb58-aa15-4659-8f42-e4e6326b6cf2"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 1,
+                            Description = "En este puesto, trabajará en uno de nuestros Centros de Innovación de Clientes de IBM Consulting (Centros de Entrega), donde brindamos una profunda experiencia técnica y de la industria a una amplia gama de clientes de los sectores público y privado en todo el mundo. Nuestros centros de entrega ofrecen nuestra Habilidades y experiencia técnica de nuestros clientes a nivel local para impulsar la innovación y la adopción de nuevas tecnologías.\r\n",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Desarrollador BE Broker API SSR ",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("3b481a4c-0c63-4ff8-b1e4-0c726d300e0c"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 1,
+                            Description = "As a Consultant you will serve as a client-facing practitioner who sells, leads and implements expert services utilizing the breadth of IBM's offerings and technologies. A successful Consultant is regarded by clients as a trusted business advisor who collaborates to provide innovative solutions used to solve the most challenging business problems.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "SAP MM Consultant",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("fd98a956-2a04-4a29-89a6-fce06f13803f"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 1,
+                            Description = "We are looking for Tax Analysts\r\n\r\nWhat are you going to do?\r\n\r\nYou will carry out the settlement and payment of Indirect Taxes of Canada / US.\r\n\r\nYou will enter Accounting Entries and do Variation Analysis.\r\n\r\nYou will support the accounting area in reconciliations.\r\n\r\nYou will do maintenance of controls, preparation and compliance with the audit.\r\n\r\nYou will participate in the standardization of processes and in the assembly of electronic books.\r\n\r\nYou will carry out the settlement and payment of Indirect Taxes of Canada / US.\r\n\r\nYou will enter Accounting Entries and do Variation Analysis.\r\n\r\nYou will support the accounting area in reconciliations.\r\n\r\nYou will do maintenance of controls, preparation and compliance with the audit.\r\n\r\nYou will participate in the standardization of processes and in the assembly of electronic books.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "US Tax Professional",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("90cc7e80-982b-4f36-8986-529bd7c11a1f"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 1,
+                            Description = "Outbound logistic: outbound delivery process with route determination, availability check, picking and packing integrated with 3PL warehouse system\r\nEDI integration for ASN to ship to party\r\nInbound logistic: inbound delivery process with good receipts integrated with 3PL warehouse system\r\nSubcontracting for minor change to the product executed by local supplier \r\nStock adjustment and material movement (quality, block, unrestricted) integrated with 3PL warehouse system",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "SAP PM Sr",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("f91f3aa0-66a8-4f4b-81e6-87d01e681d8d"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 60568,
+                            CompanyId = 2,
+                            Description = "Mantenimiento y actualización de base de datos de variables logísticas y ajustar proyección de volúmenes de transporte y costo estándar asociado * Generación, Mantenimiento de bases de datos operativos * Generación, Mantenimiento y actualización de KPIs operativos, costos , pagos * Asistir al análisis técnico del armado del presupuesto * Realizar los cálculos técnicos frente a propuestas de mejoras operativas y cuantificar los ahorros.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("1539bb63-c5f2-4a8d-8843-7988d20669ec"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 2,
+                            Description = "Analizar en forma constante la seguridad de instalaciones y envíos, detectando oportunidades de mejora y eficientizando las medidas preventivas necesarias.\r\nEfectuar el análisis de zonas y rutas peligrosas, manteniendo actualizado el mapa de situación general en coordinación con el área operativa.\r\nRealizar la explotación de datos y análisis de incidentes en la cadena para efectuar las recomendaciones o propuestas que mitiguen la consecuencia de los mismos.\r\nConducir la revisión permanente de procesos y procedimientos de seguridad.\r\nGenerar las auditorías e informes relacionados con las certificaciones y habilitaciones actuales y futuras.\r\nImplementar el plan de capacitación general de seguridad para el personal de la gerencia y de la empresa en su conjunto.\r\nGenerar y mantener actualizados planes de gerenciamiento de riesgo en el transporte.\r\nAnalizar las métricas y su consiguiente explotación para apoyo en la toma de decisiones basadas en análisis de datos.\r\nParticipar en la capacitación y concientización de todo el personal de la empresa en lo relacionado con sus funciones.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista Senior de Prevención de Pérdidas",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("8a1a3ef3-358d-4cc2-8633-dbd57ac52006"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 3,
+                            Description = "Desarrollo de aplicaciones en PowerApps;\r\n\r\nDescripción de rutinas automatizadas en Power Automate;\r\n\r\nMapeo de procesos, interpretación de las necesidades de las partes interesadas y traducción al lenguaje técnico de desarrollo;\r\n\r\nLiderando proyectos locales e internacionales;\r\n\r\nApoyar el liderazgo en el seguimiento y definición de proyectos;\r\n\r\nDesarrollo de aplicaciones híbridas;\r\n\r\nUtilización de la plataforma Azure para la integración de datos;\r\n\r\nRelación con usuarios clave y liderazgo de proyectos.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Business Intelligence Analyst",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("e5acde91-155a-4b5e-a0a1-f081298b1832"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 3,
+                            Description = "Liderar la ejecución del programa de Compliance (Gobernanza& Cultura ,Comunicación & Capacitación, Seguimiento & Cierre de brechas) de Región Plata.\r\nDesarrollar e implementar los planes de entrenamiento de Compliance, asegurando la realización de las capacitaciones obligatorios de Compliance del mercado.\r\n Contribuir a las auditorías internas para identificar áreas de vulnerabilidad y riesgo de Compliance.\r\nApoyar la ejecución de las auditorías C.A.R.E.\r\nGestionar la herramienta SPEAK UP (Canal de denuncias internas de la compañía) y seguimiento de los casos reportados.\r\nLiderar el comité de Compliance de Región Plata.\r\nDesarrollar iniciativas de prevención de fraude en toda la región y de otras iniciativas de Compliance.\r\nMonitorear y auditar el cumplimiento de las políticas y principios globales relacionados con Compliance",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Compliance Manager",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("5e7f9ee4-0e9e-4bc2-b64d-5ef6e2ad207e"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = true,
+                            CityId = 820147,
+                            CompanyId = 3,
+                            Description = "Definir, validar e implementar la estrategia de SHE para el sitio con la finalidad de garantizar que los sitios cuentan con las condiciones seguras para ser operados y mantener una cultrura en materia de seguridad para evitar los accidentes en sitio a traves de auditorias y recorridos en piso",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Especialista SHE",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("a8b52b4f-025d-4d48-82c1-990fbbdbb369"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = true,
+                            CityId = 22007,
+                            CompanyId = 4,
+                            Description = "Experiencia comprobable en mecánica general, tren delantero, frenos, embragues, cambio de correas de distribución, diagnóstico y resolución de fallas eléctricas, mantenimiento preventivo, manejo de scanner.\r\nSólidos conocimientos en mecánica y electricidad automotriz.\r\nConocimientos en: Paquete Office. (Nivel Medio: Excel, Word, Outlook, PowerPoint)\r\nResidir en Capital Federal.\r\nSecundario Técnico Mecánico.\r\nFlexibilidad horaria.\r\nBuscamos perfiles proactivo con iniciativa, capacidad para trabajar en equipo y administrar el tiempo de su jornada laboral, con predisposición para las emergencias, examinar los vehículos para detectar e informar otro problema.\r\nRequisito General no Excluyente: Licencia de conducir.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 2,
+                            Title = "Mecánico Automotriz - CABA",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("1b1d2d29-62c2-4ae3-bbfc-6a17514fc77d"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 60260,
+                            CompanyId = 4,
+                            Description = "El profesional que ocupe esta posición deberá tener a su cargo la gestión del área de higiene y seguridad. Realizara los programas generales de Higiene y Seguridad, mantendrá actualizada la matriz de cumplimiento legal. ",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 3,
+                            Title = "Jefe de Seguridad e Higiene",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("c2b9a7cb-8b3d-496f-80df-93f1928ef9d0"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 820147,
+                            CompanyId = 4,
+                            Description = "Gestión integral del mantenimiento de la planta.\r\nCoordinación de los sectores de mantenimiento: Electricidad, Refrigeración, Maquinas y Medios de Elevación.\r\nDesarrollo de un modelo de mantenimiento para poder dar servicio a todas las dependencias de la planta frigorífica.\r\nLiderar la gestión operativa cumpliendo con los planes de mantenimiento.\r\nDesarrollo de gestión de proyectos en relación a las diferentes áreas de mantenimiento",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Gerente de Mantenimiento (Planta Frigorífica)",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("1e40e017-20b7-4b5c-af8f-9b4f62e80a5d"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 4,
+                            Description = "sistir al comprador de área para que juntos definan la estrategia comercial del sector.\r\nCargar los productos a publicar negociados por el comprador a cargo.\r\nAnalizar los distintos escenarios en base a las oportunidades de nuevos negocios que se puede presentar.\r\nGenerar reportes de los avances de ventas, margen y unidades.\r\nControlar las entregas semanales de proveedores ya sea en nuestro Centro Logístico o en las sucursales.\r\nControlar la eficiencia de los repositores externos de los proveedores para corregir los desvíos.\r\nAnalizar los faltantes de productos donde deberá hacer un seguimiento junto con los proveedores para mejorar dicha ratio",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Comprador No Alimentos",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("34ec9f13-279d-4453-98a8-1a0831e9e90d"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 60861,
+                            CompanyId = 5,
+                            Description = "Proveer a las tiendas del material promocional de vidrieras, actas de altas y bajas y demas carteleria. \r\nRecepcionar los pedidos de insumos necesarios para las tiendas. \r\nControlar y direccionar el envio de la información a las tiendas. \r\nGestionar stock y mantenimiento de formularios de tiendas. \r\nRealizar impresión y el abastecimiento de plano gramas. \r\n",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 2,
+                            Title = "Administrativo de correo",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("c2d5c7d4-97df-4c9d-b292-515a0dbd25a5"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 60218,
+                            CompanyId = 5,
+                            Description = "Liderar el equipo de trabajo a su cargo. \r\nLlevar adelante la implementación de las mejoras, estableciendo vínculos adecuados con todas las áreas intervinientes. \r\nControl de la gestión administrativa y operativa de la tienda\r\nControl de rectificaciones, ingreso y egreso de proveedores \r\n",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 2,
+                            Title = "Líder de Tienda",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("b7f364c3-b50c-4ea0-bb24-6f6ddbf64d69"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 60515,
+                            CompanyId = 5,
+                            Description = "Control de KPI'S y generación de planes de acción.\r\nGestión de personal dentro de convenio camioneros y su progreso en áreas productivas.\r\nControl de calidad de pedidos e incidencias del almacén según procedimientos establecidos.\r\nAnálisis de datos y manejo de herramientas informáticas (As400, Excel, Querry).",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 2,
+                            Title = "Supervisor Almacén",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("cba5b59e-76f1-495a-9a6b-3a6d9b55f119"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 6,
+                            Description = "Desarrollar Tools para CI/CD como Gitlab, Azure DEvOps o Jenkins.\r\nDesarrollar métricas DevOps, Engineering e indicadores de gestión.\r\nColaborar con equipos Cross/Funcionales para lograr delivery de productos de calidad.\r\nColaborar con implementación de buenas prácticas (CAF AWS, AZURE).",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "CloudOps Engineer SR",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("ef768f5e-bfb2-4b5a-8595-2875a45cb23f"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 6,
+                            Description = "Hacer propuestas de soluciones con diseños técnicos simples, mantenibles, escalables y resilientes\r\nSer embajador/a de buenas prácticas y la calidad de las soluciones\r\n",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Staff Engineer Node.js",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("3b15b056-2b44-4225-80ad-446252fd6864"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 6,
+                            Description = "Diseñar y crear desarrollos desde cero con tecnologías Cloud.\r\nTrabajar en equipos multidisciplinarios, participando del diseño de nuevos productos bajo metodología scrum.\r\nColaborar activamente con el equipo de arquitectura en las definiciones de tecnología.\r\nIdentificar y brindar soluciones a problemas complejos velando por la calidad del código.",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Node.JS Software Engineer SR",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("cf064e11-ebbb-4a2c-bbff-ef3e15bb68db"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 60371,
+                            CompanyId = 6,
+                            Description = "Como Asesor de Experiencia y Ventas, serás responsable de brindar una excelente experiencia a nuestros clientes merchants y promover la venta de productos financieros. Tu principal objetivo será asesorar y guiar a los clientes en la toma de decisiones financieras, ofreciendo soluciones personalizadas y maximizando las oportunidades de ventas. Trabajarás estrechamente con un equipo dinámico y colaborativo para alcanzar los objetivos comerciales establecidos.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 2,
+                            Title = "Asesor de Experiencia y Ventas ( San Martín) Buenos Aires",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("73d35e46-f05d-49c0-8561-cda6f917d556"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 6,
+                            Description = "Diseñar y crear funcionalidades y módulos desde cero\r\nTrabajar en equipos multidisciplinarios bajo metodologías ágiles..\r\nIdentificar y brindar soluciones a problemas complejos velando por la calidad del código\r\nAprendizaje constante",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "iOS Software Engineer SR",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("aece4b9c-1e0f-4385-bf2e-8ff209c8d684"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 6,
+                            Description = "Trabajar en el desarrollo de una solución en partnership con distintos merchants.\r\nParticipar en el diseño de arquitectura y desarrollar soluciones en microfrontend y microservicios.\r\nImpulsar buenas prácticas de desarrollo a nivel frontend y backend.\r\nImplementar patrones de diseño y principios de clean code.",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Full Stack Software Engineer SR",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("4c2e4700-6491-42c4-9da2-1c094bb09d1c"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 6,
+                            Description = "Como Data Transformation Analyst, Serás responsable de promover y desarrollar una cultura organizativa que valore y aproveche los datos como un activo estratégico. Esto implica trabajar en estrecha colaboración con diferentes equipos y líderes para identificar oportunidades de mejora en el uso de los datos, desarrollar iniciativas de capacitación, y establecer prácticas y políticas que fomenten la confianza y el uso eficaz de los datos en todos los niveles de la organización.\r\n(Descripción de roles/funciones según posición) ",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Data Transformation Analyst",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("4500dcbc-8d33-4814-9c95-4da24e53ff54"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 60760,
+                            CompanyId = 6,
+                            Description = "Como Asesor de Experiencia y Ventas, serás responsable de brindar una excelente experiencia a nuestros clientes merchants y promover la venta de productos financieros. Tu principal objetivo será asesorar y guiar a los clientes en la toma de decisiones financieras, ofreciendo soluciones personalizadas y maximizando las oportunidades de ventas. Trabajarás estrechamente con un equipo dinámico y colaborativo para alcanzar los objetivos comerciales establecidos ",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 2,
+                            Title = "Asesor de Experiencia & Ventas",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("6aa3a38a-dba0-4d26-8355-5c167f1501c6"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 6,
+                            Description = "Como Asesor de Experiencia y Ventas, serás responsable de brindar una excelente experiencia a nuestros clientes y promover la venta de productos financieros. Tu principal objetivo será asesorar y guiar a los clientes en la toma de decisiones financieras, ofreciendo soluciones personalizadas y maximizando las oportunidades de ventas. Trabajarás estrechamente con un equipo dinámico y colaborativo para alcanzar los objetivos comerciales establecidos. ",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 2,
+                            Title = "Asesor de Experiencia & Ventas",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("4e5e9b73-2141-48f6-a306-bb660dd6f451"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 60568,
+                            CompanyId = 6,
+                            Description = "Como Asesor de Experiencia y Ventas, serás responsable de brindar una excelente experiencia a nuestros clientes y promover la venta de productos financieros. Tu principal objetivo será asesorar y guiar a los clientes en la toma de decisiones financieras, ofreciendo soluciones personalizadas y maximizando las oportunidades de ventas. Trabajarás estrechamente con un equipo dinámico y colaborativo para alcanzar los objetivos comerciales establecidos. ",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 2,
+                            Title = "Asesor de Experiencia & Ventas",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("dfc5b3ac-af4e-42b4-bf9c-2a683a46059f"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 6,
+                            Description = "Estamos creando un ecosistema de soluciones tecnológicas financieras que queremos que se diferencie por ofrecer la mejor experiencia y facilidad en el acceso.\r\n\r\n\r\nSi te identificás con todas las posibilidades para impactar, sumate a nuestra Base de Talento para Personas con Discapacidad.\r\n\r\n ",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 2,
+                            Title = "Oportunidades laborales para Personas con Discapacidad",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("4c273bfd-06fd-4e2d-a5c1-d41e26a9ad13"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 7,
+                            Description = "Participar en el desarrollo y ejecución de proyectos enfocados en la automatización y digitalización de nuestras operaciones en planta.\r\nIdentificar y gestionar proveedores para soluciones integrales, mejorando nuestras eficiencias operacionales.\r\nMonitorear presupuestos y gastos de proyectos, asegurando un uso óptimo de recursos y una administración financiera responsable.\r\nApoyar al equipo de Mantenimiento identificando y solucionando problemas para abordar fallos, contribuyendo a la fiabilidad y rendimiento general de nuestros sistemas.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "CPS AR Automation engineer intern",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("d7c54f53-5861-41f2-b65c-60eb5c37fbd9"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 7,
+                            Description = "Monitoring indicators and coordinating the area's daily meeting.\r\nSupporting the management of maintenance supplies purchases.\r\nAssisting in process analysis tasks, including critical spare parts analysis, generation of new preventive measures, and creation of work aid sheets for technicians.\r\nHelping develop maintenance plans.\r\nImplementing Lean philosophy in the area to enhance efficiency and productivity.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "CPS AR Maintenance Intern",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("2a727bb0-902d-4f96-b57b-2a6e39d8a60e"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 7,
+                            Description = "Follow-up of operational excellence tools\r\nAssistance to the area of sensory and microbiology\r\nIngredient Validations\r\nMaterial life extension process\r\nPerformance measurement of packaging supplies.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "CPS AR Laboratory Intern",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("f4e7a8c0-0253-4baf-bd54-9a119ed81e5f"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 7,
+                            Description = "Gestión de Materiales: Responsable de la recepción, almacenamiento y despacho de ingredientes, materiales de empaque y productos terminados. Usarás equipos como zorras, autoelevadores y/o apiladoras para mover estos materiales de manera eficiente.\r\nUso de Tecnología: Manejar el sistema WMRF (Radiofrecuencia) para el cumplimiento de los procesos de almacenamiento y abastecimiento, garantizando la precisión en el manejo de inventarios.\r\nOptimización de Procesos: Llevar a cabo tareas de Picking, Packing, control de bultos, armado de pedidos, etiquetado e identificación de materiales, asegurando la máxima eficiencia en la cadena de suministro.\r\nCalidad y Seguridad: Operar siguiendo el Sistema de Gestión Integrado, abarcando normas como OHSAS 18000, ISO 9001, FSSC 22000, ISO 14001, GMP, y HACCP, manteniendo el alto estándar de calidad y seguridad de Coca-Cola.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "CPS AR Operador de producción interna",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("c45c63c4-bc31-4397-a38a-84241e441028"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 8,
+                            Description = "Participar del desarrollo full stack (backend y frontend) de los nuevos sistemas de gestión que comercializará la empresa, mediante el uso de las tecnologías que se describen como excluyentes en la sección de requerimientos a continuación.\r\nParticipar de las distintas etapas del proceso de desarrollo trabajando dentro del Área de Investigación y Desarrollo de la organización con un equipo conformado por un Gerente a cargo, un Jefe de Proyecto y dos o tres programadores.",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Desarrollador/a Fullstack (C#)",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("bbd240b5-09f1-497f-a74f-24831e84dfe2"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 8,
+                            Description = "Mantenimiento y Desarrollo de Sistemas Administrativos, Contables, RRHH y Sueldos. \r\nParticipar de las distintas etapas del proceso de desarrollo trabajando dentro del Área de Investigación y Desarrollo de la organización con un equipo conformado por un Gerente a cargo, un Jefe de Proyecto y dos o tres programadores. \r\n",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Programador/a Visual Basic 6",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("e7d81f16-93f1-462e-87c4-3a7b80db23d4"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 8,
+                            Description = "Gestión de siniestros de Robo (no Mobile) y Mercado Financiero.\r\nAnálisis de coberturas, términos y condiciones de contratación, exclusiones, etc.\r\nRedacción de escritos, respuesta a oficios de organismos de control e informes.\r\nIntercambio de información con otros sectores de la Compañía, socios comerciales y clientes.\r\nAnálisis de procesos internos en búsqueda de oportunidades de mejora y optimización.\r\nParticipación en proyectos y armado de reportes.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista de Siniestros ",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("a8f1d525-85cf-47c5-80dc-1a6db6b687b0"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 8,
+                            Description = "Desarrollar y mantener aplicaciones web, utilizando PHP - Laravel, siguiendo los estándares de codificación y las mejores prácticas de desarrollo.\r\nColaborar con el equipo de desarrollo en el diseño de soluciones técnicas y de arquitectura que cumplan con los requisitos del proyecto.\r\nRealizar pruebas unitarias y de integración, para garantizar la estabilidad, la seguridad y el rendimiento de las aplicaciones.\r\nParticipar proactivamente en las ceremonias de Scrum con el equipo de desarrollo.",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Desarrollador/a PHP+Laravel SSR",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("43172e18-c20b-41d1-b16d-5e15b7e788d7"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 820147,
+                            CompanyId = 8,
+                            Description = "Captación comercial y desarrollo de cuentas corporativas.\r\nAsesoramiento de mercado y consultoría de recursos humanos.\r\nConocer la segmentación y datos de contacto de sus clientes.\r\nPlanificación comercial proactiva y reactivo (Visitar clientes activos y potenciales. Televentas. Mailings. Sensibilización de clientes).\r\nSelección de perfiles profesionales para los clientes asignados. \r\nFidelización del cliente asignado.\r\nGenerar la mejor experiencia con los clientes.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Asesor Comercial de Recursos Humanos",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("1f8dbf01-6d33-4d6c-9d02-22686b739cf4"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 8,
+                            Description = "Su objetivo principal será Integrar diversas fuentes de datos con tecnologías de última generación, para contribuir a la toma de decisiones que impactan en los resultados del negocio.\r\nTrabajar en equipo para identificar, diseñar y construir conjuntos de datos y relaciones para datos complejos.\r\nRefactorizar las plataformas de datos para integrarlas con la plataforma de datos de última generación.\r\nGarantizar el cumplimiento y contribuir a la evolución de los estándares de datos, el panorama de datos y su arquitectura de soluciones.\r\nImplementar infraestructura y procesos de calidad de datos.",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Data Engineer SSR - (c/inglés)",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("99c4892f-d048-459e-ae27-7dd3fd0b0839"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 8,
+                            Description = "Coordinar y gestionar el equipo de trabajo\r\nCoordinará y será responsable de los procesos de recepción, despacho y abastecimiento de clientes.\r\nRediseñar procesos, generar eficiencias en la administración y efectividad de los espacios.\r\nSistematización del área.\r\nDesarrollar e implementar políticas ,procedimientos e iniciativas que permitan cumplir con los requisitos de la organización, garantizando el nivel de servicio requerido y el cumplimiento del presupuesto establecido.\r\nDetectar áreas de mejora y proponer medidas correctivas\r\nAsegurar el cumplimiento en tiempo y forma de los planes de entrega y recepción.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 3,
+                            Title = "Gerente de Logística",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("c64b0cc7-bd3d-4db3-91c1-4cc6f8dbb3d2"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 8,
+                            Description = "Será responsable de gestionar a la fuerza de venta siendo clave su intervención frente a consultas y solución a problemas con clientes.\r\nResponsable de coordinar todas las acciones de los locales, manteniendo la excelencia y estándares de atención al cliente. \r\nA su vez, responsable de la correcta administración y funcionamiento de los locales a cargo, así como de su inventario completo, incluidos los elementos de marketing, accesorios y servicio técnico.",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Coordinadora Comercial",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("2cf0284d-143f-4375-8a07-4d5e2c38a54e"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 8,
+                            Description = "Liderar y supervisar al equipo comercial para alcanzar los objetivos establecidos.\r\nDesarrollar estrategias de ventas efectivas para impulsar el crecimiento del negocio, diseñando y ejecutando planes para la expansión de la red de concesionarias en todo el país.\r\nAnalizar el mercado y las tendencias para identificar nuevas oportunidades de negocio.\r\nEstablecer relaciones sólidas con clientes clave y socios comerciales.\r\nGestionar y optimizar los recursos comerciales para garantizar la eficiencia y rentabilidad.\r\nImplementar sistemas y procesos para mejorar la gestión de ventas y el rendimiento del equipo.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Director Comercial",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("3a4c5c3d-8b42-4600-9a6a-6e34f1d98d4a"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 8,
+                            Description = "Realizar y participar de análisis de proyectos de inversión y desarrollos de nuevos negocios.\r\n· Realizar investigaciones y análisis de competencia y el mercado para identificar amenazas y oportunidades estratégicas.\r\n· Participar en el desarrollo y creación de previsiones de escenarios y modelos analíticos.\r\n· Seguimientos de KPI para controlar y ajustar el plan estratégico de la compañía.\r\n· Realización de análisis ad hoc..",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista de Planeamiento Sr.",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("c7cfc748-3e39-42c8-8dd9-dc326d9a0362"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Dar soporte funcional de segundo nivel del software de Anti Money Laundering y entender el comportamiento del software en un contexto regulatorio.\r\nAnalizar y derivar los casos de soporte, lo cual incluye el reconocimiento del problema, su evaluación y síntesis.\r\nConfigurar las implementaciones, colaborar en el soporte operativo de las soluciones actuales y proponer mejoras, en pos de optimizar la performance. \r\nCrear automatizaciones de reportes que eficienticen la tarea de los analistas.\r\nCrear controles tendientes a resguardar nuestro ecosistema.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista de Prevención de Lavado de Dinero",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("9a2e26ab-9a47-4b71-907b-9a6c4e9db9d5"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Diseñar y ejecutar estrategias de Adquisición, Recovery, Activación y Engagement de usuarios de Mercado Libre para hacer crecer el negocio mediante canales propios como Push, Email y WhatsApp. Optimizar la performance de la estrategia en base al ROI de las campañas.\r\nMonitorear la performance y analizar las métricas obtenidas para mejorar resultados.\r\nEjecutar la mejora continua de las campañas, realizando acciones de experimentación y optimización a través de segmentación de audiencias, A/B testing, automatización de journeys, entre otros.\r\nIdentificar oportunidades mediante el análisis de grandes volúmenes de datos relacionados con el comportamiento de usuarios, indicadores de negocio y performance de campañas.\r\nCoordinar mesas de trabajo con los principales stakeholders: Modeling para desarrollar modelos de Machine Learning. Producto, Negocio, Marketing, Tecnología y User Experience para acelerar el crecimiento del negocio.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista de Estrategia, Engagement & Growth Marketing",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("cbf7c2f6-fb22-4a5e-ae56-60798fcdaf35"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Dar soporte funcional de segundo nivel del software de Anti Money Laundering y entender el comportamiento del software en un contexto regulatorio.\r\nAnalizar y derivar los casos de soporte, lo cual incluye el reconocimiento del problema, su evaluación y síntesis.\r\nConfigurar las implementaciones, colaborar en el soporte operativo de las soluciones actuales y proponer mejoras, en pos de optimizar la performance. \r\nCrear automatizaciones de reportes que eficienticen la tarea de los analistas.\r\nCrear controles tendientes a resguardar nuestro ecosistema.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista de Prevención de Lavado de Dinero",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("cfb54849-13f6-4db0-aa4b-810c502b5de5"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Seguir democratizando los pagos y desarrollando las grandes cuentas de Buenos Aires.\r\nDetectar oportunidades de negocio para nuestro porfolio de soluciones de cobros presenciales vía QR y Point, y colaborar en el diseño e implementación de una estrategia que asegure el desarrollo del negocio.\r\nImpulsar la adopción de nuestras soluciones en determinados segmentos y sectores, y actuar como responsable del territorio asignado.\r\nAsistir y capacitar a nuevas y nuevos clientes de la cartera asesorada, en la puesta en marcha de sus operaciones con Mercado Pago, a fin de optimizar su desempeño.\r\nMonitorear los indicadores de performance de los sectores y negocios, en pos de la mejora continua.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista Comercial de Pagos Offline - Mercado Pago",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("3bd4a3b0-d922-41f4-b32e-683372920c77"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Liderar múltiples iniciativas técnicas de Frontend stack (Web, Android, iOS, y Connected TVs), escalables y de alta disponibilidad para OTT.\r\nTrabajar en modo hands-on a la par de los equipos, con visión en el backend, entendiendo que un buen diseño es fundamental para la performance de las experiencias de usuario.\r\nGestionar el trabajo con los stakeholders, incluida la capacidad de manejar expectativas, y explicar información compleja a una audiencia diversa.\r\nSolucionar y resolver problemas críticos de software mientras se trabaja en un contexto de emergencia.\r\nPermear conocimiento técnico en el equipo.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Software Senior Expert Mercado Play - IT",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("d394e91d-6950-4485-b2d2-0c1e8f2ad588"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Liderar la identificación y desarrollo de casos de negocio con el objetivo de mejorar la eficiencia operativa, la calidad del servicio y la velocidad de entrega.\r\nEvaluar el impacto de factores externos en las proyecciones de demanda, como estacionalidad y eventos, para poder dar visibilidad a la red y asegurar su correcto dimensionamiento.\r\nMonitorear métricas de red que permitan detectar oportunidades y diseñar sus soluciones junto con otros equipos y desarrollar nuevas herramientas, análisis e insights que colaboren en optimizar continuamente el proceso, agregando valor al ecosistema y haciéndolo más eficiente y escalable. ",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista de Capacidad y Transporte - Mercado Envíos",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("33f8289d-b24f-45d6-b537-0a61b3cb4bbd"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Analizar la cartera de clientes con producto de crédito, y asistir en su segmentación por perfil de riesgo y pricing, en un trabajo conjunto con el equipo de Modelos.\r\nAportar ideas al equipo para el desarrollo de los modelos predictivos de riesgo de crédito y adopción que mejoren las tasas de mora de la cartera y la efectividad de las campañas.\r\nRealizar análisis cuantitativos sobre el negocio sobre mora, adopción, rentabilidad con aperturas de segmentos, modelos, entre otros.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista de Riesgo de Créditos - Mercado Crédito",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("ff46f91a-6509-462b-8ff3-92c89c17c738"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Identificar oportunidades para mejorar y optimizar los contenidos y herramientas de crecimiento utilizadas en el negocio.\r\nAnalizar datos utilizando para identificar tendencias y sacar conclusiones que ayuden a tomar decisiones.\r\nColaborar con equipos internos para implementar cambios y mejoras en las herramientas existentes.\r\nSer un punto de contacto clave entre diferentes equipos de negocio, marketing, producto, tecnología, entre otros.\r\nMedir y reportar el impacto de las mejoras implementadas en las herramientas de crecimiento.\r\nLiderar el proceso de portaje de todas las tools dentro del stack.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Especialista de Herramientas de Growth - Mercado Pago.",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("6ee3d748-65bc-4fe4-8314-2033f1c002d1"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Ser el focal point durante el diseño e integración de nuevos productos y conexiones que se lanzan en Mercado Pago cross regiones, siendo el nexo de Operaciones con las áreas de negocio regional, negocio corporativo, producto e IT.\r\nRealizar el mapeo y entendimiento del flujo a desarrollar con el objetivo de diseñar productos robustos y escalables, evitando deuda técnica y asegurando la performance operativa de las entidades externas mediante herramientas de medición y contractuales.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista de Integración con Producto y Nuevas Conexiones - Mercado Pago",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("c1a438b6-8c42-4bc4-b11a-7999cb0f4f6e"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Estar a cargo de la implementación del modelo de gestión de reclamos, en nombre de la aseguradora, en los diferentes sites, considerando todas las perspectivas.\r\nMedición de LR vs LRT y gestión con los sites y Compañías.\r\nSer responsable por la gestión de Expense Ratio.\r\nImplementar y mantener el sistema de scoring de claims.\r\nEstablecer y monitorear los indicadores para medir la experiencia de los clientes, realizando análisis respecto a la competencia con compañías de seguros en lo referido a reclamos.\r\nRetroalimentar al equipo de Producto, Pricing y Business Development en las mejoras necesarias para optimizar la gestión de reclamos y la experiencia del usuario.\r\nLlevar la gestión de auditoría de siniestros con las Compañías.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 3,
+                            Title = "Especialista de Operaciones de Insurtech - Mercado Pago",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("79f0f169-f7e1-48b6-aeb8-7584f47ac0aa"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Acompañar en las nuevas aperturas de sitios, asesoramiento técnico, búsqueda de proveedores, licitaciones, pliegos técnicos, verificaciones y luego continuar con el mantenimiento. \r\nGarantizar el cumplimiento del plan de mantenimiento (hard y soft) de los centros de distribución de las distintas regiones de Argentina.\r\nGestionar y supervisar trabajos de contratistas, y desarrollar una cartera de proveedores de la región.\r\nLlevar a cabo el seguimiento del presupuesto, los costos y el análisis de indicadores del área, garantizando la maximización del desempeño.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 3,
+                            Title = "Analista Senior de Mantenimiento - Mercado Envíos",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("6cbe28f0-4b85-457f-8a7e-24e2816a607b"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Explorar y analizar la data del negocio y de marketing de MercadoLibre para la generación de insights.\r\nAnalizar resultados de las diversas iniciativas y detectar oportunidades de mejora.\r\nBrindar soporte en el armado y generación de reportes conectando la data del negocio con los diferentes canales de comunicación/campañas que se realicen desde Marketing.\r\nMedir el impacto de inicio a fin de cada una de las acciones que se realizan desde Marketing, de manera de facilitar y agilizar la operación diaria del negocio y la toma de decisiones frente a las diversas iniciativas. \r\nGenerar y presentar los distintos learnings sobre los insights generados y planes de acción a toda la organización, a Negocio, Producto, Marketing. ",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Especialista de Negocio para Marketing Marketplace",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("b18a1bb5-6b8a-4d90-985f-02c4792f18da"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 9,
+                            Description = "Liderar todas las fases de diseño de producto para diferentes proyectos web, asegurando la mejor experiencia de usuario en cada iniciativa.\r\nInvestigar las nuevas tendencias del sector, a fin de aplicarlas en nuestras plataformas.\r\nTrabajar junto al equipo de Desarrollo, con el objetivo de detectar oportunidades de optimización en el producto.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Diseñadora / Diseñador de User Experience",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("05f44853-1a61-4e47-92c1-1051e7592de9"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En Personal Pay sumamos un DevOps Engineer que combinen tecnologías existentes y emergentes, junto a prácticas de integración, entrega, testing y monitoreo continuo con el objetivo de acelerar el ciclo de vida del desarrollo sin perder de vista la calidad.",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "DevOps Engineer - Personal Pay",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("88c99390-4e1b-4201-a10b-8a4b6a5b01ef"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "Como Product Owner serás responsable de idear, establecer, priorizar el desarrollo de soluciones orientadas a mejorar la conversión en los procesos de onboarding digital de usuarios. Basándose en el análisis de información y métricas; y con foco en la experiencia del usuario de Personal Pay. Dará soporte al seguimiento de y cumplimiento de backlog de producto en conjunto con los equipos de UX y Desarrollo.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Product Owner TRACK PAYMENTS - Personal Pay",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("02425ff4-5748-4da2-a32e-1b8d897e5f9e"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En Personal PAY, estamos sumando DevOps Engineer SSR con pasión por la innovación, ganas de ser protagonistas y facilidad para el desempeño en un entorno desafiante y dinámico.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Devops Engineer",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("340c99b3-c922-49cf-9d34-609b768e7f65"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "Analizar, definir y co-construir con el negocio los productos analíticos de datos en forma de modelos, procesos y dashboards con foco en la entrega de valor al negocio y el self-service de usuarios de diversas áreas de Telecom.\r\n\r\nTrabajar en equipo con otros Data Engineers y Tech Leads para construir una plataforma escalable y robusta que permita solucionar los desafíos del equipo y acompañar la evolución del producto.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Data Analyst",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("9e920f05-4e16-4536-b246-50c242d1a152"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "Confiamos y creemos en las personas, como diferencial en la entrega de valor a nuestros clientes. Nos impulsa el propósito de potenciar la vida digital de nuestros clientes y de la sociedad en su conjunto.\r\n\r\n\r\nEn nuestra Fintech Personal Pay, estamos sumando un@ Analista de Prevención de Fraude Sr, con pasión por la innovación, ganas de ser protagonistas y facilidad para el desempeño en un entorno desafiante y dinámico.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista de Prevención de Fraude Sr - Personal Pay",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("cf5ed95f-77e8-4a0e-85f8-78f7df4c2c78"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En el  equipo Gestión de Mora  de la compañía, estamos sumando  Analista Sr. de Gestión de Mora , con pasión por la innovación, ganas de ser protagonistas y facilidad para el desempeño en un entorno desafiante y dinámico.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista Sr Gestión de Mora Fintech - Personal Pay",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("85b1a6f1-1e05-4eae-a60d-51a334f54ad5"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En el equipo Data Engineering de la compañía, estamos sumando profesionales Data Engineer, con pasión por la innovación, ganas de ser protagonistas y facilidad para el desempeño en un entorno desafiante y dinámico.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Data Engineer Ssr",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("23d4c9e5-88b4-44f0-9b64-8308e70e51eb"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En el equipo Content de la compañía, estamos sumando UX Content Designer, con pasión por la innovación, ganas de ser protagonistas y facilidad para el desempeño en un entorno desafiante y dinámico.\r\n\r\nSomos un equipo multidisciplinario que disfruta desarrollar estrategias y hacerse de recursos que mejoren la experiencia de las personas usuarias.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Content Designer",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("b11dd7cf-8245-43a3-9b23-8c8893f83c13"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En  Personal Pay, estamos sumando profesionales Tech Lead para el equipo Soluciones Financieras, con pasión por la innovación, ganas de ser protagonistas y facilidad para el desempeño en un entorno desafiante y dinámico.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Tech Lead (Soluciones Financieras) - Personal Pay",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("e261493e-d760-4a48-bb24-9b5c9d7f4b1a"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En el equipo de Administración Fintech de la compañía, estamos sumando profesionales Analistas Administrativos Contables, con pasión por la innovación, ganas de ser protagonistas y facilidad para el desempeño en un entorno desafiante y dinámico.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista Sr Administración Fintech",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("fe4370bc-c706-4b09-9448-01bc6ff9b01f"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En Personal Pay buscamos sumar al equipo un lider en rol de Engineering Manager con pasión por la innovación, ganas de ser protagonistas y facilidad para el desempeño en un entorno desafiante y dinámico.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Engineering Manager - Personal Pay",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("3e7b2e42-9315-4395-b5dc-7c973d13a12e"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En Personal Pay, estamos sumando SR QA Automation con pasión por la innovación, ganas de ser protagonistas y facilidad para el desempeño en un entorno desafiante y dinámico.",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Sr QA Automation - Personal PAY",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("a6606e3d-b9de-4b4f-840b-83f8e2c29e92"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En el equipo de Activos y Pasivos Financieros de la compañía, estamos sumando profesionales  Analista Sr Contable , con pasión por la innovación, ganas de ser protagonistas y facilidad para el desempeño en un entorno desafiante y dinámico.",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista Sr Contabilidad Fintech",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("f6f63f9f-01e0-4e1f-b675-90c1ffdc17cb"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "El Sr. Software Architect conduce al equipo a identificar atributos de calidad, y toma de decisiones en el diseño de soluciones tecnológicas junto con los equipos de ingeniería y producto compartiendo una visión integral en el ámbito de Fintech basado en las mejores prácticas de su experiencia y de las que se trabajen en las Comunidades de Interés (CoI) para difundir mejores prácticas en Arquitectura. ",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Sr. Software Architect - Personal Pay",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("25d6d135-1cb9-40aa-8962-f89173f8058b"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En Personal Pay buscamos sumar al equipo un Lider de Tesoreria. El propósito de este rol es mejorar la eficiencia, agilidad y seguridad en la gestión de los recursos financieros de la compañia.\r\n\r\n\r\nBuscamos que cuentes con solidos conocimientos en finanzas y tecnologia, habilidades analíticas, capacidad para tomar decisiones estratégicas y liderazgo para acomañar al equipo del Area.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Lider de Tesoreria - Personal Pay",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("cb442d70-d201-457d-872e-5931991cd34d"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En Telecom, estamos sumando profesionales Sr. Cybersecurity Engineer para desempeñar un papel crucial en nuestra fintech Personal Pay gestionando la identificación, promoción y mantenimiento de prácticas de seguridad sólidas en todos los aspectos del desarrollo y operaciones de software. Colaborando estrechamente con equipos multifuncionales; liderando iniciativas para garantizar la integridad, confidencialidad y disponibilidad de los datos, así como la protección contra amenazas de seguridad.",
+                            JobOfferModeId = 3,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Sr. Cybersecurity Engineer - Personal Pay",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("91a0529b-af68-4e6c-a67a-593cf3db1f34"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "Desarrollar y mantener un marco de automatización robusto utilizando herramientas y tecnologías actuales.\r\nEscribir scripts de prueba automatizados eficientes y escalables utilizando lenguajes de programación como Java, Python, o JavaScript.\r\nImplementar pruebas de API utilizando herramientas como Postman o SoapUI para verificar la funcionalidad y la integridad de las interfaces de programación de aplicaciones.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "QA Automation SR Martech",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("b8f93f12-00de-4a26-bce2-4bf1d64ff1f4"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En el equipode Campañas / Martech de la compañía, estamos sumando profesionales QA Automation SSR, con pasión por la innovación, ganas de ser protagonistas y facilidad para el desempeño en un entorno desafiante y dinámico.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "QA Automation SSR Martech",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("cf9f4731-26f7-4ee7-94d3-44e7ee7443bc"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En su rol, llevará a cabo la estrategia SEO para aumentar el tráfico orgánico de los sitios web de TELECOM y que trabaje en conjunto con las demás áreas para lograr la implementación de las mejoras de SEO creando acuerdos de trabajo.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista SEO",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("87158aa4-8702-41be-bb46-11f3d7be70de"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En el equipo VENTAS SECTOR PUBLICO NACIÓN de la compañía, estamos sumando profesionales EJECUTIVO DE CUENTAS, con pasión por la innovación, ganas de ser protagonistas y facilidad para el desempeño en un entorno desafiante y dinámico.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Ejecutivo/a de Cuentas Gobierno",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("b01bf51f-1bfa-4434-b70c-57c92e1b4c5d"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 10,
+                            Description = "En Personal Pay buscamos sumar al equipo un Lider de Tesoreria. El propósito de este rol es mejorar la eficiencia, agilidad y seguridad en la gestión de los recursos financieros de la compañia.\r\n\r\n\r\nBuscamos que cuentes con solidos conocimientos en finanzas y tecnologia, habilidades analíticas, capacidad para tomar decisiones estratégicas y liderazgo para acomañar al equipo del Area.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Lider de Tesoreria",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("cb440631-9b4e-4a3c-808b-6eefb7640244"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "Acompañar y soportar al equipo regional de estrategia y gobierno de tecnología en la planificación y ejecución de proyectos. \r\n Asistir en la investigación y análisis de datos para informar la toma de decisiones estratégicas. \r\n Participar en reuniones y presentaciones para comprender mejor los objetivos y prioridades del equipo. \r\n Contribuir con ideas y sugerencias para mejorar los procesos y resultados del equipo. \r\n Llevar adelante actividades en forma independiente con la comunidad de tecnología regional. ",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Pasante",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("8212d2fc-d4e7-47ee-8aee-846d9242dc85"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "Participarás de proyectos para Argentina y Uruguay. \r\n Armar, consolidar y actualizar mensulamente template para a enviar a casa matriz sobre métricas del área y Third Party Distribution. \r\n Subir información a la plataforma UM Planning. \r\n Confeccionar template de gastos OPEX y ODC requeridos por la compañía. \r\n Control Actual vs Plan. \r\n Armado de presentación de gastos para las diferentes áreas. \r\n Participar en la Confección del Plan Anual. \r\n Realizar presentaciones para Country Manager, por el CFO o para los distintos Stakeholders. ",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista financiero",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("4dbb52e1-d34e-4383-8bcb-049e545020f2"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "Construir, mantener y soportar las aplicaciones de propiedad de la compañía.\r\nLas aplicaciones desarrolladas deben cumplir con los estándares de seguridad y arquitectura de la compañía.\r\nResolución de incidentes.\r\nRelevar funcionalidades actuales, diseñar y proponer mejoras\r\nMentoreo de desarrolladores .NET Junior\r\nDiseño de funciones API en REST y servicios web\r\nIntegración con bases de datos SQL\r\nProgramación de ETLs SQL\r\nCumplir con las metodologías de la cía. (AGILE, ITIL, otras)\r\n",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Ingeniero ejecutivo en Desarrollo de software",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("7c081f3d-6f03-4a38-bc5d-88ebe23baf6e"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "Support the region in the implementation of the non-financial risk assessment. \r\n Oversee the registration of new issues and closure documentation in each country. \r\n Review Quality of risks and controls assessed in open pages. \r\n Assist in the implementation of Operational risk policies. \r\n Lead regional target assessment required. \r\n Assist on Committee material preparation for LatAm. \r\n Develop and monitor different key indicators for risk management. \r\n Support on countries on the registration and escalation of risk events ",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Consultor de Riesgo operativo",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("a06d4fd8-3f4d-4bc7-8f70-4f9d3204000a"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "Work with product & solution teams to design and develop end-to-end solutions and reference architectures, working in an agile environment. \r\n Solution design and help teams execute the technical implementation for digital cloud initiatives in LATAM. \r\n Deliver solution that aligns with the customer’s business needs and requirements (discuss benefits and risks). ",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Sr. Full Stack Software Engineer",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("1233490d-6014-4ebd-8ef5-1d3801d6b207"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "Lead and coach agile teams across multiple LATAM countries as part of a regional distributed model \r\nProvide technical leadership and guidance to development teams on solution architecture and design \r\nCoordinate and align 5+ agile teams on large, complex initiatives using scaled frameworks like SAFe \r\nManage end-to-end regional solution delivery encompassing requirements, design, development, testing \r\nDrive continuous improvement through process optimization, automation, and transformation initiatives \r\nEngage closely with diverse business and technology partners and stakeholders ",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Release Train Engineer III",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("98c748ed-fb3e-46f0-881e-3f820ff28a4b"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "Cover the local IT audit plan and supply input to the regional plan. Deliver timely audits relating to the IT and IS functions, as well as assist in integrated audits with business auditors. Integrates other disciplines into these audits to include: data management, data analytics, data privacy and other subject matter experts as necessary. \r\n Prepare audit reports for IT Audit AVP and IT Audit Director’s reviews. \r\n Propose IT and IS audit programs. In addition, collaborates in annual audit universe risking exercise. \r\n Execute the evaluation and testing of processes and controls and identification of areas of risk in areas of responsibility, and related Risk Management areas. \r\n Keep abreast of changes in audit, regulatory, industry practices, IT threat environment, new IT risk frameworks, solutions and tools and recommends changes in audit risk assessments and audit procedures accordingly. \r\n Maintain a positive working relationship with auditees and sustains an ongoing relationship with key business contacts. ",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Auditor ejecutivo de Tecnología Informática II",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("e9e19908-2b38-4d06-8499-2d6545d9de4b"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "Guide Active Directory teams on cloud implementations, working in an agile environment. \r\n Be responsible for ensuring built-in site reliability engineering within the given cloud solution design for maintainability. \r\n Work closely with implementing teams to understand specific needs and context of each country so that they can implement the right integration solution given the local ecosystem. ",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Sr. Site Reliability Engineer",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("4aa15359-2d8d-4e2c-9c07-7d6f1a5e7801"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "Lead the process with Regional Directors for monitoring, reporting and analyzing experience for two of the six regions within the 2- 5,000 lives and PEO/Association market.\r\n Direct accountability for evaluating product pricing strategies (new business and renewal) to enable the business to achieve growth and profitability goals.\r\n Direct accountability for identification, evaluation, implementation and monitoring of local market initiatives.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Senior Financial Consultant",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("556e0544-f769-4d92-8a68-97148942b0b7"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "Oversees the L&D delivery cycle from strategy to execution, leverages multiple resources and works with different partners including BPO Provider and 3rd party vendors \r\nIn partnership with regional team, oversees L&D finances and budgets for the respective LoB(s)/Country(s)/Function(s)\r\nDesign LoB-specific program framework (scoping, delivery model, concepts), including pre/post communications, and marketing, sponsorship, and engagement expectations; leverage GP to design/ develop learner-centric, measurable solution\r\nConsult with client leaders on learning strategy and how to increase learning impact ",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Instructor ejecutivo I",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("fc54aecd-32d3-4de3-94d0-e26d09d3a8e7"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "Review complex transactions and prepare/post journal entries. \r\n LATAM Balance Sheet and Income Statement GAAP/HYPE reconciliation of Ledger vs Sub-Ledger systems \r\n Assist in financial data analysis, trending for month-end close, reporting and ad-hoc reports. \r\n Assist with implementing and maintaining internal controls and document processes. \r\n Provide audit support ",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Analista ejecutivo financiero",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("51ee0986-9f82-4a0f-86a7-64b1871ef3f2"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "Oversees the L&D delivery cycle from strategy to execution, leverages multiple resources and works with different partners including BPO Provider and 3rd party vendors \r\nIn partnership with regional team, oversees L&D finances and budgets for the respective LoB(s)/Country(s)/Function(s)\r\nDesign LoB-specific program framework (scoping, delivery model, concepts), including pre/post communications, and marketing, sponsorship, and engagement expectations; leverage GP to design/ develop learner-centric, measurable solution\r\nConsult with client leaders on learning strategy and how to increase learning impact ",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Instructor ejecutivo II",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("0e3a7879-7587-43f5-a9cf-657a824d1fc5"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 11,
+                            Description = "You will be partner with the DnA Data Management team and other stakeholders to document DG and DQ requirements for the implementation of various data projects.\r\nWork with the Data Governance team and business partners to research, evaluate, document, and maintain standards, best practices, design patterns around project requirements, and various other aspects of existing and emerging ETL technologies in support of the on cloud and Big data implementation.\r\nCollate requirements for projects from the perspective of Data Governance team and participate in overall project implementation.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Senior Data Architect",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("d3d478ef-2b5a-4265-a81c-7d9123982fb9"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 12,
+                            Description = "Responsable de la creacion de nuevas alianzas con restaurantes por medio de trabajo en calle; visitas a aliados diariamente\r\n Cumplimiento de metas mensuales\r\n Responsable de contactar potenciales aliados de ciudades predeterminadas",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Hunter",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("c7aeb14d-01e7-4d08-b659-11c424e69728"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 12,
+                            Description = "Rappi Technology Argentina\r\n\r\nPara más información consulta nuestra pagina web https://about.rappi.com/es y revisa nuestras reseñas en Glassdoor https://acortar.link/Eqm07Q",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Key Account Manager",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("4a6decd4-ae8b-4a6d-95eb-13aeb00770a7"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 12,
+                            Description = "Be responsible for optimizing Groceries operations at Rappi\r\nTake care of 360 experience for the whole Groceries business ecosystem (Users, RTs, Shoppers, Partners)\r\nEnsure Key SLAs are consistently achieved\r\nProactively identify and propose solutions to operational issues\r\nCreate analyses to generate actionable insights\r\nWork in partnership with our Commercial, Tech, and Data teams to solve problems",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Operations Analyst",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("87b7e22d-d7fd-45c0-b0c3-06da652cb9eb"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 12,
+                            Description = "Desarrollar y mantener microservicios haciendo uso de tecnologías como Kotlin y Node JS\r\n Participar en el ciclo de vida de los microservicios\r\n Crear pruebas unitarias y de integración\r\n Crear código y librerías reusables\r\n Escribir código limpio y funcional\r\n Trabajar con otros miembros del equipo para definir y diseñar la arquitectura de los microservicios\r\n Participar en pruebas y depuración\r\n Liberación de nuevas funcionalidades a producción\r\n Documentar la aplicación y sus procesos\r\n Consumo y participación en la definición de APIs",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Backend Developer",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("2a47a025-03b4-46a3-985a-45e1a1e52b53"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 12,
+                            Description = "Responsable de la creacion de nuevas alianzas con restaurantes por medio de trabajo en calle; visitas a aliados diariamente\r\n Cumplimiento de metas mensuales\r\n Responsable de contactar potenciales aliados de ciudades predeterminadas",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Street Hunter",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("0df2461b-f778-4d26-8a0b-88e63010bc63"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 12,
+                            Description = "Negociación avanzada y perfilamiento de clientes de cuentas clave\r\nPlanificación y preparación de cartera de clientes\r\nAnálisis de la competencia\r\nConocimiento especializado del mercado de restaurantes\r\nAlta capacidad de influencia\r\nHabilidades de presentación ",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Top Deal Hunter Buenos Aires",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("d63e5d07-606f-414b-86d7-2b9f9907bde0"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 13,
+                            Description = "Implementar políticas, estándares y procedimientos de seguridad específicos Cloud, por ejemplo, administración y configuración de inquilinos de Azure, configuración de ExpressRoute, administración y control de accesos, administración de firewall, auditoría y monitoreo, administración de eventos e incidentes de seguridad, protección de datos, gestión de cuentas y de claves de contraseña.\r\n\r\nRealizar comprobaciones de estado técnico y apoyar implementaciones de producción.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Azure Engineer",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("93c7688d-e348-44db-97ec-cd46e4e46d53"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 13,
+                            Description = "Ser parte de grandes proyectos a nivel local y global.\r\n\r\nImplementación de tecnologías de vanguardia.\r\n\r\nParticipar de la transformación digital.",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Salesforce Integrations",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("82b546bb-5fc3-40e0-b21e-1a9f01d79a92"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 13,
+                            Description = "Entregar soluciones de experiencia de cliente relacionadas a uso de espacio, reserva de salas, estacionamiento y pedidos de catering\r\n\r\nEstandarizar procesos para poder mejorar los indicadores de performance del sector\r\n\r\nImaginar, crear, describir e implementar soluciones innovadoras relacionadas a la experiencia de cliente dentro de las oficinas de Accenture\r\n\r\nCoordinar proveedores (servicio en sala, mozos, catering, etc.)",
+                            JobOfferModeId = 1,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Workplace Service Delivery Analyst",
+                            Vacancies = 0
+                        },
+                        new
+                        {
+                            OfferId = new Guid("cb6fe4d5-c44d-4f54-8826-d6b7b4528ef0"),
+                            AvailabilityChangeOfResidence = false,
+                            AvailabilityToTravel = false,
+                            CityId = 22007,
+                            CompanyId = 13,
+                            Description = "Conduct calls with new joiners, providing them with a unique, high touch onboarding experience.\r\n\r\nReview and enter data for new joiner\r\n\r\nAbility to multi-task\r\n\r\n Enter new joiners into orientation scheduling tool",
+                            JobOfferModeId = 2,
+                            MaxSalary = 0,
+                            MinSalary = 0,
+                            PublicationDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            StudyTypeId = 4,
+                            Title = "Career Launch Representative Senior analyst",
                             Vacancies = 0
                         });
                 });
 
-            modelBuilder.Entity("Domain.Entities.Provinces", b =>
+            modelBuilder.Entity("Domain.Entities.OfferCategory", b =>
+                {
+                    b.Property<int>("OfferCategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OfferCategoryId"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("OfferId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("OfferCategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("OfferId");
+
+                    b.ToTable("OfferCategory", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.OfferSkill", b =>
+                {
+                    b.Property<int>("OfferSkillId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OfferSkillId"));
+
+                    b.Property<Guid>("OfferId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("SkillId")
+                        .HasColumnType("int");
+
+                    b.HasKey("OfferSkillId");
+
+                    b.HasIndex("OfferId");
+
+                    b.HasIndex("SkillId");
+
+                    b.ToTable("OfferSkill", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.Province", b =>
                 {
                     b.Property<int>("ProvinceId")
                         .ValueGeneratedOnAdd()
@@ -12980,7 +14647,8 @@ namespace Infraestructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("ProvinceId");
 
@@ -13123,7 +14791,7 @@ namespace Infraestructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Entities.Skills", b =>
+            modelBuilder.Entity("Domain.Entities.Skill", b =>
                 {
                     b.Property<int>("SkillId")
                         .ValueGeneratedOnAdd()
@@ -13133,7 +14801,8 @@ namespace Infraestructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("SkillId");
 
@@ -13143,76 +14812,756 @@ namespace Infraestructure.Migrations
                         new
                         {
                             SkillId = 1,
-                            Name = "Proactividad"
+                            Name = "C#"
                         },
                         new
                         {
                             SkillId = 2,
-                            Name = "Comunicación efectiva"
+                            Name = "C"
                         },
                         new
                         {
                             SkillId = 3,
-                            Name = "Trabajo en equipo"
+                            Name = "JavaScript"
                         },
                         new
                         {
                             SkillId = 4,
-                            Name = "Pensamiento crítico"
+                            Name = "Node.Js"
                         },
                         new
                         {
                             SkillId = 5,
-                            Name = "Resolución de problemas"
+                            Name = "HTML"
                         },
                         new
                         {
                             SkillId = 6,
-                            Name = "Creatividad"
+                            Name = "CSS"
                         },
                         new
                         {
                             SkillId = 7,
-                            Name = "Adaptabilidad"
+                            Name = "Photoshop"
                         },
                         new
                         {
                             SkillId = 8,
-                            Name = "Gestión del tiempo"
+                            Name = "Excel"
                         },
                         new
                         {
                             SkillId = 9,
-                            Name = "Liderazgo"
+                            Name = "Word"
                         },
                         new
                         {
                             SkillId = 10,
-                            Name = "Habilidades tecnológicas"
+                            Name = "Ventas consultivas"
                         },
                         new
                         {
                             SkillId = 11,
-                            Name = "Empatía"
+                            Name = "Cierre de ventas"
                         },
                         new
                         {
                             SkillId = 12,
-                            Name = "Toma de decisiones"
+                            Name = "Prospección de clientes"
                         },
                         new
                         {
                             SkillId = 13,
-                            Name = "Tolerancia a la frustración"
+                            Name = "Manejo de objeciones"
                         },
                         new
                         {
                             SkillId = 14,
-                            Name = "Pensamiento estratégico"
+                            Name = "Relaciones comerciales"
+                        },
+                        new
+                        {
+                            SkillId = 15,
+                            Name = "Presentaciones de ventas"
+                        },
+                        new
+                        {
+                            SkillId = 16,
+                            Name = "Estrategias de venta"
+                        },
+                        new
+                        {
+                            SkillId = 17,
+                            Name = "Gestión del talento"
+                        },
+                        new
+                        {
+                            SkillId = 18,
+                            Name = "Selección de personal"
+                        },
+                        new
+                        {
+                            SkillId = 19,
+                            Name = "Capacitación y desarrollo"
+                        },
+                        new
+                        {
+                            SkillId = 20,
+                            Name = "Compensación y beneficios"
+                        },
+                        new
+                        {
+                            SkillId = 21,
+                            Name = "SEO (Optimización de Motores de Búsqueda)"
+                        },
+                        new
+                        {
+                            SkillId = 22,
+                            Name = "SEM (Marketing en Motores de Búsqueda)"
+                        },
+                        new
+                        {
+                            SkillId = 23,
+                            Name = "Marketing de Contenidos"
+                        },
+                        new
+                        {
+                            SkillId = 24,
+                            Name = "Email Marketing"
+                        },
+                        new
+                        {
+                            SkillId = 25,
+                            Name = "Marketing en Redes Sociales"
+                        },
+                        new
+                        {
+                            SkillId = 26,
+                            Name = "Publicidad Digital"
+                        },
+                        new
+                        {
+                            SkillId = 27,
+                            Name = "Analytics de Marketing"
+                        },
+                        new
+                        {
+                            SkillId = 28,
+                            Name = "Estrategia de Marketing"
+                        },
+                        new
+                        {
+                            SkillId = 29,
+                            Name = "Investigación de Mercado"
+                        },
+                        new
+                        {
+                            SkillId = 30,
+                            Name = "Branding"
+                        },
+                        new
+                        {
+                            SkillId = 31,
+                            Name = "Gestión del talento"
+                        },
+                        new
+                        {
+                            SkillId = 32,
+                            Name = "Selección de personal"
+                        },
+                        new
+                        {
+                            SkillId = 33,
+                            Name = "Capacitación y desarrollo"
+                        },
+                        new
+                        {
+                            SkillId = 34,
+                            Name = "Compensación y beneficios"
+                        },
+                        new
+                        {
+                            SkillId = 35,
+                            Name = "Relaciones laborales"
+                        },
+                        new
+                        {
+                            SkillId = 36,
+                            Name = "Administración de nómina"
+                        },
+                        new
+                        {
+                            SkillId = 37,
+                            Name = "Evaluación del desempeño"
+                        },
+                        new
+                        {
+                            SkillId = 38,
+                            Name = "Cultura organizacional"
+                        },
+                        new
+                        {
+                            SkillId = 39,
+                            Name = "Gestión del cambio"
+                        },
+                        new
+                        {
+                            SkillId = 40,
+                            Name = "Gestión del rendimiento"
+                        },
+                        new
+                        {
+                            SkillId = 41,
+                            Name = "Compras y aprovisionamiento"
+                        },
+                        new
+                        {
+                            SkillId = 42,
+                            Name = "Logística de abastecimiento"
+                        },
+                        new
+                        {
+                            SkillId = 43,
+                            Name = "Gestión de inventario"
+                        },
+                        new
+                        {
+                            SkillId = 44,
+                            Name = "Planificación de la demanda"
+                        },
+                        new
+                        {
+                            SkillId = 45,
+                            Name = "Análisis de mercado"
+                        },
+                        new
+                        {
+                            SkillId = 46,
+                            Name = "Estrategia de precios"
+                        },
+                        new
+                        {
+                            SkillId = 47,
+                            Name = "Gestión de proveedores"
+                        },
+                        new
+                        {
+                            SkillId = 48,
+                            Name = "Gestión de la cadena de suministro"
+                        },
+                        new
+                        {
+                            SkillId = 49,
+                            Name = "Exportaciones e importaciones"
+                        },
+                        new
+                        {
+                            SkillId = 50,
+                            Name = "Comercio electrónico"
+                        },
+                        new
+                        {
+                            SkillId = 51,
+                            Name = "Asesoría financiera"
+                        },
+                        new
+                        {
+                            SkillId = 52,
+                            Name = "Asesoría legal"
+                        },
+                        new
+                        {
+                            SkillId = 53,
+                            Name = "Asesoría fiscal"
+                        },
+                        new
+                        {
+                            SkillId = 54,
+                            Name = "Asesoría en inversiones"
+                        },
+                        new
+                        {
+                            SkillId = 55,
+                            Name = "Asesoría en seguros"
+                        },
+                        new
+                        {
+                            SkillId = 56,
+                            Name = "Asesoría en bienes raíces"
+                        },
+                        new
+                        {
+                            SkillId = 57,
+                            Name = "Asesoría en negocios"
+                        },
+                        new
+                        {
+                            SkillId = 58,
+                            Name = "Asesoría en tecnología"
+                        },
+                        new
+                        {
+                            SkillId = 59,
+                            Name = "Asesoría en recursos humanos"
+                        },
+                        new
+                        {
+                            SkillId = 60,
+                            Name = "Asesoría en marketing"
+                        },
+                        new
+                        {
+                            SkillId = 61,
+                            Name = "Gestión de documentos"
+                        },
+                        new
+                        {
+                            SkillId = 62,
+                            Name = "Coordinación de agendas"
+                        },
+                        new
+                        {
+                            SkillId = 63,
+                            Name = "Archivo y registro"
+                        },
+                        new
+                        {
+                            SkillId = 64,
+                            Name = "Atención telefónica"
+                        },
+                        new
+                        {
+                            SkillId = 65,
+                            Name = "Gestión de correos electrónicos"
+                        },
+                        new
+                        {
+                            SkillId = 66,
+                            Name = "Facturación y cobranza"
+                        },
+                        new
+                        {
+                            SkillId = 67,
+                            Name = "Control de gastos"
+                        },
+                        new
+                        {
+                            SkillId = 68,
+                            Name = "Manejo de bases de datos"
+                        },
+                        new
+                        {
+                            SkillId = 69,
+                            Name = "Elaboración de informes"
+                        },
+                        new
+                        {
+                            SkillId = 70,
+                            Name = "Organización de eventos"
+                        },
+                        new
+                        {
+                            SkillId = 71,
+                            Name = "PowerPoint"
+                        },
+                        new
+                        {
+                            SkillId = 72,
+                            Name = "Google Sheets"
+                        },
+                        new
+                        {
+                            SkillId = 73,
+                            Name = "Google Docs"
+                        },
+                        new
+                        {
+                            SkillId = 74,
+                            Name = "Google Slides"
+                        },
+                        new
+                        {
+                            SkillId = 75,
+                            Name = "Microsoft Access"
+                        },
+                        new
+                        {
+                            SkillId = 76,
+                            Name = "QuickBooks"
+                        },
+                        new
+                        {
+                            SkillId = 77,
+                            Name = "Adobe Illustrator"
+                        },
+                        new
+                        {
+                            SkillId = 78,
+                            Name = "Adobe InDesign"
+                        },
+                        new
+                        {
+                            SkillId = 79,
+                            Name = "Adobe Premiere Pro"
+                        },
+                        new
+                        {
+                            SkillId = 80,
+                            Name = "AutoCAD"
+                        },
+                        new
+                        {
+                            SkillId = 81,
+                            Name = "SketchUp"
+                        },
+                        new
+                        {
+                            SkillId = 82,
+                            Name = "MATLAB"
+                        },
+                        new
+                        {
+                            SkillId = 83,
+                            Name = "SolidWorks"
+                        },
+                        new
+                        {
+                            SkillId = 84,
+                            Name = "SPSS"
+                        },
+                        new
+                        {
+                            SkillId = 85,
+                            Name = "SAP"
+                        },
+                        new
+                        {
+                            SkillId = 86,
+                            Name = "Salesforce"
+                        },
+                        new
+                        {
+                            SkillId = 87,
+                            Name = "Tableau"
+                        },
+                        new
+                        {
+                            SkillId = 88,
+                            Name = "JIRA"
+                        },
+                        new
+                        {
+                            SkillId = 89,
+                            Name = "Confluence"
+                        },
+                        new
+                        {
+                            SkillId = 90,
+                            Name = "Zendesk"
+                        },
+                        new
+                        {
+                            SkillId = 91,
+                            Name = "GitHub"
+                        },
+                        new
+                        {
+                            SkillId = 92,
+                            Name = "GitLab"
+                        },
+                        new
+                        {
+                            SkillId = 93,
+                            Name = "Trello"
+                        },
+                        new
+                        {
+                            SkillId = 94,
+                            Name = "Asana"
+                        },
+                        new
+                        {
+                            SkillId = 95,
+                            Name = "Slack"
+                        },
+                        new
+                        {
+                            SkillId = 96,
+                            Name = "Microsoft Teams"
+                        },
+                        new
+                        {
+                            SkillId = 97,
+                            Name = "Zoom"
+                        },
+                        new
+                        {
+                            SkillId = 98,
+                            Name = "WebEx"
+                        },
+                        new
+                        {
+                            SkillId = 99,
+                            Name = "Skype"
+                        },
+                        new
+                        {
+                            SkillId = 100,
+                            Name = "Google Meet"
+                        },
+                        new
+                        {
+                            SkillId = 101,
+                            Name = "Inkscape"
+                        },
+                        new
+                        {
+                            SkillId = 102,
+                            Name = "Illustrator"
+                        },
+                        new
+                        {
+                            SkillId = 103,
+                            Name = "InDesign"
+                        },
+                        new
+                        {
+                            SkillId = 104,
+                            Name = "Premiere Pro"
+                        },
+                        new
+                        {
+                            SkillId = 105,
+                            Name = "After Effects"
+                        },
+                        new
+                        {
+                            SkillId = 106,
+                            Name = "Final Cut Pro"
+                        },
+                        new
+                        {
+                            SkillId = 107,
+                            Name = "3ds Max"
+                        },
+                        new
+                        {
+                            SkillId = 108,
+                            Name = "Maya"
+                        },
+                        new
+                        {
+                            SkillId = 109,
+                            Name = "Unity"
+                        },
+                        new
+                        {
+                            SkillId = 110,
+                            Name = "Unreal Engine"
+                        },
+                        new
+                        {
+                            SkillId = 111,
+                            Name = "Pro Tools"
+                        },
+                        new
+                        {
+                            SkillId = 112,
+                            Name = "Logic Pro"
+                        },
+                        new
+                        {
+                            SkillId = 113,
+                            Name = "Ableton Live"
+                        },
+                        new
+                        {
+                            SkillId = 114,
+                            Name = "FL Studio"
+                        },
+                        new
+                        {
+                            SkillId = 115,
+                            Name = "Audacity"
+                        },
+                        new
+                        {
+                            SkillId = 116,
+                            Name = "Adobe XD"
+                        },
+                        new
+                        {
+                            SkillId = 117,
+                            Name = "Figma"
+                        },
+                        new
+                        {
+                            SkillId = 118,
+                            Name = "Sketch"
+                        },
+                        new
+                        {
+                            SkillId = 119,
+                            Name = "Zeplin"
+                        },
+                        new
+                        {
+                            SkillId = 120,
+                            Name = "InVision"
+                        },
+                        new
+                        {
+                            SkillId = 121,
+                            Name = "Marvel"
+                        },
+                        new
+                        {
+                            SkillId = 122,
+                            Name = "Balsamiq"
+                        },
+                        new
+                        {
+                            SkillId = 123,
+                            Name = "Axure RP"
+                        },
+                        new
+                        {
+                            SkillId = 124,
+                            Name = "Adobe Acrobat"
+                        },
+                        new
+                        {
+                            SkillId = 125,
+                            Name = "GIMP"
+                        },
+                        new
+                        {
+                            SkillId = 126,
+                            Name = "CorelDRAW"
+                        },
+                        new
+                        {
+                            SkillId = 127,
+                            Name = "ZBrush"
+                        },
+                        new
+                        {
+                            SkillId = 128,
+                            Name = "Blender"
+                        },
+                        new
+                        {
+                            SkillId = 129,
+                            Name = "Substance Painter"
+                        },
+                        new
+                        {
+                            SkillId = 130,
+                            Name = "Substance Designer"
+                        },
+                        new
+                        {
+                            SkillId = 131,
+                            Name = "Adobe Lightroom"
+                        },
+                        new
+                        {
+                            SkillId = 132,
+                            Name = "SketchUp"
+                        },
+                        new
+                        {
+                            SkillId = 133,
+                            Name = "Revit"
+                        },
+                        new
+                        {
+                            SkillId = 134,
+                            Name = "Rhino"
+                        },
+                        new
+                        {
+                            SkillId = 135,
+                            Name = "Autodesk Fusion 360"
+                        },
+                        new
+                        {
+                            SkillId = 136,
+                            Name = "Avid Media Composer"
+                        },
+                        new
+                        {
+                            SkillId = 137,
+                            Name = "DaVinci Resolve"
+                        },
+                        new
+                        {
+                            SkillId = 138,
+                            Name = "Cinema 4D"
+                        },
+                        new
+                        {
+                            SkillId = 139,
+                            Name = "Motion"
+                        },
+                        new
+                        {
+                            SkillId = 140,
+                            Name = "Avid Pro Tools"
+                        },
+                        new
+                        {
+                            SkillId = 141,
+                            Name = "Avid Sibelius"
+                        },
+                        new
+                        {
+                            SkillId = 142,
+                            Name = "Adobe Audition"
+                        },
+                        new
+                        {
+                            SkillId = 143,
+                            Name = "Reason"
+                        },
+                        new
+                        {
+                            SkillId = 144,
+                            Name = "Nuendo"
+                        },
+                        new
+                        {
+                            SkillId = 145,
+                            Name = "Cubase"
+                        },
+                        new
+                        {
+                            SkillId = 146,
+                            Name = "FL Studio"
+                        },
+                        new
+                        {
+                            SkillId = 147,
+                            Name = "Bitwig Studio"
+                        },
+                        new
+                        {
+                            SkillId = 148,
+                            Name = "REAPER"
+                        },
+                        new
+                        {
+                            SkillId = 149,
+                            Name = "GarageBand"
+                        },
+                        new
+                        {
+                            SkillId = 150,
+                            Name = "Soundtrap"
                         });
                 });
 
-            modelBuilder.Entity("Domain.Entities.StudyTypes", b =>
+            modelBuilder.Entity("Domain.Entities.StudyType", b =>
                 {
                     b.Property<int>("StudyTypeId")
                         .ValueGeneratedOnAdd()
@@ -13222,7 +15571,8 @@ namespace Infraestructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("StudyTypeId");
 
@@ -13232,39 +15582,49 @@ namespace Infraestructure.Migrations
                         new
                         {
                             StudyTypeId = 1,
-                            Name = "Secundario"
+                            Name = "Primaria"
                         },
                         new
                         {
                             StudyTypeId = 2,
-                            Name = "Terciario"
+                            Name = "Secundaria"
                         },
                         new
                         {
                             StudyTypeId = 3,
-                            Name = "Universitario"
+                            Name = "Terciario"
                         },
                         new
                         {
                             StudyTypeId = 4,
-                            Name = "Postgrado"
+                            Name = "Universitario"
                         },
                         new
                         {
                             StudyTypeId = 5,
-                            Name = "Maestría"
+                            Name = "Posgrado"
+                        },
+                        new
+                        {
+                            StudyTypeId = 6,
+                            Name = "Master"
+                        },
+                        new
+                        {
+                            StudyTypeId = 7,
+                            Name = "Doctorado"
                         });
                 });
 
-            modelBuilder.Entity("Domain.Entities.Applications", b =>
+            modelBuilder.Entity("Domain.Entities.Aplication", b =>
                 {
-                    b.HasOne("Domain.Entities.ApplicationStatusTypes", "ApplicationStatusType")
+                    b.HasOne("Domain.Entities.ApplicationStatusType", "ApplicationStatusType")
                         .WithMany("Applications")
                         .HasForeignKey("ApplicationStatusTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.Offers", "Offer")
+                    b.HasOne("Domain.Entities.Offer", "Offer")
                         .WithMany("Applications")
                         .HasForeignKey("OfferId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -13275,9 +15635,9 @@ namespace Infraestructure.Migrations
                     b.Navigation("Offer");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Cities", b =>
+            modelBuilder.Entity("Domain.Entities.City", b =>
                 {
-                    b.HasOne("Domain.Entities.Provinces", "Province")
+                    b.HasOne("Domain.Entities.Province", "Province")
                         .WithMany("Cities")
                         .HasForeignKey("ProvinceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -13286,59 +15646,21 @@ namespace Infraestructure.Migrations
                     b.Navigation("Province");
                 });
 
-            modelBuilder.Entity("Domain.Entities.OfferCategories", b =>
+            modelBuilder.Entity("Domain.Entities.Offer", b =>
                 {
-                    b.HasOne("Domain.Entities.Categories", "Category")
-                        .WithMany("OfferCategories")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.Offers", "Offer")
-                        .WithMany("OfferCategories")
-                        .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Offer");
-                });
-
-            modelBuilder.Entity("Domain.Entities.OfferSkills", b =>
-                {
-                    b.HasOne("Domain.Entities.Offers", "Offer")
-                        .WithMany("OfferSkills")
-                        .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.Skills", "Skill")
-                        .WithMany("OfferSkills")
-                        .HasForeignKey("SkillId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Offer");
-
-                    b.Navigation("Skill");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Offers", b =>
-                {
-                    b.HasOne("Domain.Entities.Cities", "City")
+                    b.HasOne("Domain.Entities.City", "City")
                         .WithMany("Offers")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.JobOfferModes", "JobOfferMode")
+                    b.HasOne("Domain.Entities.JobOfferMode", "JobOfferMode")
                         .WithMany("Offers")
                         .HasForeignKey("JobOfferModeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.StudyTypes", "StudyType")
+                    b.HasOne("Domain.Entities.StudyType", "StudyType")
                         .WithMany("Offers")
                         .HasForeignKey("StudyTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -13351,9 +15673,47 @@ namespace Infraestructure.Migrations
                     b.Navigation("StudyType");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Provinces", b =>
+            modelBuilder.Entity("Domain.Entities.OfferCategory", b =>
                 {
-                    b.HasOne("Domain.Entities.Countries", "Country")
+                    b.HasOne("Domain.Entities.Category", "Category")
+                        .WithMany("OfferCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Offer", "Offer")
+                        .WithMany("OfferCategories")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Offer");
+                });
+
+            modelBuilder.Entity("Domain.Entities.OfferSkill", b =>
+                {
+                    b.HasOne("Domain.Entities.Offer", "Offer")
+                        .WithMany("OfferSkills")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Skill", "Skill")
+                        .WithMany("OfferSkills")
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Offer");
+
+                    b.Navigation("Skill");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Province", b =>
+                {
+                    b.HasOne("Domain.Entities.Country", "Country")
                         .WithMany("Provinces")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -13362,32 +15722,32 @@ namespace Infraestructure.Migrations
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("Domain.Entities.ApplicationStatusTypes", b =>
+            modelBuilder.Entity("Domain.Entities.ApplicationStatusType", b =>
                 {
                     b.Navigation("Applications");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Categories", b =>
+            modelBuilder.Entity("Domain.Entities.Category", b =>
                 {
                     b.Navigation("OfferCategories");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Cities", b =>
+            modelBuilder.Entity("Domain.Entities.City", b =>
                 {
                     b.Navigation("Offers");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Countries", b =>
+            modelBuilder.Entity("Domain.Entities.Country", b =>
                 {
                     b.Navigation("Provinces");
                 });
 
-            modelBuilder.Entity("Domain.Entities.JobOfferModes", b =>
+            modelBuilder.Entity("Domain.Entities.JobOfferMode", b =>
                 {
                     b.Navigation("Offers");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Offers", b =>
+            modelBuilder.Entity("Domain.Entities.Offer", b =>
                 {
                     b.Navigation("Applications");
 
@@ -13396,17 +15756,17 @@ namespace Infraestructure.Migrations
                     b.Navigation("OfferSkills");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Provinces", b =>
+            modelBuilder.Entity("Domain.Entities.Province", b =>
                 {
                     b.Navigation("Cities");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Skills", b =>
+            modelBuilder.Entity("Domain.Entities.Skill", b =>
                 {
                     b.Navigation("OfferSkills");
                 });
 
-            modelBuilder.Entity("Domain.Entities.StudyTypes", b =>
+            modelBuilder.Entity("Domain.Entities.StudyType", b =>
                 {
                     b.Navigation("Offers");
                 });
