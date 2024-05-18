@@ -45,6 +45,8 @@ namespace Infraestructure.Command
                 throw new NotFoundException("La Oferta con el ID " + id + " no fue encontrada.");
             }
             company.Status = false;
+            company.Applications?.ForEach(a => a.Status = false);
+
             await _context.SaveChangesAsync();
         }
 

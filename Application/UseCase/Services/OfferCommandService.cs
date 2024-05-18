@@ -78,9 +78,17 @@ namespace Application.UseCase.Services
             }
         }
 
-        public Task DeleteById(Guid id)
+        public async Task DeleteById(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _command.Remove(id);
+            }
+            catch (Exception e)
+            {
+                if (e is HTTPError) { throw; }
+                throw new InternalServerErrorException(e.Message);
+            }
         }
 
         public async Task<OfferResponse> Update(Guid id, OfferRequest request)
