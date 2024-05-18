@@ -79,11 +79,11 @@ namespace Application.UseCase.Services
 
                 offer.OfferCategories.ForEach(c =>
                 {
-                    response.Categories.Add(_mapper.Map<CategoryResponse>(c));
+                    response.Categories.Add(_mapper.Map<CategoryResponse>(c.Category));
                 });
                 offer.OfferSkills.ForEach(sk =>
                 {
-                    response.Skills.Add(_mapper.Map<SkillResponse>(sk));
+                    response.Skills.Add(_mapper.Map<SkillResponse>(sk.Skill));
                 });
 
                 return response;

@@ -9,7 +9,7 @@
         public int MinSalary { get; set; }
         public int MaxSalary { get; set; }
         public int JobOfferModeId { get; set; }
-        public DateTime PublicationDate { get; set; }
+        public DateTime PublicationDate { get; set; } = DateTime.Now;
         public int CityId { get; set; }
         public int? MinAge { get; set; }
         public int? MaxAge { get; set; }
