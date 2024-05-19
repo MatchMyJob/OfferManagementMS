@@ -99,6 +99,11 @@ namespace API.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    CustomValidation.ReturnError(ModelState);
+                }
+
                 _response.Result = await _commandService.Create(request);
                 _response.StatusCode = (HttpStatusCode)201;
                 _response.Status = "Created";
@@ -130,6 +135,11 @@ namespace API.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    CustomValidation.ReturnError(ModelState);
+                }
+
                 _response.Result = await _commandService.Update(id, request);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
