@@ -48,6 +48,11 @@ builder.Services.AddScoped<IOfferQuery, OfferQuery>();
 builder.Services.AddScoped<IOfferCommandService, OfferCommandService>();
 builder.Services.AddScoped<IOfferQueryService, OfferQueryService>();
 
+builder.Services.AddScoped<IApplicationCommand, ApplicationCommand>();
+builder.Services.AddScoped<IApplicationQuery, ApplicationQuery>();
+builder.Services.AddScoped<IApplicationCommandService, ApplicationCommandService>();
+builder.Services.AddScoped<IApplicationQueryService, ApplicationQueryService>();
+
 builder.Services.AddScoped<ICategoryQuery, CategoryQuery>();
 builder.Services.AddScoped<ICategoryQueryService, CategoryQueryService>();
 

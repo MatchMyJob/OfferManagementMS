@@ -4,7 +4,6 @@ using Application.DTO.Request;
 using Application.DTO.Response;
 using Application.Interfaces;
 using AutoMapper;
-using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -14,26 +13,26 @@ namespace API.Controllers
     [ApiController]
     public class ApplicationController : ControllerBase
     {
-        private readonly IApplicationService _service;
+        private readonly IApplicationQueryService _queryService;
+        private readonly IApplicationCommandService _commandService;
         private readonly IMapper _mapper;
         private HTTPResponse<Object> _response;
-        private readonly IApplicationQuery _queryService;
 
-        public ApplicationController(IApplicationService service, IMapper mapper, IApplicationQuery queryService)
+        public ApplicationController(IApplicationQueryService service, IMapper mapper, IApplicationQuery queryService, IApplicationCommandService commandService)
         {
-            _service = service;
+            _queryService = service;
+            _commandService = commandService;
             _mapper = mapper;
             _response = new();
-            _queryService = queryService;
         }
 
         /// <summary>
-        /// Returns a User given their ID
+        /// Busca una postulación por medio del ID
         /// </summary>
-        /// <response code="200">Return an Application as Result</response>
+        /// <response code="200">Retorna información de la postulación.</response>
 
         [HttpGet("{id:int}")]
-        [ProducesResponseType(typeof(HTTPResponse<ApplicationResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<ApplicationCandidateResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
@@ -42,7 +41,7 @@ namespace API.Controllers
             
             try
             {
-                _response.Result = await _service.GetById(id);
+                _response.Result = await _queryService.GetById(id);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };
@@ -57,59 +56,22 @@ namespace API.Controllers
             }
         }
 
-        /// <summary>
-        /// Modify a User field, request ID and the attribute to update
-        /// </summary>
-        /// <response code="200">Returns the updated Application as Result</response>
-
-        [HttpPatch("{id:int}")]
-        [ProducesResponseType(typeof(HTTPResponse<ApplicationResponse>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status409Conflict)]
-        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> UpdatePartialEntity(int id, JsonPatchDocument<ApplicationRequest> patchRequest)
-        {
-            try
-            {
-                var user = await _service.GetById(id);
-                ApplicationRequest applicationRequest = _mapper.Map<ApplicationRequest>(user);
-                patchRequest.ApplyTo(applicationRequest, ModelState);
-                if (!ModelState.IsValid)
-                {
-                    throw new BadRequestException("Enter the application correctly.");
-                }
-
-                _response.Result = await _service.Update(id, applicationRequest);
-                _response.StatusCode = (HttpStatusCode)200;
-                _response.Status = "OK";
-                return new JsonResult(_response) { StatusCode = 200 };
-            }
-            catch (Exception e)
-            {
-                if (e is HTTPError)
-                {
-                    return new JsonResult(_mapper.Map<HTTPResponse<string>>(e)) { StatusCode = (int)((HTTPError)e).StatusCode };
-                }
-                return new JsonResult(_mapper.Map<HTTPResponse<string>>(new InternalServerErrorException("A server error has occurred."))) { StatusCode = 500 };
-            }
-        }
+        
 
         /// <summary>
-        /// Retorna una pagina de Applicants
+        /// Retorna una pagina de postulaciones
         /// </summary>
-        /// <response code="200">Retorna una pagina de Applicantions como resultado.</response>
+        /// <response code="200">Retorna una pagina de Postulaciones como resultado.</response>
 
         [HttpGet]
-        [ProducesResponseType(typeof(HTTPResponse<Paged<ApplicationResponse>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<Paged<ApplicationCandidateResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetAll(int pagedNumber = 1, int pagedSize = 10)
         {
             try
             {
-                // HARDCODE - VERIFICAR POR QUE NO ANDA ESTE METODO
-               // _response.Result = await _queryService.GetAllPaged(pagedNumber, pagedSize);
+                _response.Result = await _queryService.GetAllPaged(pagedNumber, pagedSize);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };
@@ -124,8 +86,15 @@ namespace API.Controllers
             }
         }
 
+
+
+        /// <summary>
+        /// Realiza el registro de una postulación
+        /// </summary>
+        /// <response code="201">Retorna la información de la postulación registrada.</response>
+
         [HttpPost]
-        [ProducesResponseType(typeof(HTTPResponse<ApplicationResponse>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(HTTPResponse<ApplicationCandidateResponse>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status409Conflict)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
@@ -133,10 +102,80 @@ namespace API.Controllers
         {
             try
             {
-                _response.Result = await _service.Create(request);
+                if (!ModelState.IsValid)
+                {
+                    CustomValidation.ReturnError(ModelState);
+                }
+
+                _response.Result = await _commandService.Create(request);
                 _response.StatusCode = (HttpStatusCode)201;
                 _response.Status = "Created";
                 return new JsonResult(_response) { StatusCode = 201 };
+            }
+            catch (Exception e)
+            {
+                if (e is HTTPError)
+                {
+                    return new JsonResult(_mapper.Map<HTTPResponse<string>>(e)) { StatusCode = (int)((HTTPError)e).StatusCode };
+                }
+                return new JsonResult(_mapper.Map<HTTPResponse<string>>(new InternalServerErrorException("A server error has occurred."))) { StatusCode = 500 };
+            }
+        }
+
+
+        /// <summary>
+        /// Realiza la actualización de una postulación
+        /// </summary>
+        /// <response code="200">Retorna la información de la postulación actualizada.</response>
+        
+        [HttpPut("{id:int}")]
+        [ProducesResponseType(typeof(HTTPResponse<ApplicationCandidateResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status409Conflict)]
+        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> Update(int id, [FromBody] ApplicationUpdateRequest request)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    CustomValidation.ReturnError(ModelState);
+                }
+                _response.Result = await _commandService.Update(id, request);
+                _response.StatusCode = (HttpStatusCode)200;
+                _response.Status = "OK";
+                return new JsonResult(_response) { StatusCode = 200 };
+            }
+            catch (Exception e)
+            {
+                if (e is HTTPError)
+                {
+                    return new JsonResult(_mapper.Map<HTTPResponse<string>>(e)) { StatusCode = (int)((HTTPError)e).StatusCode };
+                }
+                return new JsonResult(_mapper.Map<HTTPResponse<string>>(new InternalServerErrorException("A server error has occurred."))) { StatusCode = 500 };
+            }
+        }
+
+
+
+        /// <summary>
+        /// Realiza la eliminación de una postulación
+        /// </summary>
+        /// <response code="200">No retorna nada.</response>
+
+        [HttpDelete("{id:int}")]
+        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status409Conflict)]
+        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> Delete(int id)
+        {
+            try
+            {
+                await _commandService.DeleteById(id);
+                _response.StatusCode = (HttpStatusCode)200;
+                _response.Status = "OK";
+                return new JsonResult(_response) { StatusCode = 200 };
             }
             catch (Exception e)
             {

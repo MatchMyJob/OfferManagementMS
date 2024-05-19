@@ -26,18 +26,10 @@ namespace Infraestructure.Command
                     .ThenInclude(o => o.City)
                         .ThenInclude(c => c.Province)
                 .Include(a => a.Offer)
-                    .ThenInclude(st => st.StudyType)
-                .Include(a => a.Offer)
-                    .ThenInclude(os => os.OfferSkills)
-                        .ThenInclude(s => s.Skill)
-                .Include(a => a.Offer)
                     .ThenInclude(jom => jom.JobOfferMode)
-                .Include(a => a.Offer)
-                    .ThenInclude(oc => oc.OfferCategories)
-                        .ThenInclude(c => c.Category)
                 .FirstOrDefaultAsync(a => (a.ApplicationId == entity.ApplicationId) && (a.Status));
 
-            return entity;
+            return applicationAdded;
         }
 
         public async Task Remove(int id)
@@ -47,8 +39,7 @@ namespace Infraestructure.Command
 
             if (application == null) { throw new NotFoundException("La application con el ID " + id + " no fue encontrada.");}
 
-            _context.Applications.Remove(application);
-
+            application.Status = false;
             await _context.SaveChangesAsync();
         }
 
@@ -59,12 +50,18 @@ namespace Infraestructure.Command
 
             if (application == null) { throw new NotFoundException("La application con el ID " + id + " no fue encontrada."); }
 
-            _context.Entry(application).CurrentValues.SetValues(entity);
+            //_context.Entry(application).CurrentValues.SetValues(entity);
+            application.ApplicationStatusTypeId = entity.ApplicationStatusTypeId;
             await _context.SaveChangesAsync();
 
             var applicationUpdated = await _context.Applications
                 .Include(a => a.ApplicationStatusType)
-                .FirstOrDefaultAsync(a => (a.ApplicationId == id) && (a.Status));
+                .Include(a => a.Offer)
+                    .ThenInclude(o => o.City)
+                        .ThenInclude(c => c.Province)
+                .Include(a => a.Offer)
+                    .ThenInclude(jom => jom.JobOfferMode)
+                .FirstOrDefaultAsync(a => (a.ApplicationId == application.ApplicationId) && (a.Status));
 
             return applicationUpdated;
         }
