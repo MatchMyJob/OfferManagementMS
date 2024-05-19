@@ -1,11 +1,8 @@
-﻿using Application.DTO.Request;
-using Domain.Entities;
+﻿using Domain.Entities;
 
 namespace Application.Interfaces
 {
-    public interface IApplicationCommand : ICommand<Domain.Entities.Aplication, int>
+    public interface IApplicationCommand : ICommand<Aplication, int>
     {
-
-
     }
 }

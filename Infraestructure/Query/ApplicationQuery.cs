@@ -1,6 +1,7 @@
 ﻿using Application.DTO.Error;
 using Application.DTO.Pagination;
 using Application.Interfaces;
+using Domain.Entities;
 using Infraestructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,25 +17,45 @@ namespace Infraestructure.Query
             _context = context;
         }
         
-        public async Task<Paged<Domain.Entities.Aplication>> RecoveryAll(Parameters parameters)
+        public async Task<Paged<Aplication>> RecoveryAll(Parameters parameters)
         {
-            // HARDCODE - VERIFICAR ESTO
-            IQueryable<Domain.Entities.Aplication> applications = _context.Applications.Where(a => a.Status);
-            /*  .Include(c => c.CityObject)
-              .ThenInclude(p => p.ProvinceObject)
-          .ThenInclude(c => c.CountryObject);*/
-
-            //HARDCODE - VERFICIAR ESTO (EL ASYNC - AWAIT)
-            return /*await*/ await Paged<Domain.Entities.Aplication>.ToPagedAsync(applications, parameters.PageNumber, parameters.PageSize);
+            IQueryable<Aplication> applications = _context.Applications.Where(a => a.Status)
+                .Include(a => a.ApplicationStatusType)
+                .Include(a => a.Offer)
+                    .ThenInclude(o => o.City)
+                        .ThenInclude(c => c.Province)
+                .Include(a => a.Offer)
+                    .ThenInclude(st => st.StudyType)
+                .Include(a => a.Offer)
+                    .ThenInclude(os => os.OfferSkills)
+                        .ThenInclude(s => s.Skill)
+                .Include(a => a.Offer)
+                    .ThenInclude(jom => jom.JobOfferMode)
+                .Include(a => a.Offer)
+                    .ThenInclude(oc => oc.OfferCategories)
+                        .ThenInclude(c => c.Category);
+            
+            return await Paged<Aplication>.ToPagedAsync(applications, parameters.PageNumber, parameters.PageSize);
         }
 
-        public async Task<Domain.Entities.Aplication> RecoveryById(int id)
+        public async Task<Aplication> RecoveryById(int id)
         {
-            //HARDCODE - VERIFICAR ESTO
             var application = await _context.Applications
-                /*.Include(c => c.CityObject)
-                .ThenInclude(p => p.ProvinceObject)*/
-                .FirstOrDefaultAsync(c => (c.ApplicationId == id) && (c.Status));
+                .Include(a => a.ApplicationStatusType)
+                .Include(a => a.Offer)
+                    .ThenInclude(o => o.City)
+                        .ThenInclude(c => c.Province)
+                .Include(a => a.Offer)
+                    .ThenInclude(st => st.StudyType)
+                .Include(a => a.Offer)
+                    .ThenInclude(os => os.OfferSkills)
+                        .ThenInclude(s => s.Skill)
+                .Include(a => a.Offer)
+                    .ThenInclude(jom => jom.JobOfferMode)
+                .Include(a => a.Offer)
+                    .ThenInclude(oc => oc.OfferCategories)
+                        .ThenInclude(c => c.Category)
+                .FirstOrDefaultAsync(a => (a.ApplicationId == id) && (a.Status));
 
             if (application == null)
             {

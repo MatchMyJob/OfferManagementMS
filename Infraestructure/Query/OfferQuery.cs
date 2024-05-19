@@ -21,15 +21,15 @@ namespace Infraestructure.Query
         {
             IQueryable<Offer> offers = _context.Offers.Where(o => o.Status)
                 .Include(c => c.City)
-                .ThenInclude(p => p.Province)
+                    .ThenInclude(p => p.Province)
                 .Include(st => st.StudyType)
                 .Include(os => os.OfferSkills)
-                .ThenInclude(s => s.Skill)
+                    .ThenInclude(s => s.Skill)
                 .Include(jom => jom.JobOfferMode)
                 .Include(oc => oc.OfferCategories)
-                .ThenInclude(c => c.Category)
+                    .ThenInclude(c => c.Category)
                 .Include(a => a.Applications)
-                .ThenInclude(ast => ast.ApplicationStatusType);
+                    .ThenInclude(ast => ast.ApplicationStatusType);
 
             return await Paged<Offer>.ToPagedAsync(offers, parameters.PageNumber, parameters.PageSize);
         }
@@ -38,15 +38,15 @@ namespace Infraestructure.Query
         {
             var offer = await _context.Offers
                 .Include(c => c.City)
-                .ThenInclude(p => p.Province)
+                    .ThenInclude(p => p.Province)
                 .Include(st => st.StudyType)
                 .Include(os => os.OfferSkills)
-                .ThenInclude(s => s.Skill)
+                    .ThenInclude(s => s.Skill)
                 .Include(jom => jom.JobOfferMode)
                 .Include(oc => oc.OfferCategories)
-                .ThenInclude(c => c.Category)
+                    .ThenInclude(c => c.Category)
                 .Include(a => a.Applications)
-                .ThenInclude(ast => ast.ApplicationStatusType)
+                    .ThenInclude(ast => ast.ApplicationStatusType)
                 .FirstOrDefaultAsync(u => (u.OfferId == id) && (u.Status));
 
             if (offer == null)
