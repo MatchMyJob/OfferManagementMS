@@ -1,11 +1,8 @@
 ﻿using Application.DTO.Error;
 using Application.DTO.Pagination;
 using Application.Interfaces;
-using Domain.Entities;
 using Infraestructure.Persistence;
-using Infraestructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Infraestructure.Query
 {

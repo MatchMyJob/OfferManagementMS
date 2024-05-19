@@ -17,9 +17,11 @@ namespace Application.DTO.Config
             CreateMap<CategoryResponse, Category>()
                 .ReverseMap()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.CategoryId));
-            //CreateMap<CategoryResponse, OfferCategory>()
-            //    .ReverseMap();
-            
+            CreateMap<CategoryResponse, OfferCategory>()
+                .ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.CategoryId))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Category.Name));
+
             CreateMap<JobOfferModeResponse, JobOfferMode>()
                 .ReverseMap()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.JobOfferModeId));
@@ -37,8 +39,10 @@ namespace Application.DTO.Config
             CreateMap<SkillResponse, Skill>()
                 .ReverseMap()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.SkillId));
-            //CreateMap<SkillResponse, OfferSkill>()
-            //    .ReverseMap();
+            CreateMap<SkillResponse, OfferSkill>()
+                .ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.SkillId))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Skill.Name));
 
             CreateMap<StudyTypeResponse, StudyType>()
                 .ReverseMap()
