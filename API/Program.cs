@@ -1,6 +1,7 @@
 using Application.DTO.Config;
 using Application.Interfaces;
 using Application.UseCase.Services;
+using Infraestructure.ApiClient;
 using Infraestructure.Command;
 using Infraestructure.Persistence;
 using Infraestructure.Query;
@@ -22,7 +23,7 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1.0.0",
-        Title = "API Template",
+        Title = "Offer Management MS",
         Description = "Basic architecture of the project.",
         Contact = new OpenApiContact
         {
@@ -70,6 +71,11 @@ builder.Services.AddScoped<ISkillQueryService, SkillQueryService>();
 
 builder.Services.AddScoped<IStudyTypeQuery, StudyTypeQuery>();
 builder.Services.AddScoped<IStudyTypeQueryService, StudyTypeQueryService>();
+
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+builder.Services.AddHttpClient();
+builder.Services.AddTransient<ICompanyApi, CompanyApi>();
+builder.Services.AddTransient<IApplicantApi, ApplicationApi>();
 
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>

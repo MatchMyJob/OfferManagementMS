@@ -10,12 +10,14 @@ namespace Application.UseCase.Services
     public class OfferQueryService : IOfferQueryService
     {
         private readonly IOfferQuery _query;
+        private readonly ICompanyApi _api;
         private readonly IMapper _mapper;
 
-        public OfferQueryService(IOfferQuery query, IMapper mapper)
+        public OfferQueryService(IOfferQuery query, IMapper mapper, ICompanyApi api = null)
         {
             _query = query;
             _mapper = mapper;
+            _api = api;
         }
 
         public async Task<Paged<OfferResponse>> GetAllPaged(int pageNumber, int pageSize)
@@ -31,9 +33,14 @@ namespace Application.UseCase.Services
                 Paged<Offer> offers = await _query.RecoveryAll(parameters);
                 List<OfferResponse> offerResponses = new();
 
-                offers.Data.ForEach(offer =>
+                
+                foreach (var offer in offers.Data)
                 {
                     var response = _mapper.Map<OfferResponse>(offer);
+
+                    var apiResponse = await _api.GetById<HTTPResponse<CompanyGetResponse>>(offer.CompanyId, "");
+                    response.Company = apiResponse.Result;
+
                     response.Ubication = new UbicationResponse
                     {
                         Province = offer.City.Province.Name,
@@ -51,7 +58,8 @@ namespace Application.UseCase.Services
                         response.Skills.Add(_mapper.Map<SkillResponse>(sk));
                     });
                     offerResponses.Add(response);
-                });
+                }
+                    
 
                 return new Paged<OfferResponse>(offerResponses, offers.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
             }
@@ -85,6 +93,9 @@ namespace Application.UseCase.Services
                 {
                     response.Skills.Add(_mapper.Map<SkillResponse>(sk.Skill));
                 });
+
+                var apiResponse = await _api.GetById<HTTPResponse<CompanyGetResponse>>(offer.CompanyId, "");
+                response.Company = apiResponse.Result;
 
                 return response;
             }

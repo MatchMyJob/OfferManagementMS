@@ -10,12 +10,14 @@ namespace Application.UseCase.Services
     public class ApplicationQueryService : IApplicationQueryService
     {
         private readonly IApplicationQuery _query;
+        private readonly ICompanyApi _api;
         private readonly IMapper _mapper;
 
-        public ApplicationQueryService(IApplicationQuery query, IMapper mapper)
+        public ApplicationQueryService(IApplicationQuery query, IMapper mapper, ICompanyApi api)
         {
             _query = query;
             _mapper = mapper;
+            _api = api;
         }
 
         public async Task<Paged<ApplicationCandidateResponse>> GetAllPaged(int pageNumber, int pageSize)
@@ -31,11 +33,15 @@ namespace Application.UseCase.Services
                 Paged<Aplication> applications = await _query.RecoveryAll(parameters);
                 List<ApplicationCandidateResponse> responses = new();
 
-                applications.Data.ForEach(a =>
+                foreach (var application in applications.Data)
                 {
-                    var application = _mapper.Map<ApplicationCandidateResponse>(a);
-                    responses.Add(application);
-                });
+                    var applicationResponse = _mapper.Map<ApplicationCandidateResponse>(application);
+
+                    var apiResponse = await _api.GetById<HTTPResponse<CompanyGetResponse>>(application.Offer.CompanyId, "");
+                    applicationResponse.Company = apiResponse.Result;
+
+                    responses.Add(applicationResponse);
+                }
 
                 return new Paged<ApplicationCandidateResponse>(responses, applications.MetaData.TotalCount, parameters.PageNumber, pageSize);
             }
@@ -52,6 +58,9 @@ namespace Application.UseCase.Services
             {
                 var application = await _query.RecoveryById(id);
                 var response = _mapper.Map<ApplicationCandidateResponse>(application);
+
+                var apiResponse = await _api.GetById<HTTPResponse<CompanyGetResponse>>(application.Offer.CompanyId, "");
+                response.Company = apiResponse.Result;
 
                 return response;
             }

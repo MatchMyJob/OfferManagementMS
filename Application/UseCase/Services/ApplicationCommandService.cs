@@ -12,11 +12,15 @@ namespace Application.UseCase.Services
     public class ApplicationCommandService : IApplicationCommandService
     {
         private readonly IApplicationCommand _command;
+        private readonly ICompanyApi _companyApi;
+        private readonly IApplicantApi _applicantApi;
         private readonly IMapper _mapper;
 
-        public ApplicationCommandService(IApplicationCommand command, IMapper mapper)
+        public ApplicationCommandService(IApplicationCommand command, IMapper mapper, ICompanyApi companyApi, IApplicantApi applicantApi)
         {
             _command = command;
+            _companyApi = companyApi;
+            _applicantApi = applicantApi;
             _mapper = mapper;
         }
 
@@ -28,6 +32,9 @@ namespace Application.UseCase.Services
                 application = await _command.Insert(application);
 
                 var response = _mapper.Map<ApplicationCandidateResponse>(application);
+
+                var apiResponse = await _companyApi.GetById<HTTPResponse<CompanyGetResponse>>(application.Offer.CompanyId, "");
+                response.Company = apiResponse.Result;
 
                 return response;
             }
@@ -63,7 +70,12 @@ namespace Application.UseCase.Services
             }
         }
 
-        public async Task<ApplicationCandidateResponse> Update(int id, ApplicationUpdateRequest request)
+        public Task<ApplicationCandidateResponse> Update(int id, ApplicationUpdateRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<ApplicationUpdateResponse> UpdateApplication(int id, ApplicationUpdateRequest request)
         {
             try
             {
@@ -72,7 +84,11 @@ namespace Application.UseCase.Services
                 var application = _mapper.Map<Aplication>(request);
                 application = await _command.Update(id, application);
 
-                var response = _mapper.Map<ApplicationCandidateResponse>(application);
+                var response = _mapper.Map<ApplicationUpdateResponse>(application);
+
+                var apiResponse = await _applicantApi.GetById<HTTPResponse<ApplicantResponse>>(application.UserId, "");
+                response.Applicant = apiResponse.Result;
+
                 return response;
             }
             catch (Exception e)

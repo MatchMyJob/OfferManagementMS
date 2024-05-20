@@ -21,6 +21,15 @@ namespace Application.DTO.Config
                     Id = src.ApplicationStatusTypeId,
                     Name = src.ApplicationStatusType.Name
                 }));
+            CreateMap<ApplicationUpdateResponse, Aplication>()
+                .ReverseMap()
+                .ForMember(dest => dest.OfferTitle, opt => opt.MapFrom(src => src.Offer.Title))
+                .ForMember(dest => dest.ApplicationStatusType, opt => opt.MapFrom(src =>
+                new ApplicationStatusTypeResponse
+                {
+                    Id = src.ApplicationStatusTypeId,
+                    Name = src.ApplicationStatusType.Name
+                }));
             CreateMap<Aplication, ApplicationUpdateRequest>()
                 .ReverseMap()
                 .ForMember(dest => dest.ApplicationStatusTypeId, opt => opt.MapFrom(src => src.ApplicationStatusTypeId));
@@ -43,7 +52,7 @@ namespace Application.DTO.Config
             CreateMap<OfferResponse, Offer>()
                 .ReverseMap()
                 .ForMember(dest => dest.OfferId, opt => opt.MapFrom(src => src.OfferId))
-                .ForMember(dest => dest.CompanyId, opt => opt.MapFrom(src => src.CompanyId))
+                //.ForMember(dest => dest.CompanyId, opt => opt.MapFrom(src => src.CompanyId))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
                 .ForMember(dest => dest.Vacancies, opt => opt.MapFrom(src => src.Vacancies));

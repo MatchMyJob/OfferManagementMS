@@ -141,7 +141,7 @@ namespace API.Controllers
                 {
                     CustomValidation.ReturnError(ModelState);
                 }
-                _response.Result = await _commandService.Update(id, request);
+                _response.Result = await _commandService.UpdateApplication(id, request);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };

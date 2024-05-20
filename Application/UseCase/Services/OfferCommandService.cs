@@ -5,6 +5,7 @@ using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using Microsoft.Data.SqlClient;
+using System;
 
 namespace Application.UseCase.Services
 {
@@ -13,14 +14,16 @@ namespace Application.UseCase.Services
         private readonly IOfferCommand _command;
         private readonly ICategoryQuery _categoryQuery;
         private readonly ISkillQuery _skillQuery;
+        private readonly ICompanyApi _api;
         private readonly IMapper _mapper;
 
-        public OfferCommandService(IOfferCommand command, IMapper mapper, ICategoryQuery categoryQuery, ISkillQuery skillQuery)
+        public OfferCommandService(IOfferCommand command, IMapper mapper, ICategoryQuery categoryQuery, ISkillQuery skillQuery, ICompanyApi api)
         {
             _command = command;
             _mapper = mapper;
             _categoryQuery = categoryQuery;
             _skillQuery = skillQuery;
+            _api = api;
         }
 
         public async Task<OfferResponse> Create(OfferRequest request)
@@ -42,6 +45,10 @@ namespace Application.UseCase.Services
                 offer = await _command.Insert(offer);
 
                 var response = _mapper.Map<OfferResponse>(offer);
+
+                var apiResponse = await _api.GetById<HTTPResponse<CompanyGetResponse>>(offer.CompanyId, "");
+                response.Company = apiResponse.Result;
+
                 response.Ubication = new UbicationResponse
                 {
                     Province = offer.City.Province.Name,
@@ -110,6 +117,10 @@ namespace Application.UseCase.Services
                 offerUpd = await _command.Update(id, offerUpd);
 
                 var response = _mapper.Map<OfferResponse>(offerUpd);
+
+                var apiResponse = await _api.GetById<HTTPResponse<CompanyGetResponse>>(offerUpd.CompanyId, "");
+                response.Company = apiResponse.Result;
+
                 response.Ubication = new UbicationResponse
                 {
                     Province = offerUpd.City.Province.Name,
