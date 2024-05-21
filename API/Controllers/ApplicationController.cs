@@ -4,8 +4,10 @@ using Application.DTO.Request;
 using Application.DTO.Response;
 using Application.Interfaces;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Security.Claims;
 
 namespace API.Controllers
 {
@@ -32,6 +34,7 @@ namespace API.Controllers
         /// <response code="200">Retorna información de la postulación.</response>
 
         [HttpGet("{id:int}")]
+        [Authorize(Roles = "jobuser")]
         [ProducesResponseType(typeof(HTTPResponse<ApplicationCandidateResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status404NotFound)]
@@ -64,6 +67,7 @@ namespace API.Controllers
         /// <response code="200">Retorna una pagina de Postulaciones como resultado.</response>
 
         [HttpGet]
+        [Authorize(Roles = "jobuser")]
         [ProducesResponseType(typeof(HTTPResponse<Paged<ApplicationCandidateResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
@@ -94,6 +98,7 @@ namespace API.Controllers
         /// <response code="201">Retorna la información de la postulación registrada.</response>
 
         [HttpPost]
+        [Authorize(Roles = "jobuser")]
         [ProducesResponseType(typeof(HTTPResponse<ApplicationCandidateResponse>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status409Conflict)]
@@ -106,6 +111,9 @@ namespace API.Controllers
                 {
                     CustomValidation.ReturnError(ModelState);
                 }
+
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Obtengo el ID del token
+                request.UserId = Guid.Parse(userId);
 
                 _response.Result = await _commandService.Create(request);
                 _response.StatusCode = (HttpStatusCode)201;
@@ -129,6 +137,7 @@ namespace API.Controllers
         /// <response code="200">Retorna la información de la postulación actualizada.</response>
         
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "company")]
         [ProducesResponseType(typeof(HTTPResponse<ApplicationCandidateResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status409Conflict)]
@@ -164,6 +173,7 @@ namespace API.Controllers
         /// <response code="200">No retorna nada.</response>
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "jobuser, company")]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status409Conflict)]

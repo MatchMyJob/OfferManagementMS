@@ -4,6 +4,7 @@ using Application.DTO.Request;
 using Application.DTO.Response;
 using Application.Interfaces;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -91,6 +92,7 @@ namespace API.Controllers
         /// <response code="201">Returns the Offer created as Result</response>
 
         [HttpPost]
+        [Authorize(Roles = "company")]
         [ProducesResponseType(typeof(HTTPResponse<OfferResponse>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status409Conflict)]
@@ -126,6 +128,7 @@ namespace API.Controllers
         /// <response code="200">Returns the updated Offer as Result</response>
 
         [HttpPut("{id:Guid}")]
+        [Authorize(Roles = "company")]
         [ProducesResponseType(typeof(HTTPResponse<OfferResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status404NotFound)]
@@ -163,6 +166,7 @@ namespace API.Controllers
         /// <response code="200">Returns null in Result</response>
 
         [HttpDelete("{id:Guid}")]
+        [Authorize(Roles = "company")]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status404NotFound)]
