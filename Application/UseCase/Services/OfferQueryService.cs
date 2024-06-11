@@ -20,7 +20,22 @@ namespace Application.UseCase.Services
             _api = api;
         }
 
-        public async Task<Paged<OfferResponse>> GetAllPaged(int pageNumber, int pageSize)
+        public async Task<Paged<OfferMinimalResponse>> GetAllOfferByFilters(
+                int pageNumber,
+                int pageSize,
+                string? title,
+                Guid? company,
+                int? jobOfferMode,
+                int? jobOfferType,
+                int? province,
+                int? studyType,
+                List<int>? categories,
+                List<int>? skills,
+                bool availabilityToTravel,
+                bool availabilityChangeOfResidence,
+                DateTime? from,
+                DateTime? to
+            )
         {
             try
             {
@@ -31,14 +46,14 @@ namespace Application.UseCase.Services
                 Parameters parameters = new Parameters(pageNumber, pageSize);
 
                 Paged<Offer> offers = await _query.RecoveryAll(parameters);
-                List<OfferResponse> offerResponses = new();
+                List<OfferMinimalResponse> offerResponses = new();
 
                 
                 foreach (var offer in offers.Data)
                 {
-                    var response = _mapper.Map<OfferResponse>(offer);
+                    var response = _mapper.Map<OfferMinimalResponse>(offer);
 
-                    var apiResponse = await _api.GetById<HTTPResponse<CompanyGetResponse>>(offer.CompanyId, "");
+                    var apiResponse = await _api.GetById<HTTPResponse<CompanyMinimalResponse>>(offer.CompanyId, "");
                     response.Company = apiResponse.Result;
 
                     response.Ubication = new UbicationResponse
@@ -46,22 +61,11 @@ namespace Application.UseCase.Services
                         Province = offer.City.Province.Name,
                         City = offer.City.Name
                     };
-                    response.JobOfferMode = _mapper.Map<JobOfferModeResponse>(offer.JobOfferMode);
-                    response.StudyType = _mapper.Map<StudyTypeResponse>(offer.StudyType);
-
-                    offer.OfferCategories.ForEach(c =>
-                    {
-                        response.Categories.Add(_mapper.Map<CategoryResponse>(c));
-                    });
-                    offer.OfferSkills.ForEach(sk =>
-                    {
-                        response.Skills.Add(_mapper.Map<SkillResponse>(sk));
-                    });
                     offerResponses.Add(response);
                 }
                     
 
-                return new Paged<OfferResponse>(offerResponses, offers.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
+                return new Paged<OfferMinimalResponse>(offerResponses, offers.MetaData.TotalCount, parameters.PageNumber, parameters.PageSize);
             }
             catch (Exception e)
             {
@@ -94,7 +98,7 @@ namespace Application.UseCase.Services
                     response.Skills.Add(_mapper.Map<SkillResponse>(sk.Skill));
                 });
 
-                var apiResponse = await _api.GetById<HTTPResponse<CompanyGetResponse>>(offer.CompanyId, "");
+                var apiResponse = await _api.GetById<HTTPResponse<CompanyMinimalResponse>>(offer.CompanyId, "");
                 response.Company = apiResponse.Result;
 
                 return response;
@@ -104,6 +108,11 @@ namespace Application.UseCase.Services
                 if (e is HTTPError) { throw; }
                 throw new InternalServerErrorException(e.Message);
             }
+        }
+
+        Task<Paged<OfferResponse>> IQueryService<OfferResponse, Guid>.GetAllPaged(int pageNumber, int pageSize)
+        {
+            throw new NotImplementedException();
         }
     }
     

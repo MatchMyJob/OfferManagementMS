@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Infraestructure.ApiClient
 {
-    public class CompanyApi : BaseService<CompanyGetResponse>, ICompanyApi
+    public class CompanyApi : BaseService<CompanyMinimalResponse>, ICompanyApi
     {
         private readonly string _url;
 
@@ -14,7 +14,7 @@ namespace Infraestructure.ApiClient
             _url = configuration["ServiceUrls:API_URL_USER_MANAGMENT"];
         }
 
-        public Task<T> GetById<T>(int id, string token)
+        public Task<T> GetById<T>(Guid id, string token)
         {
             return SendAsync<T>(new HTTPRequest()
             {

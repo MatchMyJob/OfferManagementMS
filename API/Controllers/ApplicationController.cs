@@ -11,7 +11,7 @@ using System.Security.Claims;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class ApplicationController : ControllerBase
     {
@@ -33,7 +33,7 @@ namespace API.Controllers
         /// </summary>
         /// <response code="200">Retorna información de la postulación.</response>
 
-        [HttpGet("{id:int}")]
+        [HttpGet("[controller]/{id:int}")]
         [Authorize(Roles = "jobuser")]
         [ProducesResponseType(typeof(HTTPResponse<ApplicationCandidateResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
@@ -59,23 +59,25 @@ namespace API.Controllers
             }
         }
 
-        
+
 
         /// <summary>
         /// Retorna una pagina de postulaciones
         /// </summary>
         /// <response code="200">Retorna una pagina de Postulaciones como resultado.</response>
 
-        [HttpGet]
+        [HttpGet("applicant/[controller]")]
         [Authorize(Roles = "jobuser")]
         [ProducesResponseType(typeof(HTTPResponse<Paged<ApplicationCandidateResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetAll(int pagedNumber = 1, int pagedSize = 10)
+        public async Task<ActionResult> GetAllCandidateApplication([FromQuery] int? statusTipeId, [FromQuery] int pagedNumber = 1, [FromQuery] int pagedSize = 10)
         {
             try
             {
-                _response.Result = await _queryService.GetAllPaged(pagedNumber, pagedSize);
+                var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)); // Obtengo el ID del token
+
+                _response.Result = await _queryService.GetAllPagedForCandidate(pagedNumber, pagedSize, userId, statusTipeId);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };
@@ -91,13 +93,49 @@ namespace API.Controllers
         }
 
 
+        /// <summary>
+        /// Retorna una pagina de postulaciones
+        /// </summary>
+        /// <response code="200">Retorna una pagina de Postulaciones como resultado.</response>
+
+        [HttpGet("company/[controller]")]
+        [Authorize(Roles = "company")]
+        [ProducesResponseType(typeof(HTTPResponse<Paged<ApplicationCandidateResponse>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> GetAllCompanyApplication(
+            [FromQuery] int? statusTipeId,
+            [FromQuery] Guid offerId,
+            [FromQuery] int pagedNumber = 1, 
+            [FromQuery] int pagedSize = 10
+            )
+        {
+            try
+            {
+                // var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)); // Obtengo el ID del token
+
+                _response.Result = await _queryService.GetAllPagedForCompany(pagedNumber, pagedSize, offerId, statusTipeId);
+                _response.StatusCode = (HttpStatusCode)200;
+                _response.Status = "OK";
+                return new JsonResult(_response) { StatusCode = 200 };
+            }
+            catch (Exception e)
+            {
+                if (e is HTTPError)
+                {
+                    return new JsonResult(_mapper.Map<HTTPResponse<string>>(e)) { StatusCode = (int)((HTTPError)e).StatusCode };
+                }
+                return new JsonResult(_mapper.Map<HTTPResponse<string>>(new InternalServerErrorException("Ha ocurrido un error en el servicodor."))) { StatusCode = 500 };
+            }
+        }
+
 
         /// <summary>
         /// Realiza el registro de una postulación
         /// </summary>
         /// <response code="201">Retorna la información de la postulación registrada.</response>
 
-        [HttpPost]
+        [HttpPost("[controller]")]
         [Authorize(Roles = "jobuser")]
         [ProducesResponseType(typeof(HTTPResponse<ApplicationCandidateResponse>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
@@ -136,7 +174,7 @@ namespace API.Controllers
         /// </summary>
         /// <response code="200">Retorna la información de la postulación actualizada.</response>
         
-        [HttpPut("{id:int}")]
+        [HttpPut("[controller]/{id:int}")]
         [Authorize(Roles = "company")]
         [ProducesResponseType(typeof(HTTPResponse<ApplicationCandidateResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
@@ -172,8 +210,8 @@ namespace API.Controllers
         /// </summary>
         /// <response code="200">No retorna nada.</response>
 
-        [HttpDelete("{id:int}")]
-        [Authorize(Roles = "jobuser, company")]
+        [HttpDelete("[controller]/{id:int}")]
+        [Authorize(Roles = "jobuser")]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status409Conflict)]

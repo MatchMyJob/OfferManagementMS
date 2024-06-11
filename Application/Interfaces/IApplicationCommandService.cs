@@ -5,6 +5,6 @@ namespace Application.Interfaces
 {
     public interface IApplicationCommandService : ICommandService<ApplicationRequest, ApplicationCandidateResponse, ApplicationUpdateRequest, int>
     {
-        Task<ApplicationUpdateResponse> UpdateApplication(int id, ApplicationUpdateRequest request);
+        Task<ApplicationCompanyResponse> UpdateApplication(int id, ApplicationUpdateRequest request);
     }
 }

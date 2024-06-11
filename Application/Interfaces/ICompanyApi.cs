@@ -2,6 +2,6 @@
 {
     public interface ICompanyApi : IBaseService
     {
-        Task<T> GetById<T>(int id, string token);
+        Task<T> GetById<T>(Guid id, string token);
     }
 }

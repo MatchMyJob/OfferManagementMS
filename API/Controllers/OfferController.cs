@@ -63,14 +63,29 @@ namespace API.Controllers
         /// <response code="200">Returns a page of Offers as Result</response>
 
         [HttpGet]
-        [ProducesResponseType(typeof(HTTPResponse<Paged<OfferResponse>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(HTTPResponse<Paged<OfferMinimalResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetAll(int pagedNumber = 1, int pagedSize = 10)
+        public async Task<ActionResult> GetAll(
+                [FromQuery] string? title,
+                [FromQuery] Guid? company,
+                [FromQuery] int? jobOfferMode,
+                [FromQuery] int? jobOfferType,
+                [FromQuery] int? province,
+                [FromQuery] int? studyType,
+                [FromQuery] List<int>? categories,
+                [FromQuery] List<int>? skills,
+                [FromQuery] bool availabilityToTravel,
+                [FromQuery] bool availabilityChangeOfResidence,
+                [FromQuery] DateTime? from,
+                [FromQuery] DateTime? to,
+                int pageNumber,
+                int pageSize
+            )
         {
             try
             {
-                _response.Result = await _queryService.GetAllPaged(pagedNumber, pagedSize);
+                _response.Result = await _queryService.GetAllOfferByFilters(pageNumber, pageSize, title, company, jobOfferMode, jobOfferType, province, studyType, categories, skills, availabilityToTravel, availabilityChangeOfResidence, from, to);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };

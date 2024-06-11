@@ -34,14 +34,14 @@ namespace Infraestructure.Persistence
             modelBuilder.ApplyConfiguration(new JobOfferModeConfig());
             modelBuilder.ApplyConfiguration(new CategoryConfig());
             modelBuilder.ApplyConfiguration(new ApplicationStatusTypeConfig());
-            modelBuilder.ApplyConfiguration(new OfferCategoryConfig());
             modelBuilder.ApplyConfiguration(new ApplicationConfig());
-            modelBuilder.ApplyConfiguration(new OfferSkillConfig());
             modelBuilder.ApplyConfiguration(new CountryConfig());
             modelBuilder.ApplyConfiguration(new ProvinceConfig());
             modelBuilder.ApplyConfiguration(new CityConfig());
             modelBuilder.ApplyConfiguration(new StudyTypeConfig());
             modelBuilder.ApplyConfiguration(new OfferConfig());
+            modelBuilder.ApplyConfiguration(new OfferCategoryConfig());
+            modelBuilder.ApplyConfiguration(new OfferSkillConfig());
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -22,6 +23,8 @@ namespace Infraestructure.EntityConfig
             builder.HasOne<Skill>(s => s.Skill)
                    .WithMany(o => o.OfferSkills)
                    .HasForeignKey(sk => sk.SkillId);
+
+            OfferSkillData.SeedData(builder);
         }
     }
 }

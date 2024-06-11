@@ -4,9 +4,10 @@
     {
         public int ApplicationId { get; set; }
         public string OfferTitle { get; set; }
-        public CompanyGetResponse Company { get; set; }
-        public int ApplicationQuantity { get; set; }
-        public ApplicationStatusTypeResponse ApplicationStatusType { get; set; }
+        public Guid OfferId { get; set; }
+        public CompanyMinimalResponse Company { get; set; }
+        public string ApplicationStatusType { get; set; }
         public DateTime ApplicationDate { get; set; }
+        public int ApplicationQuantity { get; set; }
     }
 }

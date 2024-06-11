@@ -33,7 +33,7 @@ namespace Application.UseCase.Services
 
                 var response = _mapper.Map<ApplicationCandidateResponse>(application);
 
-                var apiResponse = await _companyApi.GetById<HTTPResponse<CompanyGetResponse>>(application.Offer.CompanyId, "");
+                var apiResponse = await _companyApi.GetById<HTTPResponse<CompanyMinimalResponse>>(application.Offer.CompanyId, "");
                 response.Company = apiResponse.Result;
 
                 return response;
@@ -75,7 +75,7 @@ namespace Application.UseCase.Services
             throw new NotImplementedException();
         }
 
-        public async Task<ApplicationUpdateResponse> UpdateApplication(int id, ApplicationUpdateRequest request)
+        public async Task<ApplicationCompanyResponse> UpdateApplication(int id, ApplicationUpdateRequest request)
         {
             try
             {
@@ -84,9 +84,9 @@ namespace Application.UseCase.Services
                 var application = _mapper.Map<Aplication>(request);
                 application = await _command.Update(id, application);
 
-                var response = _mapper.Map<ApplicationUpdateResponse>(application);
+                var response = _mapper.Map<ApplicationCompanyResponse>(application);
 
-                var apiResponse = await _applicantApi.GetById<HTTPResponse<ApplicantResponse>>(application.UserId, "");
+                var apiResponse = await _applicantApi.GetById<HTTPResponse<ApplicantMinimalResponse>>(application.UserId, "");
                 response.Applicant = apiResponse.Result;
 
                 return response;

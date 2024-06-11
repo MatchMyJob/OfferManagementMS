@@ -38,6 +38,34 @@ namespace Infraestructure.Query
             return await Paged<Aplication>.ToPagedAsync(applications, parameters.PageNumber, parameters.PageSize);
         }
 
+        public async Task<Paged<Aplication>> RecoveryAllForCandidate(Parameters parameters, Guid userId, int? statusTypeId)
+        {
+            IQueryable<Aplication> applications = _context.Applications.Where(a => a.Status && a.UserId == userId)
+                .Include(a => a.ApplicationStatusType)
+                .Include(a => a.Offer);
+
+            if (statusTypeId.HasValue && statusTypeId.Value != 0)
+            {
+                applications = applications.Where(a => a.ApplicationStatusTypeId == statusTypeId);
+            }
+
+            return await Paged<Aplication>.ToPagedAsync(applications, parameters.PageNumber, parameters.PageSize);
+        }
+
+        public async Task<Paged<Aplication>> RecoveryAllForCompany(Parameters parameters, Guid offerId, int? statusTypeId)
+        {
+            IQueryable<Aplication> applications = _context.Applications.Where(a => a.Status && a.OfferId == offerId)
+                .Include(a => a.ApplicationStatusType)
+                .Include(a => a.Offer);
+
+            if (statusTypeId.HasValue && statusTypeId.Value != 0)
+            {
+                applications = applications.Where(a => a.ApplicationStatusTypeId == statusTypeId);
+            }
+
+            return await Paged<Aplication>.ToPagedAsync(applications, parameters.PageNumber, parameters.PageSize);
+        }
+
         public async Task<Aplication> RecoveryById(int id)
         {
             var application = await _context.Applications

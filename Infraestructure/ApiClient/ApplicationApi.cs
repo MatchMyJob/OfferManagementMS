@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Infraestructure.ApiClient
 {
-    public class ApplicationApi : BaseService<ApplicantResponse>, IApplicantApi
+    public class ApplicationApi : BaseService<ApplicantMinimalResponse>, IApplicantApi
     {
         private readonly string _url;
 

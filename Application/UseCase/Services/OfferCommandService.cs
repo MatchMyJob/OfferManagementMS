@@ -46,7 +46,7 @@ namespace Application.UseCase.Services
 
                 var response = _mapper.Map<OfferResponse>(offer);
 
-                var apiResponse = await _api.GetById<HTTPResponse<CompanyGetResponse>>(offer.CompanyId, "");
+                var apiResponse = await _api.GetById<HTTPResponse<CompanyMinimalResponse>>(offer.CompanyId, "");
                 response.Company = apiResponse.Result;
 
                 response.Ubication = new UbicationResponse
@@ -118,7 +118,7 @@ namespace Application.UseCase.Services
 
                 var response = _mapper.Map<OfferResponse>(offerUpd);
 
-                var apiResponse = await _api.GetById<HTTPResponse<CompanyGetResponse>>(offerUpd.CompanyId, "");
+                var apiResponse = await _api.GetById<HTTPResponse<CompanyMinimalResponse>>(offerUpd.CompanyId, "");
                 response.Company = apiResponse.Result;
 
                 response.Ubication = new UbicationResponse

@@ -15,21 +15,12 @@ namespace Application.DTO.Config
             CreateMap<ApplicationCandidateResponse, Aplication>()
                 .ReverseMap()
                 .ForMember(dest => dest.OfferTitle, opt => opt.MapFrom(src => src.Offer.Title))
-                .ForMember(dest => dest.ApplicationStatusType, opt => opt.MapFrom(src => 
-                new ApplicationStatusTypeResponse
-                {
-                    Id = src.ApplicationStatusTypeId,
-                    Name = src.ApplicationStatusType.Name
-                }));
-            CreateMap<ApplicationUpdateResponse, Aplication>()
+                .ForMember(dest => dest.OfferId, opt => opt.MapFrom(src => src.Offer.OfferId))
+                .ForMember(dest => dest.ApplicationStatusType, opt => opt.MapFrom(src => src.ApplicationStatusType.Name));
+            CreateMap<ApplicationCompanyResponse, Aplication>()
                 .ReverseMap()
                 .ForMember(dest => dest.OfferTitle, opt => opt.MapFrom(src => src.Offer.Title))
-                .ForMember(dest => dest.ApplicationStatusType, opt => opt.MapFrom(src =>
-                new ApplicationStatusTypeResponse
-                {
-                    Id = src.ApplicationStatusTypeId,
-                    Name = src.ApplicationStatusType.Name
-                }));
+                .ForMember(dest => dest.ApplicationStatusType, opt => opt.MapFrom(src => src.ApplicationStatusType.Name));
             CreateMap<Aplication, ApplicationUpdateRequest>()
                 .ReverseMap()
                 .ForMember(dest => dest.ApplicationStatusTypeId, opt => opt.MapFrom(src => src.ApplicationStatusTypeId));
@@ -56,6 +47,9 @@ namespace Application.DTO.Config
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
                 .ForMember(dest => dest.Vacancies, opt => opt.MapFrom(src => src.Vacancies));
+            CreateMap<Offer, OfferRequest>().ReverseMap();
+            CreateMap<OfferMinimalResponse, Offer>()
+                .ReverseMap();
             CreateMap<Offer, OfferRequest>().ReverseMap();
 
 

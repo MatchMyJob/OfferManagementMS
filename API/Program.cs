@@ -169,6 +169,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 
+app.UseCors("NewPolicy");
+
 app.UseAuthorization();
 
 app.MapControllers();

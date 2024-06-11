@@ -3,7 +3,7 @@
     public class Offer
     {
         public Guid OfferId { get; set; }
-        public int CompanyId { get; set; }
+        public Guid CompanyId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int MinSalary { get; set; }
@@ -11,13 +11,14 @@
         public int JobOfferModeId { get; set; }
         public DateTime PublicationDate { get; set; } = DateTime.Now;
         public int CityId { get; set; }
-        public int? MinAge { get; set; }
-        public int? MaxAge { get; set; }
+        public int? MinAge { get; set; } = 18;
+        public int? MaxAge { get; set; } = 65;
         public int Vacancies { get; set; }
-        public bool AvailabilityToTravel { get; set; }
-        public bool AvailabilityChangeOfResidence { get; set; }
+        public bool AvailabilityToTravel { get; set; } = false;
+        public bool AvailabilityChangeOfResidence { get; set; } = false;
         public int StudyTypeId { get; set; }
-        public bool Status { get; set; }
+        public int ApplicantQuantity { get; set; } = 0;
+        public bool Status { get; set; } = true;
         public JobOfferMode JobOfferMode { get; set; }
         public List<OfferCategory> OfferCategories { get; set; }
         public List<Aplication> Applications { get; set; }
