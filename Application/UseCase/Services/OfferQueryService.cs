@@ -45,7 +45,8 @@ namespace Application.UseCase.Services
                 }
                 Parameters parameters = new Parameters(pageNumber, pageSize);
 
-                Paged<Offer> offers = await _query.RecoveryAll(parameters);
+                Paged<Offer> offers = await _query.RecoveryAllOffers(parameters, title, company, jobOfferMode, jobOfferType, province, studyType, categories, skills, availabilityToTravel, availabilityChangeOfResidence, from, to);
+
                 List<OfferMinimalResponse> offerResponses = new();
 
                 
