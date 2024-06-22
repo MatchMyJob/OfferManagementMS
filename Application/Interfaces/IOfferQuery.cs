@@ -10,10 +10,10 @@ namespace Application.Interfaces
         Task<Paged<Offer>> RecoveryAllOffers(
                 Parameters parameters, 
                 string? title,
-                Guid? company,
+                List<Guid>? companies,
                 int? jobOfferMode,
                 int? jobOfferType,
-                int? province,
+                List<int>? province,
                 int? studyType,
                 List<int>? categories,
                 List<int>? skills,

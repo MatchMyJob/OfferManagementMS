@@ -35,20 +35,20 @@ namespace Infraestructure.Query
         }
 
         public async Task<Paged<Offer>> RecoveryAllOffers(
-    Parameters parameters,
-    string? title,
-    Guid? company,
-    int? jobOfferMode,
-    int? jobOfferType,
-    int? province,
-    int? studyType,
-    List<int>? categories,
-    List<int>? skills,
-    bool availabilityToTravel,
-    bool availabilityChangeOfResidence,
-    DateTime? from,
-    DateTime? to
-)
+            Parameters parameters,
+            string? title,
+            List<Guid>? companies,
+            int? jobOfferMode,
+            int? jobOfferType,
+            List<int>? province,
+            int? studyType,
+            List<int>? categories,
+            List<int>? skills,
+            bool availabilityToTravel,
+            bool availabilityChangeOfResidence,
+            DateTime? from,
+            DateTime? to
+        )
         {
             IQueryable<Offer> offers = _context.Offers.Where(o => o.Status)
                 .Include(c => c.City)
@@ -65,13 +65,14 @@ namespace Infraestructure.Query
             // Aplicar filtros
             if (!string.IsNullOrEmpty(title))
             {
-                offers = offers.Where(o => o.Title.Contains(title));
+                offers = offers.Where(o => o.Title.Contains(title) || o.Description.Contains(title));
             }
 
-            if (company.HasValue)
+            if (companies != null && companies.Any())
             {
-                offers = offers.Where(o => o.CompanyId == company);
+                offers = offers.Where(o => companies.Contains(o.CompanyId));
             }
+
 
             if (jobOfferMode.HasValue)
             {
@@ -83,9 +84,9 @@ namespace Infraestructure.Query
             //    offers = offers.Where(o => o.JobOfferTypeId == jobOfferType);
             //}
 
-            if (province.HasValue)
+            if (province != null && province.Any())
             {
-                offers = offers.Where(o => o.City.ProvinceId == province);
+                offers = offers.Where(o => province.Contains(o.City.ProvinceId));
             }
 
             if (studyType.HasValue)

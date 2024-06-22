@@ -24,10 +24,10 @@ namespace Application.UseCase.Services
                 int pageNumber,
                 int pageSize,
                 string? title,
-                Guid? company,
+                List<Guid>? companies,
                 int? jobOfferMode,
                 int? jobOfferType,
-                int? province,
+                List<int>? province,
                 int? studyType,
                 List<int>? categories,
                 List<int>? skills,
@@ -45,7 +45,7 @@ namespace Application.UseCase.Services
                 }
                 Parameters parameters = new Parameters(pageNumber, pageSize);
 
-                Paged<Offer> offers = await _query.RecoveryAllOffers(parameters, title, company, jobOfferMode, jobOfferType, province, studyType, categories, skills, availabilityToTravel, availabilityChangeOfResidence, from, to);
+                Paged<Offer> offers = await _query.RecoveryAllOffers(parameters, title, companies, jobOfferMode, jobOfferType, province, studyType, categories, skills, availabilityToTravel, availabilityChangeOfResidence, from, to);
 
                 List<OfferMinimalResponse> offerResponses = new();
 

@@ -68,10 +68,10 @@ namespace API.Controllers
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetAll(
                 [FromQuery] string? title,
-                [FromQuery] Guid? company,
+                [FromQuery] List<Guid>? companies,
                 [FromQuery] int? jobOfferMode,
                 [FromQuery] int? jobOfferType,
-                [FromQuery] int? province,
+                [FromQuery] List<int>? province,
                 [FromQuery] int? studyType,
                 [FromQuery] List<int>? categories,
                 [FromQuery] List<int>? skills,
@@ -79,13 +79,13 @@ namespace API.Controllers
                 [FromQuery] bool availabilityChangeOfResidence,
                 [FromQuery] DateTime? from,
                 [FromQuery] DateTime? to,
-                int pageNumber,
-                int pageSize
+                int pageNumber = 1,
+                int pageSize = 20
             )
         {
             try
             {
-                _response.Result = await _queryService.GetAllOfferByFilters(pageNumber, pageSize, title, company, jobOfferMode, jobOfferType, province, studyType, categories, skills, availabilityToTravel, availabilityChangeOfResidence, from, to);
+                _response.Result = await _queryService.GetAllOfferByFilters(pageNumber, pageSize, title, companies, jobOfferMode, jobOfferType, province, studyType, categories, skills, availabilityToTravel, availabilityChangeOfResidence, from, to);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };
