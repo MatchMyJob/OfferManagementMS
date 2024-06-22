@@ -150,10 +150,9 @@ namespace API.Controllers
                     CustomValidation.ReturnError(ModelState);
                 }
 
-                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Obtengo el ID del token
-                request.UserId = Guid.Parse(userId);
+                var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)); // Obtengo el ID del token
 
-                _response.Result = await _commandService.Create(request);
+                _response.Result = await _commandService.RegisterApplication(request, userId);
                 _response.StatusCode = (HttpStatusCode)201;
                 _response.Status = "Created";
                 return new JsonResult(_response) { StatusCode = 201 };

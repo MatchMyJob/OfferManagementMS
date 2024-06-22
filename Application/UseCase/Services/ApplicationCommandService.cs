@@ -24,11 +24,12 @@ namespace Application.UseCase.Services
             _mapper = mapper;
         }
 
-        public async Task<ApplicationCandidateResponse> Create(ApplicationRequest request)
+        public async Task<ApplicationCandidateResponse> RegisterApplication(ApplicationRequest request, Guid userId)
         {
             try
             {
                 var application = _mapper.Map<Aplication>(request);
+                application.UserId = userId;
                 application = await _command.Insert(application);
 
                 var response = _mapper.Map<ApplicationCandidateResponse>(application);
@@ -56,6 +57,11 @@ namespace Application.UseCase.Services
             }
         }
 
+        public async Task<ApplicationCandidateResponse> Create(ApplicationRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task DeleteById(int id)
         {
             try
@@ -69,6 +75,7 @@ namespace Application.UseCase.Services
                 throw new InternalServerErrorException(e.Message);
             }
         }
+
 
         public Task<ApplicationCandidateResponse> Update(int id, ApplicationUpdateRequest request)
         {

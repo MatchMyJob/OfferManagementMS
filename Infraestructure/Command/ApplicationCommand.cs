@@ -3,6 +3,7 @@ using Application.Interfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace Infraestructure.Command
 {
@@ -17,6 +18,11 @@ namespace Infraestructure.Command
 
         public async Task<Aplication> Insert(Aplication entity)
         {
+            var applicatinExist = await _context.Applications.
+                FirstOrDefaultAsync(a => (a.OfferId == entity.OfferId) && (a.UserId == entity.UserId));
+
+            if (applicatinExist != null) { throw new ConflictException("El usuario ha aplicado a la oferta anteriormente."); }
+
             await _context.AddAsync(entity);
             await _context.SaveChangesAsync();
 
