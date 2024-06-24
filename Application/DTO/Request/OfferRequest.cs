@@ -5,8 +5,6 @@ namespace Application.DTO.Request
 {
     public class OfferRequest
     {
-        public int CompanyId { get; set; }
-
         [Required(ErrorMessage = "El título es obligatorio.")]
         [StringLength(50, ErrorMessage = "El título no puede exceder los 50 caracteres.")]
         public string Title { get; set; }

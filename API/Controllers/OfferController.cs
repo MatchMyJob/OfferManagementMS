@@ -7,6 +7,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Security.Claims;
 
 namespace API.Controllers
 {
@@ -120,8 +121,9 @@ namespace API.Controllers
                 {
                     CustomValidation.ReturnError(ModelState);
                 }
+                var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
-                _response.Result = await _commandService.Create(request);
+                _response.Result = await _commandService.RegisterOffer(request, userId);
                 _response.StatusCode = (HttpStatusCode)201;
                 _response.Status = "Created";
                 return new JsonResult(_response) { StatusCode = 201 };

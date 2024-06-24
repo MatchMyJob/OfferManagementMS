@@ -5,5 +5,7 @@ namespace Application.Interfaces
 {
     public interface IOfferCommandService : ICommandService<OfferRequest, OfferResponse, OfferRequest, Guid>
     {
+        Task<OfferResponse> RegisterOffer(OfferRequest request, Guid userId);
+
     }
 }

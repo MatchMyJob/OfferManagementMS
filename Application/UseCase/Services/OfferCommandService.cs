@@ -26,7 +26,7 @@ namespace Application.UseCase.Services
             _api = api;
         }
 
-        public async Task<OfferResponse> Create(OfferRequest request)
+        public async Task<OfferResponse> RegisterOffer(OfferRequest request, Guid userId)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace Application.UseCase.Services
 
                 var offer = _mapper.Map<Offer>(request);
                 offer.Status = true;
-                offer.OfferId = Guid.NewGuid();
+                offer.OfferId = userId;
                 offer.OfferCategories = categories;
                 offer.OfferSkills = skills;
 
@@ -58,7 +58,7 @@ namespace Application.UseCase.Services
                 {
                     response.Categories.Add(_mapper.Map<CategoryResponse>(c.Category));
                 });
-                offer.OfferSkills.ForEach(sk => 
+                offer.OfferSkills.ForEach(sk =>
                 {
                     response.Skills.Add(_mapper.Map<SkillResponse>(sk.Skill));
                 });
@@ -85,6 +85,12 @@ namespace Application.UseCase.Services
             }
         }
 
+        public async Task<OfferResponse> Create(OfferRequest request)
+        {
+            throw new NotImplementedException();
+
+        }
+
         public async Task DeleteById(Guid id)
         {
             try
@@ -97,6 +103,8 @@ namespace Application.UseCase.Services
                 throw new InternalServerErrorException(e.Message);
             }
         }
+
+        
 
         public async Task<OfferResponse> Update(Guid id, OfferRequest request)
         {

@@ -71,13 +71,13 @@ namespace API.Controllers
         [ProducesResponseType(typeof(HTTPResponse<Paged<ApplicationCandidateResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetAllCandidateApplication([FromQuery] int? statusTipeId, [FromQuery] int pagedNumber = 1, [FromQuery] int pagedSize = 10)
+        public async Task<ActionResult> GetAllCandidateApplication([FromQuery] int? statusTypeId, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
             try
             {
                 var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)); // Obtengo el ID del token
 
-                _response.Result = await _queryService.GetAllPagedForCandidate(pagedNumber, pagedSize, userId, statusTipeId);
+                _response.Result = await _queryService.GetAllPagedForCandidate(pageNumber, pageSize, userId, statusTypeId);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };
@@ -104,17 +104,17 @@ namespace API.Controllers
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(HTTPResponse<string>), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetAllCompanyApplication(
-            [FromQuery] int? statusTipeId,
+            [FromQuery] int? statusTypeId,
             [FromQuery] Guid offerId,
-            [FromQuery] int pagedNumber = 1, 
-            [FromQuery] int pagedSize = 10
+            [FromQuery] int pageNumber = 1, 
+            [FromQuery] int pageSize = 10
             )
         {
             try
             {
                 // var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)); // Obtengo el ID del token
 
-                _response.Result = await _queryService.GetAllPagedForCompany(pagedNumber, pagedSize, offerId, statusTipeId);
+                _response.Result = await _queryService.GetAllPagedForCompany(pageNumber, pageSize, offerId, statusTypeId);
                 _response.StatusCode = (HttpStatusCode)200;
                 _response.Status = "OK";
                 return new JsonResult(_response) { StatusCode = 200 };
